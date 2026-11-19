@@ -14,6 +14,6 @@ De Bavaria ronde van Lieshout is vandaag verreden. De **foto's** staan online op
 
 **Uitslagen:**
 
-- [Elite/Beloften](bestanden/2010/05/Uitslag_LIESHOUT_2010-05-16_EliteBeloften.html)
-- [Junioren](bestanden/2010/05/Uitslag_LIESHOUT_2010-05-16_Junioren.html)
-- [Nieuwelingen](bestanden/2010/05/Uitslag_LIESHOUT_2010-05-16_Nieuwelingen.html)
+- [Elite/Beloften](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/05/Uitslag_LIESHOUT_2010-05-16_EliteBeloften.html)
+- [Junioren](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/05/Uitslag_LIESHOUT_2010-05-16_Junioren.html)
+- [Nieuwelingen](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/05/Uitslag_LIESHOUT_2010-05-16_Nieuwelingen.html)

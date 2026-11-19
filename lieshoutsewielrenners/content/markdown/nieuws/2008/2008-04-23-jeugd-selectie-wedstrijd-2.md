@@ -13,6 +13,6 @@ Door het hoge aantal inschrijvingen (555) rijden alle categorieën in twee serie
 
 De voorlopige deelnemerslijsten zijn hieronder te bekijken:
 
-- [Serie 1](bestanden/2008/04/JSW_2008_serie1.htm)
+- [Serie 1](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/JSW_2008_serie1.htm)
 
-- [Serie 2](bestanden/2008/04/JSW_2008_serie2.htm)
+- [Serie 2](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/JSW_2008_serie2.htm)

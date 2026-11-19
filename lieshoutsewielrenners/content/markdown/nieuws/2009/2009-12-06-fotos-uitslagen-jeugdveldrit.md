@@ -12,18 +12,18 @@ tags: ["2009", "foto's", "jeugdveldrit"]
 
 De generale repetitie voor het NK is verreden en de uitslagen zijn bekend:
 
-[Uitslag Categorie 1](bestanden/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._1.html)
+[Uitslag Categorie 1](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._1.html)
 
-[Uitslag Categorie 2](bestanden/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._2.html)
+[Uitslag Categorie 2](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._2.html)
 
-[Uitslag Categorie 3](bestanden/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._3.html)
+[Uitslag Categorie 3](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._3.html)
 
-[Uitslag Categorie 4](bestanden/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._4.html)
+[Uitslag Categorie 4](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._4.html)
 
-[Uitslag Categorie 5](bestanden/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._5.html)
+[Uitslag Categorie 5](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._5.html)
 
-[Uitslag Categorie 6](bestanden/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._6.html)
+[Uitslag Categorie 6](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._6.html)
 
-[Uitslag Categorie 7](bestanden/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._7.html)
+[Uitslag Categorie 7](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._7.html)
 
 Zoals altijd staan ook de foto's online. Ze zijn te bekijken via [ons fotoarchief](https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&dl=0)

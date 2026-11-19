@@ -13,19 +13,19 @@ opmerking: "De uitslag van Categorie 7 stond wel online maar werd in het oorspro
 
 Uitslagen:
 
-[Categorie 1](bestanden/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._1.html)
+[Categorie 1](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._1.html)
 
-[Categorie 2](bestanden/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._2.html)
+[Categorie 2](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._2.html)
 
-[Categorie 3](bestanden/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._3.html)
+[Categorie 3](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._3.html)
 
-[Categorie 4](bestanden/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._4.html)
+[Categorie 4](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._4.html)
 
-[Categorie 5](bestanden/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._5.html)
+[Categorie 5](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._5.html)
 
-[Categorie 6](bestanden/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._6.html)
+[Categorie 6](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._6.html)
 
-[Categorie 7](bestanden/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._7.html)
+[Categorie 7](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._7.html)
 
 [Foto's](https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&dl=0)
 

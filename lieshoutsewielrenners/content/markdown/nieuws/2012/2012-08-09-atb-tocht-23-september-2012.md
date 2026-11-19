@@ -12,4 +12,4 @@ tags: ["atb", "mountainbike", "veldtoertocht"]
 
 ![1 voorzijde.indd](afbeeldingen/2012/08/atbtocht2012-1.jpg)
 
-Download [de flyer via deze link](bestanden/2012/08/atbtocht2012.pdf).
+Download [de flyer via deze link](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2012/08/atbtocht2012.pdf).

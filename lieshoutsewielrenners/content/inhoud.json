@@ -226,7 +226,7 @@
    "gewijzigd": "2015-01-03 20:32:50",
    "categorieen": [],
    "tags": [],
-   "html": "<p>Enkele jaarverslagen van de supportersclub zijn via deze site te downloaden. Deze pagina is toe aan een update.</p>\n<p><a data-bestand=\"1\" href=\"bestanden/2007/12/1998.pdf\">Jaarverslag 1998</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/2007/12/1999.pdf\">Jaarverslag 1999</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/2007/12/2000.pdf\">Jaarverslag 2000</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/2007/12/2001.pdf\">Jaarverslag 2001</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/2007/12/2002.pdf\">Jaarverslag 2002</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/2007/12/2003.pdf\">Jaarverslag 2003</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/2007/12/2004.pdf\">Jaarverslag 2004</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/2007/12/2005.pdf\">Jaarverslag 2005</a></p>",
+   "html": "<p>Enkele jaarverslagen van de supportersclub zijn via deze site te downloaden. Deze pagina is toe aan een update.</p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2007/12/1998.pdf\">Jaarverslag 1998</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2007/12/1999.pdf\">Jaarverslag 1999</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2007/12/2000.pdf\">Jaarverslag 2000</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2007/12/2001.pdf\">Jaarverslag 2001</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2007/12/2002.pdf\">Jaarverslag 2002</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2007/12/2003.pdf\">Jaarverslag 2003</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2007/12/2004.pdf\">Jaarverslag 2004</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2007/12/2005.pdf\">Jaarverslag 2005</a></p>",
    "afbeeldingen": [],
    "bestanden": [
     "bestanden/2007/12/1998.pdf",
@@ -240,7 +240,56 @@
    ],
    "opmerking": "Deze pagina stond op PRIVÉ (niet zichtbaar voor bezoekers).",
    "woorden": 34,
-   "links": [],
+   "links": [
+    {
+     "tekst": "Jaarverslag 1998",
+     "oud": "bestanden/2007/12/1998.pdf",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2007/12/1998.pdf",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2007/12/1998.pdf)"
+    },
+    {
+     "tekst": "Jaarverslag 1999",
+     "oud": "bestanden/2007/12/1999.pdf",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2007/12/1999.pdf",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2007/12/1999.pdf)"
+    },
+    {
+     "tekst": "Jaarverslag 2000",
+     "oud": "bestanden/2007/12/2000.pdf",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2007/12/2000.pdf",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2007/12/2000.pdf)"
+    },
+    {
+     "tekst": "Jaarverslag 2001",
+     "oud": "bestanden/2007/12/2001.pdf",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2007/12/2001.pdf",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2007/12/2001.pdf)"
+    },
+    {
+     "tekst": "Jaarverslag 2002",
+     "oud": "bestanden/2007/12/2002.pdf",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2007/12/2002.pdf",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2007/12/2002.pdf)"
+    },
+    {
+     "tekst": "Jaarverslag 2003",
+     "oud": "bestanden/2007/12/2003.pdf",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2007/12/2003.pdf",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2007/12/2003.pdf)"
+    },
+    {
+     "tekst": "Jaarverslag 2004",
+     "oud": "bestanden/2007/12/2004.pdf",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2007/12/2004.pdf",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2007/12/2004.pdf)"
+    },
+    {
+     "tekst": "Jaarverslag 2005",
+     "oud": "bestanden/2007/12/2005.pdf",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2007/12/2005.pdf",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2007/12/2005.pdf)"
+    }
+   ],
    "bestanden_ok": [
     {
      "local": "bestanden/2007/12/1998.pdf",
@@ -275,7 +324,7 @@
      "ok": true
     }
    ],
-   "md": "Enkele jaarverslagen van de supportersclub zijn via deze site te downloaden. Deze pagina is toe aan een update.\n\n[Jaarverslag 1998](bestanden/2007/12/1998.pdf)\n\n[Jaarverslag 1999](bestanden/2007/12/1999.pdf)\n\n[Jaarverslag 2000](bestanden/2007/12/2000.pdf)\n\n[Jaarverslag 2001](bestanden/2007/12/2001.pdf)\n\n[Jaarverslag 2002](bestanden/2007/12/2002.pdf)\n\n[Jaarverslag 2003](bestanden/2007/12/2003.pdf)\n\n[Jaarverslag 2004](bestanden/2007/12/2004.pdf)\n\n[Jaarverslag 2005](bestanden/2007/12/2005.pdf)",
+   "md": "Enkele jaarverslagen van de supportersclub zijn via deze site te downloaden. Deze pagina is toe aan een update.\n\n[Jaarverslag 1998](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2007/12/1998.pdf)\n\n[Jaarverslag 1999](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2007/12/1999.pdf)\n\n[Jaarverslag 2000](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2007/12/2000.pdf)\n\n[Jaarverslag 2001](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2007/12/2001.pdf)\n\n[Jaarverslag 2002](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2007/12/2002.pdf)\n\n[Jaarverslag 2003](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2007/12/2003.pdf)\n\n[Jaarverslag 2004](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2007/12/2004.pdf)\n\n[Jaarverslag 2005](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2007/12/2005.pdf)",
    "broodkruimel": [
     "Algemeen"
    ],
@@ -3739,7 +3788,7 @@
    "gewijzigd": "2007-12-29 19:06:36",
    "categorieen": [],
    "tags": [],
-   "html": "<p>Uitslagen van de Jeugdronde van Lieshout:</p>\n<p><a data-bestand=\"1\" href=\"bestanden/uitslagen/jeugdronde/2000.html\">2000</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/uitslagen/jeugdronde/2001.html\">2001</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/uitslagen/jeugdronde/2002.html\">2002</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/uitslagen/jeugdronde/2003.html\">2003</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/uitslagen/jeugdronde/2004.html\">2004</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/uitslagen/jeugdronde/2005.html\">2005</a></p>\n<p>Uitslagen van de Jeugdveldrit van Lieshout:</p>\n<p><a data-bestand=\"1\" href=\"bestanden/uitslagen/jeugdveldrit/2000.html\">2000</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/uitslagen/jeugdveldrit/2001.html\">2001</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/uitslagen/jeugdveldrit/2002.html\">2002</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/uitslagen/jeugdveldrit/2003.html\">2003</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/uitslagen/jeugdveldrit/2004.html\">2004</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/uitslagen/jeugdveldrit/2005.html\">2005</a></p>\n<p>Uitslagen van de Laarbeek meerdaagse:</p>\n<p><a data-bestand=\"1\" href=\"bestanden/uitslagen/laarbeek/2000.html\">2000</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/uitslagen/laarbeek/2001.html\">2001</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/uitslagen/laarbeek/2002.html\">2002</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/uitslagen/laarbeek/2003.html\">2003</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/uitslagen/laarbeek/2004.html\">2004</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/uitslagen/laarbeek/2005.htm\">2005</a></p>\n<p>Uitslagen van de Veldrit van Lieshout:</p>\n<p><a data-bestand=\"1\" href=\"bestanden/uitslagen/veldrit/2000.html\">2000</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/uitslagen/veldrit/2001.html\">2001</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/uitslagen/veldrit/2002.html\">2002</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/uitslagen/veldrit/2003.html\">2003</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/uitslagen/veldrit/2004.html\">2004</a></p>",
+   "html": "<p>Uitslagen van de Jeugdronde van Lieshout:</p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/jeugdronde/2000.html\">2000</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/jeugdronde/2001.html\">2001</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/jeugdronde/2002.html\">2002</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/jeugdronde/2003.html\">2003</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/jeugdronde/2004.html\">2004</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/jeugdronde/2005.html\">2005</a></p>\n<p>Uitslagen van de Jeugdveldrit van Lieshout:</p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/jeugdveldrit/2000.html\">2000</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/jeugdveldrit/2001.html\">2001</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/jeugdveldrit/2002.html\">2002</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/jeugdveldrit/2003.html\">2003</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/jeugdveldrit/2004.html\">2004</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/jeugdveldrit/2005.html\">2005</a></p>\n<p>Uitslagen van de Laarbeek meerdaagse:</p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/laarbeek/2000.html\">2000</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/laarbeek/2001.html\">2001</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/laarbeek/2002.html\">2002</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/laarbeek/2003.html\">2003</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/laarbeek/2004.html\">2004</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/laarbeek/2005.htm\">2005</a></p>\n<p>Uitslagen van de Veldrit van Lieshout:</p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/veldrit/2000.html\">2000</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/veldrit/2001.html\">2001</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/veldrit/2002.html\">2002</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/veldrit/2003.html\">2003</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/veldrit/2004.html\">2004</a></p>",
    "afbeeldingen": [],
    "bestanden": [
     "bestanden/uitslagen/jeugdronde/2000.html",
@@ -3766,10 +3815,149 @@
     "bestanden/uitslagen/jeugdveldrit/2005.html",
     "bestanden/uitslagen/laarbeek/2005.htm"
    ],
-   "opmerking": "De uitslagenlijsten 2000–2005 komen uit de serverback-up van december 2014 (Dropbox › Archief). Het zijn Excel-exports: sommige jaren openen een bestand met tabbladen uit de bijbehorende map (…_files of …_bestanden); upload die mappen mee. De links naar Jeugdveldrit 2005 en Laarbeek 2005 zijn toegevoegd: die uitslagen stonden wel op de server maar waren niet gelinkt.",
+   "opmerking": "De links naar de uitslagenlijsten 2000–2005 wijzen naar https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/ en werken zo; uploaden is niet nodig. (Een kopie staat in bestanden/uitslagen/.) De links naar Jeugdveldrit 2005 en Laarbeek 2005 zijn toegevoegd: die uitslagen stonden wel op de server maar waren niet gelinkt.",
    "woorden": 44,
    "opmerking210": true,
-   "links": [],
+   "links": [
+    {
+     "tekst": "2000",
+     "oud": "https://raw.githubusercontent.com/berlotti/cdn/gh-pages/lieshoutsewielrenners/uploads/uitslagen/jeugdronde/2000.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/jeugdronde/2000.html",
+     "status": "vervangen: uitslagenlijst staat nu op GitHub Pages (kopie ook in bestanden/uitslagen/)"
+    },
+    {
+     "tekst": "2001",
+     "oud": "https://raw.githubusercontent.com/berlotti/cdn/gh-pages/lieshoutsewielrenners/uploads/uitslagen/jeugdronde/2001.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/jeugdronde/2001.html",
+     "status": "vervangen: uitslagenlijst staat nu op GitHub Pages (kopie ook in bestanden/uitslagen/)"
+    },
+    {
+     "tekst": "2002",
+     "oud": "https://raw.githubusercontent.com/berlotti/cdn/gh-pages/lieshoutsewielrenners/uploads/uitslagen/jeugdronde/2002.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/jeugdronde/2002.html",
+     "status": "vervangen: uitslagenlijst staat nu op GitHub Pages (kopie ook in bestanden/uitslagen/)"
+    },
+    {
+     "tekst": "2003",
+     "oud": "https://raw.githubusercontent.com/berlotti/cdn/gh-pages/lieshoutsewielrenners/uploads/uitslagen/jeugdronde/2003.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/jeugdronde/2003.html",
+     "status": "vervangen: uitslagenlijst staat nu op GitHub Pages (kopie ook in bestanden/uitslagen/)"
+    },
+    {
+     "tekst": "2004",
+     "oud": "https://raw.githubusercontent.com/berlotti/cdn/gh-pages/lieshoutsewielrenners/uploads/uitslagen/jeugdronde/2004.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/jeugdronde/2004.html",
+     "status": "vervangen: uitslagenlijst staat nu op GitHub Pages (kopie ook in bestanden/uitslagen/)"
+    },
+    {
+     "tekst": "2005",
+     "oud": "https://raw.githubusercontent.com/berlotti/cdn/gh-pages/lieshoutsewielrenners/uploads/uitslagen/jeugdronde/2005.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/jeugdronde/2005.html",
+     "status": "vervangen: uitslagenlijst staat nu op GitHub Pages (kopie ook in bestanden/uitslagen/)"
+    },
+    {
+     "tekst": "2000",
+     "oud": "https://raw.githubusercontent.com/berlotti/cdn/gh-pages/lieshoutsewielrenners/uploads/uitslagen/jeugdveldrit/2000.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/jeugdveldrit/2000.html",
+     "status": "vervangen: uitslagenlijst staat nu op GitHub Pages (kopie ook in bestanden/uitslagen/)"
+    },
+    {
+     "tekst": "2001",
+     "oud": "https://raw.githubusercontent.com/berlotti/cdn/gh-pages/lieshoutsewielrenners/uploads/uitslagen/jeugdveldrit/2001.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/jeugdveldrit/2001.html",
+     "status": "vervangen: uitslagenlijst staat nu op GitHub Pages (kopie ook in bestanden/uitslagen/)"
+    },
+    {
+     "tekst": "2002",
+     "oud": "https://raw.githubusercontent.com/berlotti/cdn/gh-pages/lieshoutsewielrenners/uploads/uitslagen/jeugdveldrit/2002.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/jeugdveldrit/2002.html",
+     "status": "vervangen: uitslagenlijst staat nu op GitHub Pages (kopie ook in bestanden/uitslagen/)"
+    },
+    {
+     "tekst": "2003",
+     "oud": "https://raw.githubusercontent.com/berlotti/cdn/gh-pages/lieshoutsewielrenners/uploads/uitslagen/jeugdveldrit/2003.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/jeugdveldrit/2003.html",
+     "status": "vervangen: uitslagenlijst staat nu op GitHub Pages (kopie ook in bestanden/uitslagen/)"
+    },
+    {
+     "tekst": "2004",
+     "oud": "https://raw.githubusercontent.com/berlotti/cdn/gh-pages/lieshoutsewielrenners/uploads/uitslagen/jeugdveldrit/2004.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/jeugdveldrit/2004.html",
+     "status": "vervangen: uitslagenlijst staat nu op GitHub Pages (kopie ook in bestanden/uitslagen/)"
+    },
+    {
+     "tekst": "2005",
+     "oud": "https://raw.githubusercontent.com/berlotti/cdn/gh-pages/lieshoutsewielrenners/uploads/uitslagen/jeugdveldrit/2005.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/jeugdveldrit/2005.html",
+     "status": "vervangen: uitslagenlijst staat nu op GitHub Pages (kopie ook in bestanden/uitslagen/)"
+    },
+    {
+     "tekst": "2000",
+     "oud": "https://raw.githubusercontent.com/berlotti/cdn/gh-pages/lieshoutsewielrenners/uploads/uitslagen/laarbeek/2000.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/laarbeek/2000.html",
+     "status": "vervangen: uitslagenlijst staat nu op GitHub Pages (kopie ook in bestanden/uitslagen/)"
+    },
+    {
+     "tekst": "2001",
+     "oud": "https://raw.githubusercontent.com/berlotti/cdn/gh-pages/lieshoutsewielrenners/uploads/uitslagen/laarbeek/2001.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/laarbeek/2001.html",
+     "status": "vervangen: uitslagenlijst staat nu op GitHub Pages (kopie ook in bestanden/uitslagen/)"
+    },
+    {
+     "tekst": "2002",
+     "oud": "https://raw.githubusercontent.com/berlotti/cdn/gh-pages/lieshoutsewielrenners/uploads/uitslagen/laarbeek/2002.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/laarbeek/2002.html",
+     "status": "vervangen: uitslagenlijst staat nu op GitHub Pages (kopie ook in bestanden/uitslagen/)"
+    },
+    {
+     "tekst": "2003",
+     "oud": "https://raw.githubusercontent.com/berlotti/cdn/gh-pages/lieshoutsewielrenners/uploads/uitslagen/laarbeek/2003.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/laarbeek/2003.html",
+     "status": "vervangen: uitslagenlijst staat nu op GitHub Pages (kopie ook in bestanden/uitslagen/)"
+    },
+    {
+     "tekst": "2004",
+     "oud": "https://raw.githubusercontent.com/berlotti/cdn/gh-pages/lieshoutsewielrenners/uploads/uitslagen/laarbeek/2004.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/laarbeek/2004.html",
+     "status": "vervangen: uitslagenlijst staat nu op GitHub Pages (kopie ook in bestanden/uitslagen/)"
+    },
+    {
+     "tekst": "2005",
+     "oud": "https://raw.githubusercontent.com/berlotti/cdn/gh-pages/lieshoutsewielrenners/uploads/uitslagen/laarbeek/2005.htm",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/laarbeek/2005.htm",
+     "status": "vervangen: uitslagenlijst staat nu op GitHub Pages (kopie ook in bestanden/uitslagen/)"
+    },
+    {
+     "tekst": "2000",
+     "oud": "https://raw.githubusercontent.com/berlotti/cdn/gh-pages/lieshoutsewielrenners/uploads/uitslagen/veldrit/2000.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/veldrit/2000.html",
+     "status": "vervangen: uitslagenlijst staat nu op GitHub Pages (kopie ook in bestanden/uitslagen/)"
+    },
+    {
+     "tekst": "2001",
+     "oud": "https://raw.githubusercontent.com/berlotti/cdn/gh-pages/lieshoutsewielrenners/uploads/uitslagen/veldrit/2001.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/veldrit/2001.html",
+     "status": "vervangen: uitslagenlijst staat nu op GitHub Pages (kopie ook in bestanden/uitslagen/)"
+    },
+    {
+     "tekst": "2002",
+     "oud": "https://raw.githubusercontent.com/berlotti/cdn/gh-pages/lieshoutsewielrenners/uploads/uitslagen/veldrit/2002.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/veldrit/2002.html",
+     "status": "vervangen: uitslagenlijst staat nu op GitHub Pages (kopie ook in bestanden/uitslagen/)"
+    },
+    {
+     "tekst": "2003",
+     "oud": "https://raw.githubusercontent.com/berlotti/cdn/gh-pages/lieshoutsewielrenners/uploads/uitslagen/veldrit/2003.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/veldrit/2003.html",
+     "status": "vervangen: uitslagenlijst staat nu op GitHub Pages (kopie ook in bestanden/uitslagen/)"
+    },
+    {
+     "tekst": "2004",
+     "oud": "https://raw.githubusercontent.com/berlotti/cdn/gh-pages/lieshoutsewielrenners/uploads/uitslagen/veldrit/2004.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/veldrit/2004.html",
+     "status": "vervangen: uitslagenlijst staat nu op GitHub Pages (kopie ook in bestanden/uitslagen/)"
+    }
+   ],
    "bestanden_ok": [
     {
      "local": "bestanden/uitslagen/jeugdronde/2000.html",
@@ -3864,7 +4052,7 @@
      "ok": true
     }
    ],
-   "md": "Uitslagen van de Jeugdronde van Lieshout:\n\n[2000](bestanden/uitslagen/jeugdronde/2000.html)\n\n[2001](bestanden/uitslagen/jeugdronde/2001.html)\n\n[2002](bestanden/uitslagen/jeugdronde/2002.html)\n\n[2003](bestanden/uitslagen/jeugdronde/2003.html)\n\n[2004](bestanden/uitslagen/jeugdronde/2004.html)\n\n[2005](bestanden/uitslagen/jeugdronde/2005.html)\n\nUitslagen van de Jeugdveldrit van Lieshout:\n\n[2000](bestanden/uitslagen/jeugdveldrit/2000.html)\n\n[2001](bestanden/uitslagen/jeugdveldrit/2001.html)\n\n[2002](bestanden/uitslagen/jeugdveldrit/2002.html)\n\n[2003](bestanden/uitslagen/jeugdveldrit/2003.html)\n\n[2004](bestanden/uitslagen/jeugdveldrit/2004.html)\n\n[2005](bestanden/uitslagen/jeugdveldrit/2005.html)\n\nUitslagen van de Laarbeek meerdaagse:\n\n[2000](bestanden/uitslagen/laarbeek/2000.html)\n\n[2001](bestanden/uitslagen/laarbeek/2001.html)\n\n[2002](bestanden/uitslagen/laarbeek/2002.html)\n\n[2003](bestanden/uitslagen/laarbeek/2003.html)\n\n[2004](bestanden/uitslagen/laarbeek/2004.html)\n\n[2005](bestanden/uitslagen/laarbeek/2005.htm)\n\nUitslagen van de Veldrit van Lieshout:\n\n[2000](bestanden/uitslagen/veldrit/2000.html)\n\n[2001](bestanden/uitslagen/veldrit/2001.html)\n\n[2002](bestanden/uitslagen/veldrit/2002.html)\n\n[2003](bestanden/uitslagen/veldrit/2003.html)\n\n[2004](bestanden/uitslagen/veldrit/2004.html)",
+   "md": "Uitslagen van de Jeugdronde van Lieshout:\n\n[2000](https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/jeugdronde/2000.html)\n\n[2001](https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/jeugdronde/2001.html)\n\n[2002](https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/jeugdronde/2002.html)\n\n[2003](https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/jeugdronde/2003.html)\n\n[2004](https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/jeugdronde/2004.html)\n\n[2005](https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/jeugdronde/2005.html)\n\nUitslagen van de Jeugdveldrit van Lieshout:\n\n[2000](https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/jeugdveldrit/2000.html)\n\n[2001](https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/jeugdveldrit/2001.html)\n\n[2002](https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/jeugdveldrit/2002.html)\n\n[2003](https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/jeugdveldrit/2003.html)\n\n[2004](https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/jeugdveldrit/2004.html)\n\n[2005](https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/jeugdveldrit/2005.html)\n\nUitslagen van de Laarbeek meerdaagse:\n\n[2000](https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/laarbeek/2000.html)\n\n[2001](https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/laarbeek/2001.html)\n\n[2002](https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/laarbeek/2002.html)\n\n[2003](https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/laarbeek/2003.html)\n\n[2004](https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/laarbeek/2004.html)\n\n[2005](https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/laarbeek/2005.htm)\n\nUitslagen van de Veldrit van Lieshout:\n\n[2000](https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/veldrit/2000.html)\n\n[2001](https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/veldrit/2001.html)\n\n[2002](https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/veldrit/2002.html)\n\n[2003](https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/veldrit/2003.html)\n\n[2004](https://berlotti.github.io/cdn/lieshoutsewielrenners/uitslagen/veldrit/2004.html)",
    "broodkruimel": [
     "Evenementen"
    ],
@@ -7886,7 +8074,7 @@
     "Nieuws"
    ],
    "tags": [],
-   "html": "<p>Door het hoge aantal inschrijvingen (555) rijden alle categorieën in twee series.</p>\n<p>De voorlopige deelnemerslijsten zijn hieronder te bekijken:</p>\n<p>- <a data-bestand=\"1\" href=\"bestanden/2008/04/JSW_2008_serie1.htm\">Serie 1</a></p>\n<p>- <a data-bestand=\"1\" href=\"bestanden/2008/04/JSW_2008_serie2.htm\">Serie 2</a></p>",
+   "html": "<p>Door het hoge aantal inschrijvingen (555) rijden alle categorieën in twee series.</p>\n<p>De voorlopige deelnemerslijsten zijn hieronder te bekijken:</p>\n<p>- <a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/JSW_2008_serie1.htm\">Serie 1</a></p>\n<p>- <a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/JSW_2008_serie2.htm\">Serie 2</a></p>",
    "afbeeldingen": [],
    "bestanden": [
     "bestanden/2008/04/JSW_2008_serie1.htm",
@@ -7894,7 +8082,20 @@
    ],
    "opmerking": null,
    "woorden": 25,
-   "links": [],
+   "links": [
+    {
+     "tekst": "Serie 1",
+     "oud": "bestanden/2008/04/JSW_2008_serie1.htm",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/JSW_2008_serie1.htm",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2008/04/JSW_2008_serie1.htm)"
+    },
+    {
+     "tekst": "Serie 2",
+     "oud": "bestanden/2008/04/JSW_2008_serie2.htm",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/JSW_2008_serie2.htm",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2008/04/JSW_2008_serie2.htm)"
+    }
+   ],
    "bestanden_ok": [
     {
      "local": "bestanden/2008/04/JSW_2008_serie1.htm",
@@ -7905,7 +8106,7 @@
      "ok": true
     }
    ],
-   "md": "Door het hoge aantal inschrijvingen (555) rijden alle categorieën in twee series.\n\nDe voorlopige deelnemerslijsten zijn hieronder te bekijken:\n\n- [Serie 1](bestanden/2008/04/JSW_2008_serie1.htm)\n\n- [Serie 2](bestanden/2008/04/JSW_2008_serie2.htm)",
+   "md": "Door het hoge aantal inschrijvingen (555) rijden alle categorieën in twee series.\n\nDe voorlopige deelnemerslijsten zijn hieronder te bekijken:\n\n- [Serie 1](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/JSW_2008_serie1.htm)\n\n- [Serie 2](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/JSW_2008_serie2.htm)",
    "broodkruimel": [],
    "reacties": [],
    "mdbestand": "markdown/nieuws/2008/2008-04-23-jeugd-selectie-wedstrijd-2.md"
@@ -7926,7 +8127,7 @@
     "jeugdronde"
    ],
    "tags": [],
-   "html": "<p>De Jeugdronde van Lieshout is verreden. Zie hier de uitslagen en de foto's.</p>\n<p><a data-bestand=\"1\" href=\"bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_1-1.html\">Cat. 1 - serie 1</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_1-2.html\">Cat. 1 - serie 2</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_2-1.html\">Cat. 2 - serie 1</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_2-2.html\">Cat. 2 - serie 2</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_3-1.html\">Cat. 3 - serie 1</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_3-2.html\">Cat. 3 - serie 2</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_4-1.html\">Cat. 4 - serie 1</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_4-2.html\">Cat. 4 - serie 2</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_5-1.html\">Cat. 5 - serie 1</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_5-2.html\">Cat. 5 - serie 2</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_6-1.html\">Cat. 6 - serie 1</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_6-2.html\">Cat. 6 - serie 2</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_7-1.html\">Cat. 7 - serie 1</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_7-2.html\">Cat. 7 - serie 2</a></p>\n<p>De vele foto's zijn te zien op <a data-gewijzigd=\"1\" href=\"https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&amp;dl=0\">ons fotoarchief</a></p>",
+   "html": "<p>De Jeugdronde van Lieshout is verreden. Zie hier de uitslagen en de foto's.</p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_1-1.html\">Cat. 1 - serie 1</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_1-2.html\">Cat. 1 - serie 2</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_2-1.html\">Cat. 2 - serie 1</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_2-2.html\">Cat. 2 - serie 2</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_3-1.html\">Cat. 3 - serie 1</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_3-2.html\">Cat. 3 - serie 2</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_4-1.html\">Cat. 4 - serie 1</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_4-2.html\">Cat. 4 - serie 2</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_5-1.html\">Cat. 5 - serie 1</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_5-2.html\">Cat. 5 - serie 2</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_6-1.html\">Cat. 6 - serie 1</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_6-2.html\">Cat. 6 - serie 2</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_7-1.html\">Cat. 7 - serie 1</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_7-2.html\">Cat. 7 - serie 2</a></p>\n<p>De vele foto's zijn te zien op <a data-gewijzigd=\"1\" href=\"https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&amp;dl=0\">ons fotoarchief</a></p>",
    "afbeeldingen": [],
    "bestanden": [
     "bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_1-1.html",
@@ -7947,6 +8148,90 @@
    "opmerking": null,
    "woorden": 91,
    "links": [
+    {
+     "tekst": "Cat. 1 - serie 1",
+     "oud": "bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_1-1.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_1-1.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_1-1.html)"
+    },
+    {
+     "tekst": "Cat. 1 - serie 2",
+     "oud": "bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_1-2.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_1-2.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_1-2.html)"
+    },
+    {
+     "tekst": "Cat. 2 - serie 1",
+     "oud": "bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_2-1.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_2-1.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_2-1.html)"
+    },
+    {
+     "tekst": "Cat. 2 - serie 2",
+     "oud": "bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_2-2.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_2-2.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_2-2.html)"
+    },
+    {
+     "tekst": "Cat. 3 - serie 1",
+     "oud": "bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_3-1.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_3-1.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_3-1.html)"
+    },
+    {
+     "tekst": "Cat. 3 - serie 2",
+     "oud": "bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_3-2.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_3-2.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_3-2.html)"
+    },
+    {
+     "tekst": "Cat. 4 - serie 1",
+     "oud": "bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_4-1.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_4-1.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_4-1.html)"
+    },
+    {
+     "tekst": "Cat. 4 - serie 2",
+     "oud": "bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_4-2.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_4-2.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_4-2.html)"
+    },
+    {
+     "tekst": "Cat. 5 - serie 1",
+     "oud": "bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_5-1.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_5-1.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_5-1.html)"
+    },
+    {
+     "tekst": "Cat. 5 - serie 2",
+     "oud": "bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_5-2.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_5-2.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_5-2.html)"
+    },
+    {
+     "tekst": "Cat. 6 - serie 1",
+     "oud": "bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_6-1.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_6-1.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_6-1.html)"
+    },
+    {
+     "tekst": "Cat. 6 - serie 2",
+     "oud": "bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_6-2.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_6-2.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_6-2.html)"
+    },
+    {
+     "tekst": "Cat. 7 - serie 1",
+     "oud": "bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_7-1.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_7-1.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_7-1.html)"
+    },
+    {
+     "tekst": "Cat. 7 - serie 2",
+     "oud": "bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_7-2.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_7-2.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_7-2.html)"
+    },
     {
      "tekst": "http://fotos.lieshoutsewielrenners.nl/",
      "oud": "http://lwf.opendatamovement.org/main.php?g2_itemId=14625",
@@ -8012,7 +8297,7 @@
      "ok": true
     }
    ],
-   "md": "De Jeugdronde van Lieshout is verreden. Zie hier de uitslagen en de foto's.\n\n[Cat. 1 - serie 1](bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_1-1.html)\n\n[Cat. 1 - serie 2](bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_1-2.html)\n\n[Cat. 2 - serie 1](bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_2-1.html)\n\n[Cat. 2 - serie 2](bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_2-2.html)\n\n[Cat. 3 - serie 1](bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_3-1.html)\n\n[Cat. 3 - serie 2](bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_3-2.html)\n\n[Cat. 4 - serie 1](bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_4-1.html)\n\n[Cat. 4 - serie 2](bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_4-2.html)\n\n[Cat. 5 - serie 1](bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_5-1.html)\n\n[Cat. 5 - serie 2](bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_5-2.html)\n\n[Cat. 6 - serie 1](bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_6-1.html)\n\n[Cat. 6 - serie 2](bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_6-2.html)\n\n[Cat. 7 - serie 1](bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_7-1.html)\n\n[Cat. 7 - serie 2](bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_7-2.html)\n\nDe vele foto's zijn te zien op [ons fotoarchief](https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&dl=0)",
+   "md": "De Jeugdronde van Lieshout is verreden. Zie hier de uitslagen en de foto's.\n\n[Cat. 1 - serie 1](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_1-1.html)\n\n[Cat. 1 - serie 2](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_1-2.html)\n\n[Cat. 2 - serie 1](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_2-1.html)\n\n[Cat. 2 - serie 2](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_2-2.html)\n\n[Cat. 3 - serie 1](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_3-1.html)\n\n[Cat. 3 - serie 2](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_3-2.html)\n\n[Cat. 4 - serie 1](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_4-1.html)\n\n[Cat. 4 - serie 2](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_4-2.html)\n\n[Cat. 5 - serie 1](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_5-1.html)\n\n[Cat. 5 - serie 2](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_5-2.html)\n\n[Cat. 6 - serie 1](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_6-1.html)\n\n[Cat. 6 - serie 2](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_6-2.html)\n\n[Cat. 7 - serie 1](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_7-1.html)\n\n[Cat. 7 - serie 2](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_7-2.html)\n\nDe vele foto's zijn te zien op [ons fotoarchief](https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&dl=0)",
    "broodkruimel": [],
    "reacties": [],
    "mdbestand": "markdown/nieuws/2008/2008-04-28-uitslagen-jeugdronde-lieshout-2008.md"
@@ -8093,7 +8378,7 @@
     "lieshout",
     "uitslagen"
    ],
-   "html": "<p>De ronde van Lieshout is wederom verreden. Hieronder alle uitslagen.</p>\n<p>De foto's zijn zoals altijd te bekijken in het fotoalbum van deze site: <a data-gewijzigd=\"1\" href=\"https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&amp;dl=0\">klik hier voor de directe link naar de foto's</a>.</p>\n<p>- <a data-bestand=\"1\" href=\"bestanden/2008/05/lieshout-uitslag_53e_bavaria-ronde_van_lieshout_2008-05-18_elitebeloften.html\">Uitslag Elite/Beloften</a></p>\n<p>- <a data-bestand=\"1\" href=\"bestanden/2008/05/lieshout-uitslag_53e_bavaria-ronde_van_lieshout_2008-05-18_junioren.html\">Uitslag Junioren</a></p>\n<p>- <a data-bestand=\"1\" href=\"bestanden/2008/05/lieshout-uitslag_53e_bavaria-ronde_van_lieshout_2008-05-18_nieuwelingen.html\">Uitslag Nieuwelingen</a></p>",
+   "html": "<p>De ronde van Lieshout is wederom verreden. Hieronder alle uitslagen.</p>\n<p>De foto's zijn zoals altijd te bekijken in het fotoalbum van deze site: <a data-gewijzigd=\"1\" href=\"https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&amp;dl=0\">klik hier voor de directe link naar de foto's</a>.</p>\n<p>- <a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/05/lieshout-uitslag_53e_bavaria-ronde_van_lieshout_2008-05-18_elitebeloften.html\">Uitslag Elite/Beloften</a></p>\n<p>- <a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/05/lieshout-uitslag_53e_bavaria-ronde_van_lieshout_2008-05-18_junioren.html\">Uitslag Junioren</a></p>\n<p>- <a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/05/lieshout-uitslag_53e_bavaria-ronde_van_lieshout_2008-05-18_nieuwelingen.html\">Uitslag Nieuwelingen</a></p>",
    "afbeeldingen": [],
    "bestanden": [
     "bestanden/2008/05/lieshout-uitslag_53e_bavaria-ronde_van_lieshout_2008-05-18_elitebeloften.html",
@@ -8108,6 +8393,24 @@
      "oud": "http://fotos.lieshoutsewielrenners.nl/main.php?g2_itemId=17296",
      "nieuw": "https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&dl=0",
      "status": "vervangen: oud fotoalbum bestaat niet meer, nu link naar het fotoarchief op Dropbox"
+    },
+    {
+     "tekst": "Uitslag Elite/Beloften",
+     "oud": "bestanden/2008/05/lieshout-uitslag_53e_bavaria-ronde_van_lieshout_2008-05-18_elitebeloften.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/05/lieshout-uitslag_53e_bavaria-ronde_van_lieshout_2008-05-18_elitebeloften.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2008/05/lieshout-uitslag_53e_bavaria-ronde_van_lieshout_2008-05-18_elitebeloften.html)"
+    },
+    {
+     "tekst": "Uitslag Junioren",
+     "oud": "bestanden/2008/05/lieshout-uitslag_53e_bavaria-ronde_van_lieshout_2008-05-18_junioren.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/05/lieshout-uitslag_53e_bavaria-ronde_van_lieshout_2008-05-18_junioren.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2008/05/lieshout-uitslag_53e_bavaria-ronde_van_lieshout_2008-05-18_junioren.html)"
+    },
+    {
+     "tekst": "Uitslag Nieuwelingen",
+     "oud": "bestanden/2008/05/lieshout-uitslag_53e_bavaria-ronde_van_lieshout_2008-05-18_nieuwelingen.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/05/lieshout-uitslag_53e_bavaria-ronde_van_lieshout_2008-05-18_nieuwelingen.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2008/05/lieshout-uitslag_53e_bavaria-ronde_van_lieshout_2008-05-18_nieuwelingen.html)"
     }
    ],
    "bestanden_ok": [
@@ -8124,7 +8427,7 @@
      "ok": true
     }
    ],
-   "md": "De ronde van Lieshout is wederom verreden. Hieronder alle uitslagen.\n\nDe foto's zijn zoals altijd te bekijken in het fotoalbum van deze site: [klik hier voor de directe link naar de foto's](https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&dl=0).\n\n- [Uitslag Elite/Beloften](bestanden/2008/05/lieshout-uitslag_53e_bavaria-ronde_van_lieshout_2008-05-18_elitebeloften.html)\n\n- [Uitslag Junioren](bestanden/2008/05/lieshout-uitslag_53e_bavaria-ronde_van_lieshout_2008-05-18_junioren.html)\n\n- [Uitslag Nieuwelingen](bestanden/2008/05/lieshout-uitslag_53e_bavaria-ronde_van_lieshout_2008-05-18_nieuwelingen.html)",
+   "md": "De ronde van Lieshout is wederom verreden. Hieronder alle uitslagen.\n\nDe foto's zijn zoals altijd te bekijken in het fotoalbum van deze site: [klik hier voor de directe link naar de foto's](https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&dl=0).\n\n- [Uitslag Elite/Beloften](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/05/lieshout-uitslag_53e_bavaria-ronde_van_lieshout_2008-05-18_elitebeloften.html)\n\n- [Uitslag Junioren](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/05/lieshout-uitslag_53e_bavaria-ronde_van_lieshout_2008-05-18_junioren.html)\n\n- [Uitslag Nieuwelingen](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2008/05/lieshout-uitslag_53e_bavaria-ronde_van_lieshout_2008-05-18_nieuwelingen.html)",
    "broodkruimel": [],
    "reacties": [],
    "mdbestand": "markdown/nieuws/2008/2008-05-18-uitslagen-bavaria-ronde-van-lieshout-2008.md"
@@ -8838,7 +9141,7 @@
     "uitslagen",
     "veldrit"
    ],
-   "html": "<p>De veldrit van Lieshout 2009 zit er weer op. De volledige uitslagen en foto's zijn traditiegetrouw weer terug te vinden op deze site:</p>\n<p><a data-bestand=\"1\" href=\"bestanden/2009/11/Uitslag_LIESHOUT_2009-11-15_Nieuwelingen.html\">Nieuwelingen</a>(Erik kramer)</p>\n<p><a data-bestand=\"1\" href=\"bestanden/2009/11/Uitslag_LIESHOUT_2009-11-15_Junioren.html\">Junioren</a> (Robin Wennekes)</p>\n<p><a data-bestand=\"1\" href=\"bestanden/2009/11/Uitslag_LIESHOUT_2009-11-15_Amateurs.html\">Amateurs</a> (Edwin Raats)</p>\n<p><a data-bestand=\"1\" href=\"bestanden/2009/11/Uitslag_LIESHOUT_2009-11-15_Masters.html\">Masters</a> (Emiel Borsboom)</p>\n<p><a data-bestand=\"1\" href=\"bestanden/2009/11/Uitslag_LIESHOUT_2009-11-15_EliteBeloften.html\">Elite en Beloften</a> (Rik van IJzendoorn)</p>\n<p>De meer dan 200 gemaakte foto's zijn te zien in het fotoarchief van de organisatie: <a data-gewijzigd=\"1\" href=\"https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&amp;dl=0\">ons fotoarchief</a></p>",
+   "html": "<p>De veldrit van Lieshout 2009 zit er weer op. De volledige uitslagen en foto's zijn traditiegetrouw weer terug te vinden op deze site:</p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/11/Uitslag_LIESHOUT_2009-11-15_Nieuwelingen.html\">Nieuwelingen</a>(Erik kramer)</p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/11/Uitslag_LIESHOUT_2009-11-15_Junioren.html\">Junioren</a> (Robin Wennekes)</p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/11/Uitslag_LIESHOUT_2009-11-15_Amateurs.html\">Amateurs</a> (Edwin Raats)</p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/11/Uitslag_LIESHOUT_2009-11-15_Masters.html\">Masters</a> (Emiel Borsboom)</p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/11/Uitslag_LIESHOUT_2009-11-15_EliteBeloften.html\">Elite en Beloften</a> (Rik van IJzendoorn)</p>\n<p>De meer dan 200 gemaakte foto's zijn te zien in het fotoarchief van de organisatie: <a data-gewijzigd=\"1\" href=\"https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&amp;dl=0\">ons fotoarchief</a></p>",
    "afbeeldingen": [],
    "bestanden": [
     "bestanden/2009/11/Uitslag_LIESHOUT_2009-11-15_Nieuwelingen.html",
@@ -8850,6 +9153,36 @@
    "opmerking": null,
    "woorden": 57,
    "links": [
+    {
+     "tekst": "Nieuwelingen",
+     "oud": "bestanden/2009/11/Uitslag_LIESHOUT_2009-11-15_Nieuwelingen.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/11/Uitslag_LIESHOUT_2009-11-15_Nieuwelingen.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2009/11/Uitslag_LIESHOUT_2009-11-15_Nieuwelingen.html)"
+    },
+    {
+     "tekst": "Junioren",
+     "oud": "bestanden/2009/11/Uitslag_LIESHOUT_2009-11-15_Junioren.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/11/Uitslag_LIESHOUT_2009-11-15_Junioren.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2009/11/Uitslag_LIESHOUT_2009-11-15_Junioren.html)"
+    },
+    {
+     "tekst": "Amateurs",
+     "oud": "bestanden/2009/11/Uitslag_LIESHOUT_2009-11-15_Amateurs.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/11/Uitslag_LIESHOUT_2009-11-15_Amateurs.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2009/11/Uitslag_LIESHOUT_2009-11-15_Amateurs.html)"
+    },
+    {
+     "tekst": "Masters",
+     "oud": "bestanden/2009/11/Uitslag_LIESHOUT_2009-11-15_Masters.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/11/Uitslag_LIESHOUT_2009-11-15_Masters.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2009/11/Uitslag_LIESHOUT_2009-11-15_Masters.html)"
+    },
+    {
+     "tekst": "Elite en Beloften",
+     "oud": "bestanden/2009/11/Uitslag_LIESHOUT_2009-11-15_EliteBeloften.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/11/Uitslag_LIESHOUT_2009-11-15_EliteBeloften.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2009/11/Uitslag_LIESHOUT_2009-11-15_EliteBeloften.html)"
+    },
     {
      "tekst": "http://fotos.lieshoutsewielrenners.nl/main.php?g2_itemId=49313",
      "oud": "http://fotos.lieshoutsewielrenners.nl/main.php?g2_itemId=49313",
@@ -8879,7 +9212,7 @@
      "ok": true
     }
    ],
-   "md": "De veldrit van Lieshout 2009 zit er weer op. De volledige uitslagen en foto's zijn traditiegetrouw weer terug te vinden op deze site:\n\n[Nieuwelingen](bestanden/2009/11/Uitslag_LIESHOUT_2009-11-15_Nieuwelingen.html)(Erik kramer)\n\n[Junioren](bestanden/2009/11/Uitslag_LIESHOUT_2009-11-15_Junioren.html) (Robin Wennekes)\n\n[Amateurs](bestanden/2009/11/Uitslag_LIESHOUT_2009-11-15_Amateurs.html) (Edwin Raats)\n\n[Masters](bestanden/2009/11/Uitslag_LIESHOUT_2009-11-15_Masters.html) (Emiel Borsboom)\n\n[Elite en Beloften](bestanden/2009/11/Uitslag_LIESHOUT_2009-11-15_EliteBeloften.html) (Rik van IJzendoorn)\n\nDe meer dan 200 gemaakte foto's zijn te zien in het fotoarchief van de organisatie: [ons fotoarchief](https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&dl=0)",
+   "md": "De veldrit van Lieshout 2009 zit er weer op. De volledige uitslagen en foto's zijn traditiegetrouw weer terug te vinden op deze site:\n\n[Nieuwelingen](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/11/Uitslag_LIESHOUT_2009-11-15_Nieuwelingen.html)(Erik kramer)\n\n[Junioren](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/11/Uitslag_LIESHOUT_2009-11-15_Junioren.html) (Robin Wennekes)\n\n[Amateurs](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/11/Uitslag_LIESHOUT_2009-11-15_Amateurs.html) (Edwin Raats)\n\n[Masters](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/11/Uitslag_LIESHOUT_2009-11-15_Masters.html) (Emiel Borsboom)\n\n[Elite en Beloften](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/11/Uitslag_LIESHOUT_2009-11-15_EliteBeloften.html) (Rik van IJzendoorn)\n\nDe meer dan 200 gemaakte foto's zijn te zien in het fotoarchief van de organisatie: [ons fotoarchief](https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&dl=0)",
    "broodkruimel": [],
    "reacties": [],
    "mdbestand": "markdown/nieuws/2009/2009-11-15-uitslagen-en-fotos-veldrit-lieshout-2009.md"
@@ -8935,7 +9268,7 @@
     "foto's",
     "jeugdveldrit"
    ],
-   "html": "<p>De generale repetitie voor het NK is verreden en de uitslagen zijn bekend:</p>\n<p><a data-bestand=\"1\" href=\"bestanden/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._1.html\">Uitslag Categorie 1</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._2.html\">Uitslag Categorie 2</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._3.html\">Uitslag Categorie 3</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._4.html\">Uitslag Categorie 4</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._5.html\">Uitslag Categorie 5</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._6.html\">Uitslag Categorie 6</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._7.html\">Uitslag Categorie 7</a></p>\n<p>Zoals altijd staan ook de foto's online. Ze zijn te bekijken via <a data-gewijzigd=\"1\" href=\"https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&amp;dl=0\">ons fotoarchief</a></p>",
+   "html": "<p>De generale repetitie voor het NK is verreden en de uitslagen zijn bekend:</p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._1.html\">Uitslag Categorie 1</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._2.html\">Uitslag Categorie 2</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._3.html\">Uitslag Categorie 3</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._4.html\">Uitslag Categorie 4</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._5.html\">Uitslag Categorie 5</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._6.html\">Uitslag Categorie 6</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._7.html\">Uitslag Categorie 7</a></p>\n<p>Zoals altijd staan ook de foto's online. Ze zijn te bekijken via <a data-gewijzigd=\"1\" href=\"https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&amp;dl=0\">ons fotoarchief</a></p>",
    "afbeeldingen": [],
    "bestanden": [
     "bestanden/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._1.html",
@@ -8949,6 +9282,48 @@
    "opmerking": null,
    "woorden": 47,
    "links": [
+    {
+     "tekst": "Uitslag Categorie 1",
+     "oud": "bestanden/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._1.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._1.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._1.html)"
+    },
+    {
+     "tekst": "Uitslag Categorie 2",
+     "oud": "bestanden/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._2.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._2.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._2.html)"
+    },
+    {
+     "tekst": "Uitslag Categorie 3",
+     "oud": "bestanden/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._3.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._3.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._3.html)"
+    },
+    {
+     "tekst": "Uitslag Categorie 4",
+     "oud": "bestanden/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._4.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._4.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._4.html)"
+    },
+    {
+     "tekst": "Uitslag Categorie 5",
+     "oud": "bestanden/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._5.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._5.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._5.html)"
+    },
+    {
+     "tekst": "Uitslag Categorie 6",
+     "oud": "bestanden/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._6.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._6.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._6.html)"
+    },
+    {
+     "tekst": "Uitslag Categorie 7",
+     "oud": "bestanden/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._7.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._7.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._7.html)"
+    },
     {
      "tekst": "http://fotos.lieshoutsewielrenners.nl/main.php?g2_itemId=51464",
      "oud": "http://fotos.lieshoutsewielrenners.nl/main.php?g2_itemId=51464",
@@ -8986,7 +9361,7 @@
      "ok": true
     }
    ],
-   "md": "De generale repetitie voor het NK is verreden en de uitslagen zijn bekend:\n\n[Uitslag Categorie 1](bestanden/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._1.html)\n\n[Uitslag Categorie 2](bestanden/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._2.html)\n\n[Uitslag Categorie 3](bestanden/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._3.html)\n\n[Uitslag Categorie 4](bestanden/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._4.html)\n\n[Uitslag Categorie 5](bestanden/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._5.html)\n\n[Uitslag Categorie 6](bestanden/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._6.html)\n\n[Uitslag Categorie 7](bestanden/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._7.html)\n\nZoals altijd staan ook de foto's online. Ze zijn te bekijken via [ons fotoarchief](https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&dl=0)",
+   "md": "De generale repetitie voor het NK is verreden en de uitslagen zijn bekend:\n\n[Uitslag Categorie 1](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._1.html)\n\n[Uitslag Categorie 2](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._2.html)\n\n[Uitslag Categorie 3](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._3.html)\n\n[Uitslag Categorie 4](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._4.html)\n\n[Uitslag Categorie 5](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._5.html)\n\n[Uitslag Categorie 6](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._6.html)\n\n[Uitslag Categorie 7](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._7.html)\n\nZoals altijd staan ook de foto's online. Ze zijn te bekijken via [ons fotoarchief](https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&dl=0)",
    "broodkruimel": [],
    "reacties": [],
    "mdbestand": "markdown/nieuws/2009/2009-12-06-fotos-uitslagen-jeugdveldrit.md"
@@ -9218,7 +9593,7 @@
     "lieshout",
     "lieshoutse wielrenners"
    ],
-   "html": "<p>Uitslagen:</p>\n<p><a data-bestand=\"1\" href=\"bestanden/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._1.html\">Categorie 1</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._2.html\">Categorie 2</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._3.html\">Categorie 3</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._4.html\">Categorie 4</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._5.html\">Categorie 5</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._6.html\">Categorie 6</a></p>\n<p><a data-bestand=\"1\" href=\"bestanden/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._7.html\">Categorie 7</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&amp;dl=0\">Foto's</a></p>\n<p>De foto's van de jeugdronde van vandaag zijn te vinden in het fotoarchief van de organisatie: <a data-gewijzigd=\"1\" href=\"https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&amp;dl=0\">ons fotoarchief</a></p>",
+   "html": "<p>Uitslagen:</p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._1.html\">Categorie 1</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._2.html\">Categorie 2</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._3.html\">Categorie 3</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._4.html\">Categorie 4</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._5.html\">Categorie 5</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._6.html\">Categorie 6</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._7.html\">Categorie 7</a></p>\n<p><a data-gewijzigd=\"1\" href=\"https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&amp;dl=0\">Foto's</a></p>\n<p>De foto's van de jeugdronde van vandaag zijn te vinden in het fotoarchief van de organisatie: <a data-gewijzigd=\"1\" href=\"https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&amp;dl=0\">ons fotoarchief</a></p>",
    "afbeeldingen": [],
    "bestanden": [
     "bestanden/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._1.html",
@@ -9232,6 +9607,48 @@
    "opmerking": "De uitslag van Categorie 7 stond wel online maar werd in het oorspronkelijke bericht niet gelinkt; die link is toegevoegd.",
    "woorden": 31,
    "links": [
+    {
+     "tekst": "Categorie 1",
+     "oud": "bestanden/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._1.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._1.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._1.html)"
+    },
+    {
+     "tekst": "Categorie 2",
+     "oud": "bestanden/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._2.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._2.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._2.html)"
+    },
+    {
+     "tekst": "Categorie 3",
+     "oud": "bestanden/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._3.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._3.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._3.html)"
+    },
+    {
+     "tekst": "Categorie 4",
+     "oud": "bestanden/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._4.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._4.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._4.html)"
+    },
+    {
+     "tekst": "Categorie 5",
+     "oud": "bestanden/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._5.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._5.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._5.html)"
+    },
+    {
+     "tekst": "Categorie 6",
+     "oud": "bestanden/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._6.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._6.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._6.html)"
+    },
+    {
+     "tekst": "Categorie 7",
+     "oud": "bestanden/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._7.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._7.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._7.html)"
+    },
     {
      "tekst": "Foto's",
      "oud": "http://fotos.lieshoutsewielrenners.nl/main.php?g2_itemId=60850",
@@ -9275,7 +9692,7 @@
      "ok": true
     }
    ],
-   "md": "Uitslagen:\n\n[Categorie 1](bestanden/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._1.html)\n\n[Categorie 2](bestanden/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._2.html)\n\n[Categorie 3](bestanden/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._3.html)\n\n[Categorie 4](bestanden/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._4.html)\n\n[Categorie 5](bestanden/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._5.html)\n\n[Categorie 6](bestanden/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._6.html)\n\n[Categorie 7](bestanden/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._7.html)\n\n[Foto's](https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&dl=0)\n\nDe foto's van de jeugdronde van vandaag zijn te vinden in het fotoarchief van de organisatie: [ons fotoarchief](https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&dl=0)",
+   "md": "Uitslagen:\n\n[Categorie 1](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._1.html)\n\n[Categorie 2](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._2.html)\n\n[Categorie 3](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._3.html)\n\n[Categorie 4](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._4.html)\n\n[Categorie 5](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._5.html)\n\n[Categorie 6](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._6.html)\n\n[Categorie 7](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/04/Lieshout_Uitslag_LIESHOUT_2010-04-18_Jeugd_Cat._7.html)\n\n[Foto's](https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&dl=0)\n\nDe foto's van de jeugdronde van vandaag zijn te vinden in het fotoarchief van de organisatie: [ons fotoarchief](https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&dl=0)",
    "broodkruimel": [],
    "reacties": [],
    "mdbestand": "markdown/nieuws/2010/2010-04-18-fotos-en-uitslagen-online.md"
@@ -9330,7 +9747,7 @@
     "lieshout",
     "ronde"
    ],
-   "html": "<p>De Bavaria ronde van Lieshout is vandaag verreden. De <strong>foto's</strong> staan online op <a data-gewijzigd=\"1\" href=\"https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&amp;dl=0\">ons fotoarchief</a></p>\n<p><strong>Uitslagen:</strong></p>\n<ul>\n<li><a data-bestand=\"1\" href=\"bestanden/2010/05/Uitslag_LIESHOUT_2010-05-16_EliteBeloften.html\">Elite/Beloften</a></li>\n<li><a data-bestand=\"1\" href=\"bestanden/2010/05/Uitslag_LIESHOUT_2010-05-16_Junioren.html\">Junioren</a></li>\n<li><a data-bestand=\"1\" href=\"bestanden/2010/05/Uitslag_LIESHOUT_2010-05-16_Nieuwelingen.html\">Nieuwelingen</a></li>\n</ul>",
+   "html": "<p>De Bavaria ronde van Lieshout is vandaag verreden. De <strong>foto's</strong> staan online op <a data-gewijzigd=\"1\" href=\"https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&amp;dl=0\">ons fotoarchief</a></p>\n<p><strong>Uitslagen:</strong></p>\n<ul>\n<li><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/05/Uitslag_LIESHOUT_2010-05-16_EliteBeloften.html\">Elite/Beloften</a></li>\n<li><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/05/Uitslag_LIESHOUT_2010-05-16_Junioren.html\">Junioren</a></li>\n<li><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/05/Uitslag_LIESHOUT_2010-05-16_Nieuwelingen.html\">Nieuwelingen</a></li>\n</ul>",
    "afbeeldingen": [],
    "bestanden": [
     "bestanden/2010/05/Uitslag_LIESHOUT_2010-05-16_EliteBeloften.html",
@@ -9345,6 +9762,24 @@
      "oud": "http://fotos.lieshoutsewielrenners.nl/main.php?g2_itemId=62220",
      "nieuw": "https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&dl=0",
      "status": "vervangen: oud fotoalbum bestaat niet meer, nu link naar het fotoarchief op Dropbox"
+    },
+    {
+     "tekst": "Elite/Beloften",
+     "oud": "bestanden/2010/05/Uitslag_LIESHOUT_2010-05-16_EliteBeloften.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/05/Uitslag_LIESHOUT_2010-05-16_EliteBeloften.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2010/05/Uitslag_LIESHOUT_2010-05-16_EliteBeloften.html)"
+    },
+    {
+     "tekst": "Junioren",
+     "oud": "bestanden/2010/05/Uitslag_LIESHOUT_2010-05-16_Junioren.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/05/Uitslag_LIESHOUT_2010-05-16_Junioren.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2010/05/Uitslag_LIESHOUT_2010-05-16_Junioren.html)"
+    },
+    {
+     "tekst": "Nieuwelingen",
+     "oud": "bestanden/2010/05/Uitslag_LIESHOUT_2010-05-16_Nieuwelingen.html",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/05/Uitslag_LIESHOUT_2010-05-16_Nieuwelingen.html",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2010/05/Uitslag_LIESHOUT_2010-05-16_Nieuwelingen.html)"
     }
    ],
    "bestanden_ok": [
@@ -9361,7 +9796,7 @@
      "ok": true
     }
    ],
-   "md": "De Bavaria ronde van Lieshout is vandaag verreden. De **foto's** staan online op [ons fotoarchief](https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&dl=0)\n\n**Uitslagen:**\n\n- [Elite/Beloften](bestanden/2010/05/Uitslag_LIESHOUT_2010-05-16_EliteBeloften.html)\n- [Junioren](bestanden/2010/05/Uitslag_LIESHOUT_2010-05-16_Junioren.html)\n- [Nieuwelingen](bestanden/2010/05/Uitslag_LIESHOUT_2010-05-16_Nieuwelingen.html)",
+   "md": "De Bavaria ronde van Lieshout is vandaag verreden. De **foto's** staan online op [ons fotoarchief](https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&dl=0)\n\n**Uitslagen:**\n\n- [Elite/Beloften](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/05/Uitslag_LIESHOUT_2010-05-16_EliteBeloften.html)\n- [Junioren](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/05/Uitslag_LIESHOUT_2010-05-16_Junioren.html)\n- [Nieuwelingen](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/05/Uitslag_LIESHOUT_2010-05-16_Nieuwelingen.html)",
    "broodkruimel": [],
    "reacties": [],
    "mdbestand": "markdown/nieuws/2010/2010-05-16-fotos-en-uitslagen-bavaria-ronde-van-lieshout.md"
@@ -9514,7 +9949,7 @@
     "Nieuws"
    ],
    "tags": [],
-   "html": "<p>Wilt u de veldtourtocht van 3 oktober nog eens narijden? Dan is er nu een GPX track beschikbaar.</p>\n<p>U kunt <a data-bestand=\"1\" href=\"bestanden/2010/11/veldtourtochtlieshout2010.gpx\">de GPX file hier</a> downloaden en inladen in uw navigatiesysteem.</p>\n<p class=\"kaart\">[KAART: OpenStreetMap rond 51.496, 5.587 (zoom 13) met de route uit <a data-bestand=\"1\" href=\"bestanden/2010/11/veldtourtochtlieshout2010.gpx\">veldtourtochtlieshout2010.gpx</a>]</p>",
+   "html": "<p>Wilt u de veldtourtocht van 3 oktober nog eens narijden? Dan is er nu een GPX track beschikbaar.</p>\n<p>U kunt <a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/11/veldtourtochtlieshout2010.gpx\">de GPX file hier</a> downloaden en inladen in uw navigatiesysteem.</p>\n<p class=\"kaart\">[KAART: OpenStreetMap rond 51.496, 5.587 (zoom 13) met de route uit <a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/11/veldtourtochtlieshout2010.gpx\">veldtourtochtlieshout2010.gpx</a>]</p>",
    "afbeeldingen": [],
    "bestanden": [
     "bestanden/2010/11/veldtourtochtlieshout2010.gpx",
@@ -9522,14 +9957,27 @@
    ],
    "opmerking": null,
    "woorden": 43,
-   "links": [],
+   "links": [
+    {
+     "tekst": "de GPX file hier",
+     "oud": "bestanden/2010/11/veldtourtochtlieshout2010.gpx",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/11/veldtourtochtlieshout2010.gpx",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2010/11/veldtourtochtlieshout2010.gpx)"
+    },
+    {
+     "tekst": "veldtourtochtlieshout2010.gpx",
+     "oud": "bestanden/2010/11/veldtourtochtlieshout2010.gpx",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/11/veldtourtochtlieshout2010.gpx",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2010/11/veldtourtochtlieshout2010.gpx)"
+    }
+   ],
    "bestanden_ok": [
     {
      "local": "bestanden/2010/11/veldtourtochtlieshout2010.gpx",
      "ok": true
     }
    ],
-   "md": "Wilt u de veldtourtocht van 3 oktober nog eens narijden? Dan is er nu een GPX track beschikbaar.\n\nU kunt [de GPX file hier](bestanden/2010/11/veldtourtochtlieshout2010.gpx) downloaden en inladen in uw navigatiesysteem.\n\n[KAART: OpenStreetMap rond 51.496, 5.587 (zoom 13) met de route uit [veldtourtochtlieshout2010.gpx](bestanden/2010/11/veldtourtochtlieshout2010.gpx)]",
+   "md": "Wilt u de veldtourtocht van 3 oktober nog eens narijden? Dan is er nu een GPX track beschikbaar.\n\nU kunt [de GPX file hier](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/11/veldtourtochtlieshout2010.gpx) downloaden en inladen in uw navigatiesysteem.\n\n[KAART: OpenStreetMap rond 51.496, 5.587 (zoom 13) met de route uit [veldtourtochtlieshout2010.gpx](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2010/11/veldtourtochtlieshout2010.gpx)]",
    "broodkruimel": [],
    "reacties": [],
    "mdbestand": "markdown/nieuws/2010/2010-11-07-veldtourtocht-nog-eens-narijden.md"
@@ -10262,7 +10710,7 @@
     "mountainbike",
     "veldtoertocht"
    ],
-   "html": "<p><img alt=\"1 voorzijde.indd\" src=\"afbeeldingen/2012/08/atbtocht2012-1.jpg\"/></p>\n<p>Download <a data-bestand=\"1\" href=\"bestanden/2012/08/atbtocht2012.pdf\">de flyer via deze link</a>.</p>",
+   "html": "<p><img alt=\"1 voorzijde.indd\" src=\"afbeeldingen/2012/08/atbtocht2012-1.jpg\"/></p>\n<p>Download <a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2012/08/atbtocht2012.pdf\">de flyer via deze link</a>.</p>",
    "afbeeldingen": [
     {
      "local": "afbeeldingen/2012/08/atbtocht2012-1.jpg",
@@ -10277,14 +10725,21 @@
    ],
    "opmerking": null,
    "woorden": 7,
-   "links": [],
+   "links": [
+    {
+     "tekst": "de flyer via deze link",
+     "oud": "bestanden/2012/08/atbtocht2012.pdf",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2012/08/atbtocht2012.pdf",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2012/08/atbtocht2012.pdf)"
+    }
+   ],
    "bestanden_ok": [
     {
      "local": "bestanden/2012/08/atbtocht2012.pdf",
      "ok": true
     }
    ],
-   "md": "![1 voorzijde.indd](afbeeldingen/2012/08/atbtocht2012-1.jpg)\n\nDownload [de flyer via deze link](bestanden/2012/08/atbtocht2012.pdf).",
+   "md": "![1 voorzijde.indd](afbeeldingen/2012/08/atbtocht2012-1.jpg)\n\nDownload [de flyer via deze link](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2012/08/atbtocht2012.pdf).",
    "broodkruimel": [],
    "reacties": [],
    "mdbestand": "markdown/nieuws/2012/2012-08-09-atb-tocht-23-september-2012.md"
@@ -10972,7 +11427,7 @@
     "Nieuws"
    ],
    "tags": [],
-   "html": "<p>De 10e veldtoertocht van Lieshout zal gehouden worden op zondag 28 september 2014. In de directe omgeving van Lieshout en Mariahout worden twee tochten uitgezet. Een tocht van 30 kilometer en een tocht van 45 kilometer. Door de bossen en over zandpaden, een ATB waardig parcours. Ook is er een pauze plaats gesitueerd. Tussen 8.30 uur en 10.00 uur kunt inschrijven in sporthal “De Klumper”, Papenhoef 2 in Lieshout. Inschrijfgeld € 4,-.</p>\n<p><a data-bestand=\"1\" href=\"bestanden/2014/08/nieuw-20141.pdf\">flyer</a> <a data-bestand=\"1\" href=\"bestanden/2014/08/achterzijde.pdf\">achterzijde</a></p>",
+   "html": "<p>De 10e veldtoertocht van Lieshout zal gehouden worden op zondag 28 september 2014. In de directe omgeving van Lieshout en Mariahout worden twee tochten uitgezet. Een tocht van 30 kilometer en een tocht van 45 kilometer. Door de bossen en over zandpaden, een ATB waardig parcours. Ook is er een pauze plaats gesitueerd. Tussen 8.30 uur en 10.00 uur kunt inschrijven in sporthal “De Klumper”, Papenhoef 2 in Lieshout. Inschrijfgeld € 4,-.</p>\n<p><a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2014/08/nieuw-20141.pdf\">flyer</a> <a data-gewijzigd=\"1\" href=\"https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2014/08/achterzijde.pdf\">achterzijde</a></p>",
    "afbeeldingen": [],
    "bestanden": [
     "bestanden/2014/08/nieuw-20141.pdf",
@@ -10980,7 +11435,20 @@
    ],
    "opmerking": null,
    "woorden": 74,
-   "links": [],
+   "links": [
+    {
+     "tekst": "flyer",
+     "oud": "bestanden/2014/08/nieuw-20141.pdf",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2014/08/nieuw-20141.pdf",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2014/08/nieuw-20141.pdf)"
+    },
+    {
+     "tekst": "achterzijde",
+     "oud": "bestanden/2014/08/achterzijde.pdf",
+     "nieuw": "https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2014/08/achterzijde.pdf",
+     "status": "vervangen: document staat op GitHub Pages (kopie ook in bestanden/2014/08/achterzijde.pdf)"
+    }
+   ],
    "bestanden_ok": [
     {
      "local": "bestanden/2014/08/nieuw-20141.pdf",
@@ -10991,7 +11459,7 @@
      "ok": true
     }
    ],
-   "md": "De 10e veldtoertocht van Lieshout zal gehouden worden op zondag 28 september 2014. In de directe omgeving van Lieshout en Mariahout worden twee tochten uitgezet. Een tocht van 30 kilometer en een tocht van 45 kilometer. Door de bossen en over zandpaden, een ATB waardig parcours. Ook is er een pauze plaats gesitueerd. Tussen 8.30 uur en 10.00 uur kunt inschrijven in sporthal “De Klumper”, Papenhoef 2 in Lieshout. Inschrijfgeld € 4,-.\n\n[flyer](bestanden/2014/08/nieuw-20141.pdf) [achterzijde](bestanden/2014/08/achterzijde.pdf)",
+   "md": "De 10e veldtoertocht van Lieshout zal gehouden worden op zondag 28 september 2014. In de directe omgeving van Lieshout en Mariahout worden twee tochten uitgezet. Een tocht van 30 kilometer en een tocht van 45 kilometer. Door de bossen en over zandpaden, een ATB waardig parcours. Ook is er een pauze plaats gesitueerd. Tussen 8.30 uur en 10.00 uur kunt inschrijven in sporthal “De Klumper”, Papenhoef 2 in Lieshout. Inschrijfgeld € 4,-.\n\n[flyer](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2014/08/nieuw-20141.pdf) [achterzijde](https://berlotti.github.io/cdn/lieshoutsewielrenners/uploads/2014/08/achterzijde.pdf)",
    "broodkruimel": [],
    "reacties": [],
    "mdbestand": "markdown/nieuws/2014/2014-08-21-10e-veldtoertocht-lieshout.md"
