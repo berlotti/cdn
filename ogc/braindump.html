@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>From Standards to Elements</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* layout: header, then a fixed 1120x630 stage scaled to width, then caption + step controls */
+  --bg:#eef2f1;
+  --surface:#ffffff;
+  --ink:#16212a;
+  --muted:#5a6870;
+  --line:#d3dbdd;
+  --grid:rgba(22,33,42,.055);
+  --core:#173440;
+  --core-ink:#f1f6f7;
+  --a:#2b62c4;
+  --b:#b0700e;
+  --c:#ad3d61;
+  --own:#23845a;
+  --hl:#e0532a;
+  --on-hue:#ffffff;
+  --f-display:"IBM Plex Sans Condensed","Arial Narrow",sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1519; --surface:#172027; --ink:#e5ecef; --muted:#93a2a9; --line:#2b3840; --grid:rgba(229,236,239,.05);
+    --core:#d6e5ea; --core-ink:#10242c;
+    --a:#6e9df0; --b:#e2a649; --c:#e57c9d; --own:#4fc28c; --hl:#ff7d52; --on-hue:#0d171c;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1519; --surface:#172027; --ink:#e5ecef; --muted:#93a2a9; --line:#2b3840; --grid:rgba(229,236,239,.05);
+  --core:#d6e5ea; --core-ink:#10242c;
+  --a:#6e9df0; --b:#e2a649; --c:#e57c9d; --own:#4fc28c; --hl:#ff7d52; --on-hue:#0d171c;
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:15px/1.55 var(--f-body);-webkit-font-smoothing:antialiased}
+.page{max-width:1120px;margin:0 auto;padding:28px 20px 40px;display:grid;gap:18px}
+
+header{display:flex;flex-wrap:wrap;gap:12px 32px;align-items:end;justify-content:space-between}
+header .t{display:grid;gap:4px;max-width:68ch}
+.eyebrow{font:500 12px/1 var(--f-mono);letter-spacing:.04em;color:var(--muted);text-transform:uppercase}
+h1{margin:0;font:700 30px/1.1 var(--f-display);letter-spacing:-.01em;text-wrap:balance}
+.lede{margin:0;color:var(--muted)}
+.def{margin:6px 0 0;padding:2px 0 2px 12px;border-left:3px solid var(--core);font:600 16px/1.4 var(--f-display);color:var(--ink)}
+.term{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;background:var(--surface);padding:2px}
+.seg button{border:0;background:transparent;color:var(--muted);font:600 13px var(--f-display);padding:6px 10px;border-radius:6px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+
+.player{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.stage-wrap{overflow-x:auto;overflow-y:hidden;border-bottom:1px solid var(--line);
+  background-color:var(--bg);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:20px 20px}
+.sizer{position:relative}
+.stage{position:absolute;left:0;top:0;width:1120px;height:630px;transform-origin:0 0}
+
+/* ---------- stage entities ---------- */
+.stage > *{position:absolute;left:0;top:0;pointer-events:none;will-change:transform,opacity}
+.anim .stage > *{transition:transform var(--dur,.9s) cubic-bezier(.65,0,.25,1) var(--td,0s),opacity .35s ease var(--od,0s),width .9s cubic-bezier(.65,0,.25,1),height .9s cubic-bezier(.65,0,.25,1),background-color .5s ease,border-color .5s ease,color .5s ease,box-shadow .4s ease}
+
+.tile{width:104px;height:36px;border-radius:6px;display:flex;align-items:center;padding:0 8px 0 10px;border:1.5px solid transparent;font:600 12.5px/1 var(--f-display);letter-spacing:.01em;transform-origin:center}
+.tile .lbl{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tile .chk{position:absolute;top:-6px;right:-6px;width:16px;height:16px;box-shadow:0 0 0 2px var(--surface);border-radius:50%;display:grid;place-items:center;font:700 9.5px/1 var(--f-body);opacity:0;transform:scale(.3);transition:opacity .3s ease .5s,transform .3s ease .5s}
+.tile.tested .chk{opacity:1;transform:scale(1)}
+.k-stdA,.k-stdB,.k-stdC{color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.k-stdA{background:color-mix(in srgb,var(--a) 14%,var(--surface));border-color:color-mix(in srgb,var(--a) 55%,var(--surface))}
+.k-stdB{background:color-mix(in srgb,var(--b) 14%,var(--surface));border-color:color-mix(in srgb,var(--b) 55%,var(--surface))}
+.k-stdC{background:color-mix(in srgb,var(--c) 14%,var(--surface));border-color:color-mix(in srgb,var(--c) 55%,var(--surface))}
+.k-core{background:var(--core);border-color:var(--core);color:var(--core-ink)}
+.k-core .chk{background:var(--core);color:var(--core-ink)}
+.k-domA{background:var(--a);border-color:var(--a);color:var(--on-hue)}
+.k-domB{background:var(--b);border-color:var(--b);color:var(--on-hue)}
+.k-domC{background:var(--c);border-color:var(--c);color:var(--on-hue)}
+.k-domA .chk,.k-domB .chk,.k-domC .chk{color:var(--on-hue)}
+.k-domA .chk{background:var(--a)} .k-domB .chk{background:var(--b)} .k-domC .chk{background:var(--c)}
+.k-own{background:color-mix(in srgb,var(--own) 13%,var(--surface));border:1.5px dashed var(--own);color:var(--own)}
+.k-own .chk{background:var(--own);color:var(--surface)}
+.tile.ov{border-color:var(--hl);box-shadow:0 0 0 2px color-mix(in srgb,var(--hl) 30%,transparent)}
+.k-stdA.dh{border-color:var(--a);box-shadow:0 0 0 3px color-mix(in srgb,var(--a) 35%,transparent)}
+.k-stdB.dh{border-color:var(--b);box-shadow:0 0 0 3px color-mix(in srgb,var(--b) 35%,transparent)}
+.k-stdC.dh{border-color:var(--c);box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 35%,transparent)}
+.hole{z-index:2;border:1.5px dashed var(--muted);border-radius:8px;background:color-mix(in srgb,var(--surface) 75%,transparent);display:grid;place-items:center;font:500 13px/1.3 var(--f-body);color:var(--muted);text-align:center}
+.pillwrap{z-index:9;width:340px;text-align:center}
+.pillwrap .pill{display:inline-block}
+.pill.pill-ink{background:var(--ink);color:var(--bg)}
+.k-shared{background:color-mix(in srgb,var(--core) 66%,var(--surface));border-color:color-mix(in srgb,var(--core) 66%,var(--surface));color:var(--core-ink)}
+.k-shared .chk{background:var(--core);color:var(--core-ink)}
+.k-enc{background:var(--surface);border-color:var(--core);color:var(--ink)}
+.k-enc .chk{background:var(--core);color:var(--core-ink)}
+.tile.mono .lbl,.mt.mono{font:500 12px/1 var(--f-mono);letter-spacing:0}
+.k-ghost{background:transparent;border:1.5px dashed var(--line);color:var(--muted);box-shadow:none}
+.k-ghost .lbl{text-align:center;font-weight:500}
+.tile .dots{display:none;gap:3px;flex:none;margin-left:4px}
+.tile .dots i{display:block;width:7px;height:7px;border-radius:50%;box-shadow:0 0 0 1px var(--surface)}
+.dots .dA{background:var(--a)} .dots .dB{background:var(--b)} .dots .dC{background:var(--c)} .dots .dX{background:var(--muted)}
+.k-shared .dots,.k-enc .dots{display:flex}
+.tile .cnt{display:none;position:absolute;top:-8px;right:-8px;background:var(--hl);color:#fff;font:600 10px/1 var(--f-mono);padding:3px 5px;border-radius:999px;box-shadow:0 0 0 2px var(--surface)}
+.tile.has-cnt .cnt{display:block}
+.badge{z-index:9;font:500 11.5px/1 var(--f-mono);color:var(--muted);border:1px dashed var(--muted);border-radius:999px;padding:5px 10px;white-space:nowrap;background:var(--bg)}
+.ghostfr{z-index:1;width:264px;height:174px;border:1.5px dashed var(--line);border-radius:10px;padding:11px 12px;display:grid;grid-template-rows:auto 1fr;color:var(--muted);font:13px/1.2 var(--f-body)}
+.ghostfr b{font:700 13.5px/1.2 var(--f-display);color:var(--muted)}
+.ghostfr .dotsbig{display:grid;place-items:center;font:600 22px/1 var(--f-display);letter-spacing:.2em}
+.rowlbl small{display:block;margin-top:3px;font:500 11px/1 var(--f-mono);color:var(--muted)}
+.card2{height:236px}
+.cp{margin:0;font-size:13px;color:var(--muted)}
+.mini{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+.mt{display:inline-block;padding:5px 8px;border-radius:5px;border:1.5px solid transparent;font:600 12px/1 var(--f-display)}
+.tile.focus{box-shadow:0 0 0 3px var(--surface),0 0 0 5px var(--hl)}
+
+.frame{border-radius:10px;border:1.5px solid var(--line);z-index:1}
+.f-std.f-A{background:color-mix(in srgb,var(--a) 9%,transparent);border-color:color-mix(in srgb,var(--a) 60%,transparent)}
+.f-std.f-B{background:color-mix(in srgb,var(--b) 9%,transparent);border-color:color-mix(in srgb,var(--b) 60%,transparent)}
+.f-std.f-C{background:color-mix(in srgb,var(--c) 9%,transparent);border-color:color-mix(in srgb,var(--c) 60%,transparent)}
+.f-empty{border-style:dashed}
+.f-comp{background:var(--surface);border-color:var(--line);box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.f-new{border:2px solid var(--ink)}
+
+.label{width:300px;z-index:8;font:13px/1.2 var(--f-body);color:var(--muted);white-space:nowrap}
+.label b{font:700 13.5px/1.2 var(--f-display);color:var(--ink);letter-spacing:.01em}
+.sw{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px;vertical-align:1px}
+.sw-A{background:var(--a)} .sw-B{background:var(--b)} .sw-C{background:var(--c)} .sw-own{background:var(--own)}
+
+.panel{border:1px solid var(--line);background:var(--surface);border-radius:12px;z-index:0;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.ptitle{z-index:8;font:700 15px/1 var(--f-display);color:var(--ink);white-space:nowrap}
+.rowlbl{z-index:8;width:130px;font:700 13px/1.1 var(--f-display);color:var(--ink)}
+.pill{z-index:9;background:var(--hl);color:#fff;font:600 12px/1 var(--f-display);letter-spacing:.02em;padding:6px 11px;border-radius:999px;white-space:nowrap}
+.note{z-index:8;font:13px/1.35 var(--f-body);color:var(--muted)}
+.note b{color:var(--ink);font-weight:600}
+.note.c{text-align:center}
+
+.card{z-index:9;width:600px;height:256px;background:var(--surface);border:1.5px solid var(--core);border-radius:12px;padding:16px 18px;display:grid;grid-template-rows:auto 1fr auto;gap:12px;box-shadow:0 10px 30px rgba(0,0,0,.12);transform-origin:50% 100%}
+.card-h{display:flex;align-items:center;gap:10px}
+.card-h .nm{background:var(--core);color:var(--core-ink);font:700 16px/1 var(--f-display);padding:8px 12px;border-radius:6px}
+.card-h .chip{font:500 12px/1 var(--f-mono);color:var(--muted)}
+.card-cols{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cc{border:1px solid var(--line);border-radius:8px;padding:10px 12px;display:grid;align-content:start;gap:6px}
+.cc h4{margin:0;font:700 14px/1.2 var(--f-display);display:flex;align-items:center;gap:8px}
+.cc .ic{display:grid;place-items:center;width:22px;height:22px;border-radius:5px;background:var(--bg);font:600 11px/1 var(--f-mono);color:var(--ink)}
+.cc ul{margin:0;padding:0 0 0 16px;font-size:13px;line-height:1.45;color:var(--muted)}
+.card-f{margin:0;font-size:13px;color:var(--ink)}
+.conn{z-index:9;width:2px;background:repeating-linear-gradient(var(--hl) 0 5px,transparent 5px 9px)}
+
+/* ---------- caption + controls ---------- */
+.below{display:grid;grid-template-columns:1fr auto;gap:14px 24px;padding:16px 20px 18px;align-items:start}
+.steps{grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:6px}
+.steps button{display:flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:999px;padding:5px 11px 5px 5px;font:600 12.5px/1 var(--f-display);cursor:pointer}
+.steps button .n{display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--bg);color:var(--ink);font:600 11px/1 var(--f-mono)}
+.steps button[aria-current="step"]{border-color:var(--ink);color:var(--ink)}
+.steps button[aria-current="step"] .n{background:var(--ink);color:var(--bg)}
+.cap{display:grid;gap:4px;max-width:70ch;min-height:104px}
+.cap .k{margin:0;font:500 12px/1 var(--f-mono);color:var(--muted);letter-spacing:.03em}
+.cap h2{margin:0;font:700 22px/1.2 var(--f-display);text-wrap:balance}
+.cap p.x{margin:0;color:var(--ink)}
+.ctrl{display:flex;gap:8px}
+.ctrl button{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:9px 14px;font:600 14px/1 var(--f-display);cursor:pointer;min-width:44px}
+.ctrl button.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.ctrl button:disabled{opacity:.4;cursor:default}
+button:focus-visible{outline:2px solid var(--hl);outline-offset:2px}
+.foot{margin:0;font-size:12.5px;color:var(--muted)}
+@media (max-width:640px){
+  .below{grid-template-columns:1fr}
+  .steps button .s{display:none}
+  .steps button{padding:5px}
+  h1{font-size:25px}
+}
+@media (prefers-reduced-motion: reduce){
+  .anim .stage > *,.tile .chk{transition:none !important}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div class="t">
+      <span class="eyebrow">OGC · narrative sketch</span>
+      <h1>From standards to <span data-tpl="{es}">elements</span></h1>
+      <p class="lede">How big, separate OGC standards are taken apart into reusable, testable <span data-tpl="{es}">elements</span>, and how existing and new standards are put together from them. Step through with the buttons or the arrow keys.</p>
+      <p class="def"><span data-tpl="{Es}">Elements</span> are the functional parts of a standard: each one is defined once, tested once and reused wherever it is needed.</p>
+    </div>
+    <div class="term"><span id="termLbl">Call them</span>
+      <div class="seg" role="group" aria-labelledby="termLbl">
+        <button type="button" id="t-element" aria-pressed="true">elements</button>
+        <button type="button" id="t-block" aria-pressed="false">building blocks</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="player" aria-label="Step-by-step animation">
+    <div class="stage-wrap" id="wrap"><div class="sizer" id="sizer"><div class="stage" id="stage" aria-hidden="true"></div></div></div>
+    <div class="below">
+      <nav class="steps" id="steps" aria-label="Steps"></nav>
+      <div class="cap" aria-live="polite">
+        <p class="k" id="capK">Step 1 of 8</p>
+        <h2 id="capT"></h2>
+        <p class="x" id="capX"></p>
+      </div>
+      <div class="ctrl">
+        <button type="button" id="prev" aria-label="Previous step">←</button>
+        <button type="button" id="play">Play</button>
+        <button type="button" id="next" class="primary" aria-label="Next step">Next →</button>
+      </div>
+    </div>
+  </section>
+  <p class="foot">Standards A, B and C and all <span data-tpl="{e}">element</span> names are illustrative examples, chosen to make the story readable. OGC has many more standards and <span data-tpl="{es}">elements</span>.</p>
+</div>
+
+<script>
+(function(){
+  const TERMS={
+    element:{e:'element',es:'elements',Es:'Elements'},
+    block:{e:'building block',es:'building blocks',Es:'Building blocks'}
+  };
+  let term='element';
+  const tpl=s=>s.replace(/\{(Es|es|e)\}/g,(m,k)=>TERMS[term][k]);
+
+  const STEPS=[
+    {s:'Separate',t:'Separate standards',x:'Each standard was written as a large, self-contained document that specified everything it needed by itself. Three standards are shown as an example. OGC has many more, and the story is the same for each of them.'},
+    {s:'Overlay',t:'Slide them over each other',x:'Overlay the standards (in elkaar geschoven) and the common ground shows up. Some parts appear in all three: Geometry, CRS, Time and Links. Others appear in only two, such as Filter, Tiles, Metadata and Units, or the GeoJSON and GML encodings.'},
+    {s:'Library',t:'The overlap goes into one library',x:'Each overlapping part is specified once. Parts every standard uses become core {es}. Parts only some standards use become shared {es}. Syntax becomes encoding {es}. The library also holds {es} from standards not shown here, such as GeoTIFF.'},
+    {s:'Encodings',t:'Encoding {es} are a special kind',x:'Most {es} define what the data means. Encoding {es} define how it is written down, such as GeoJSON, GML or GeoTIFF. Because meaning and syntax are separate, one Geometry can be exchanged in several encodings.'},
+    {s:'Definition + tests',t:'Every {e} is a definition plus tests',x:'Every {e} carries its definition (schema, encoding and meaning) and an executable set of conformance tests. A standard that uses the {e} inherits its tests.'},
+    {s:'Domain',t:'What is left becomes domain {es}',x:'With the overlap taken out, each standard still holds the parts only it has: features and collections in A, sensors, observations and datastreams in B, buildings and terrain in C. These are defined the same way, as domain {es} with their own tests.'},
+    {s:'Compositions',t:'Existing standards are compositions',x:'Standards A, B and C are rebuilt from the library: the core {es} they all use, the shared {es} some of them use, the encodings they support and their own domain {es}. Every other OGC standard can be rebuilt the same way.'},
+    {s:'New standards',t:'New standards are assembled',x:'A new standard picks core and shared {es}, chooses its encodings, reuses domain {es} from other standards and adds {es} its own users define. Those new {es} go into the library for the next standard.'}
+  ];
+  const N=STEPS.length;
+  const HOLD=[5600,6400,6400,6400,5600,7800,5800,6000];
+
+  /* ---------- the example ---------- */
+  const PX=112,PY=44;
+  const Ss=['A','B','C'];
+  const Z={A:4,B:5,C:6};
+  const STD={A:'Features',B:'Observations',C:'3D city models'};
+  const CON=[
+    {id:'geo',n:'Geometry',m:'ABC',tier:'core'},
+    {id:'crs',n:'CRS',m:'ABC',tier:'core'},
+    {id:'time',n:'Time',m:'ABC',tier:'core'},
+    {id:'links',n:'Links',m:'ABC',tier:'core'},
+    {id:'filter',n:'Filter',m:'AB',tier:'shared'},
+    {id:'tiles',n:'Tiles',m:'AC',tier:'shared'},
+    {id:'meta',n:'Metadata',m:'BC',tier:'shared'},
+    {id:'units',n:'Units',m:'BC',tier:'shared'},
+    {id:'geojson',n:'GeoJSON',m:'AB',tier:'enc'},
+    {id:'gml',n:'GML',m:'AC',tier:'enc'},
+    {id:'feature',n:'Feature',m:'A',tier:'dom'},
+    {id:'coll',n:'Collection',m:'A',tier:'dom'},
+    {id:'sensor',n:'Sensor',m:'B',tier:'dom'},
+    {id:'obs',n:'Observation',m:'B',tier:'dom'},
+    {id:'ds',n:'Datastream',m:'B',tier:'dom'},
+    {id:'bldg',n:'Building',m:'C',tier:'dom'},
+    {id:'terr',n:'Terrain',m:'C',tier:'dom'}
+  ];
+  const EXTRA=[
+    {id:'geotiff',n:'GeoTIFF',m:'',tier:'enc'},
+    {id:'bridge',n:'Bridge',m:'',tier:'own'},
+    {id:'insp',n:'Inspection',m:'',tier:'own'}
+  ];
+  const byId={};CON.concat(EXTRA).forEach(c=>byId[c.id]=c);
+  const kindOf=c=>c.tier==='dom'?'dom'+c.m:c.tier;
+  const members=S=>CON.filter(c=>c.m.includes(S));
+  const DOMJ={};Ss.forEach(S=>CON.filter(c=>c.tier==='dom'&&c.m===S).forEach((c,j)=>DOMJ[c.id]=j));
+
+  /* overlay: a Venn of three rectangles on a 6 x 4 grid */
+  const X0=228,Y0=80;
+  const OVL={geo:[2,1],crs:[3,1],time:[2,2],links:[3,2],tiles:[2,0],gml:[3,0],filter:[1,1],geojson:[1,2],meta:[4,1],units:[4,2],
+             feature:[0,1],coll:[0,2],bldg:[5,1],terr:[5,2],sensor:[1.5,3],obs:[2.5,3],ds:[3.5,3]};
+  const OVF={A:[0,0,4,3],B:[1,1,4,3],C:[2,0,4,3]};
+  const ovCell=([c,r])=>({x:X0+c*PX,y:Y0+r*PY});
+  const ovFrame=S=>{const[c,r,nc,nr]=OVF[S];return{x:X0+c*PX-4,y:Y0+r*PY-4,w:nc*PX,h:nr*PY};};
+  const LBPOS={A:{x:224,y:50,al:'left'},B:{x:410,y:260,al:'center'},C:{x:596,y:50,al:'right'}};
+
+  const SEP={A:{x:40,y:50},B:{x:328,y:262},C:{x:616,y:50}};   /* 4 cols x 3 rows */
+  const COMP={A:{x:16,y:40},B:{x:384,y:40},C:{x:752,y:40}};  /* 3 cols x 4 rows */
+  const hcell=(fr,c,r)=>({x:fr.x+12+c*PX,y:fr.y+38+r*PY});
+
+  /* library */
+  const LIBX=176;
+  const ROWY={core:360,shared:410,enc:460,dom:510,own:560};
+  const LIB={core:['geo','crs','time','links'],shared:['filter','tiles','meta','units'],enc:['geojson','gml','geotiff'],
+             dom:['feature','coll','sensor','obs','ds','bldg','terr'],own:['bridge','insp']};
+  const ROWLBL={core:['Core {es}','used by all'],shared:['Shared {es}','used by some'],enc:['Encoding {es}','syntax'],
+                dom:['Domain {es}','one domain'],own:['Your own {es}','made by users']};
+  function libPos(id){for(const t in LIB){const i=LIB[t].indexOf(id);if(i>=0)return{x:LIBX+i*PX,y:ROWY[t]};}}
+  const ghostPos=t=>({x:LIBX+LIB[t].length*PX,y:ROWY[t]});
+
+  /* new standard D */
+  const DF={x:272,y:70};
+  const DITEMS=[['geo',0,0],['crs',1,0],['time',2,0],['filter',3,0],['geojson',4,0],['feature',0,1],['obs',1,1],['bridge',2,1],['insp',3,1]];
+
+  /* ---------- build entities ---------- */
+  const stage=document.getElementById('stage');
+  const ents={};
+  function mk(id,type,cls,html,t){
+    const el=document.createElement('div');
+    el.className=cls;
+    if(html!=null)el.innerHTML=html;
+    if(t)el.dataset.tpl=t;
+    stage.appendChild(el);
+    ents[id]={type,el};
+    return el;
+  }
+  function tileHTML(c){
+    const dots=c.m?c.m.split('').map(S=>`<i class="d${S}"></i>`).join(''):'<i class="dX"></i>';
+    return `<span class="lbl">${c.n}</span><span class="dots">${dots}</span><span class="chk">✓</span><span class="cnt">${c.m.length}×</span>`;
+  }
+
+  mk('badge','box','badge','Example: 3 of OGC’s many standards');
+  mk('panel','box','panel');
+  mk('ptitle','box','ptitle',null,'The library');
+  Object.keys(LIB).forEach(t=>{
+    mk('R_'+t,'box','rowlbl',`<span data-tpl="${ROWLBL[t][0]}"></span><small>${ROWLBL[t][1]}</small>`);
+    if(t!=='own')mk('G_'+t,'tile','tile','<span class="lbl">+ more</span>');
+  });
+  Ss.forEach(S=>{
+    mk('fr'+S,'frame','frame');
+    mk('lb'+S,'label','label',`<span class="sw sw-${S}"></span><b>Standard ${S}</b> · ${STD[S]}`);
+  });
+  [['gD','Standard D'],['gE','Standard E']].forEach(([id,n])=>
+    mk(id,'box','ghostfr',`<span class="label-in"><b>${n}</b> · …</span><span class="dotsbig">· · ·</span>`));
+  mk('frD','frame','frame');
+  mk('lbD','label','label','<span class="sw sw-own"></span><b>New standard</b> · Asset inspection');
+  mk('pill2','box','pillwrap','<span class="pill">Stacked: specified 2 or 3 times</span>');
+  mk('hole','box','hole',null,'Overlap taken out:<br>now in the library');
+  mk('pill5','box','pillwrap','<span class="pill pill-ink">What is left: parts only one standard has</span>');
+  Object.values(LIB).flat().forEach(id=>mk('L_'+id,'tile','tile',tileHTML(byId[id])));
+  Ss.forEach(S=>members(S).forEach(c=>mk(`C_${S}_${c.id}`,'tile','tile',tileHTML(c))));
+  DITEMS.forEach(([id])=>mk('D_'+id,'tile','tile',tileHTML(byId[id])));
+  mk('note1','box','note c',null,'Three standards as an example. OGC has many more, and each one is taken apart the same way.');
+  mk('note3','box','note',null,'<b>24 overlapping copies → 10</b> {es}');
+  mk('noteEnc','box','note',null,'GeoTIFF comes from a standard not shown here');
+  mk('note7','box','note c',null,'Every other OGC standard can be rebuilt from the same library.');
+  mk('note8','box','note c',null,'<b>3</b> core · <b>1</b> shared · <b>1</b> encoding · <b>2</b> reused domain · <b>2</b> new {es}');
+  mk('card2','box','card card2',`
+    <div class="card-h"><span class="nm">Meaning and syntax</span></div>
+    <div class="card-cols">
+      <div class="cc"><h4><span class="ic">≡</span>Meaning</h4>
+        <p class="cp" data-tpl="Core, shared and domain {es} say what the data is."></p>
+        <div class="mini"><span class="mt k-core">Geometry</span><span class="mt k-shared">Filter</span><span class="mt k-domB">Sensor</span></div></div>
+      <div class="cc"><h4><span class="ic">&lt;/&gt;</span>Syntax</h4>
+        <p class="cp" data-tpl="Encoding {es} say how the data is written down."></p>
+        <div class="mini"><span class="mt k-enc mono">GeoJSON</span><span class="mt k-enc mono">GML</span><span class="mt k-enc mono">GeoTIFF</span></div></div>
+    </div>
+    <p class="card-f">One meaning, several encodings: the same Geometry can be exchanged as GeoJSON or as GML.</p>`);
+  mk('card','box','card',`
+    <div class="card-h"><span class="nm">Geometry</span><span class="chip" data-tpl="core {e}"></span></div>
+    <div class="card-cols">
+      <div class="cc"><h4><span class="ic">{ }</span>Definition</h4>
+        <ul><li>Schema and encoding</li><li>Meaning of each part</li><li>Numbered requirements</li></ul></div>
+      <div class="cc"><h4><span class="ic">✓</span>Tests</h4>
+        <ul><li>Executable conformance tests</li><li>Example data that must pass</li><li>One test per requirement</li></ul></div>
+    </div>
+    <p class="card-f">Used by Standards A, B and C, and by every other standard that needs geometry.</p>`);
+  mk('conn','box','conn');
+
+  /* ---------- layout per step ---------- */
+  function layout(step,ph){
+    const L={};
+    const a6=step===6&&ph==='a';
+    const domIn=step>6||(step===6&&ph!=='a');
+    const dim=step===4||step===5;
+
+    Ss.forEach((S,si)=>{
+      let fr,o=1,cls='f-std f-'+S,fod=0,lb;
+      if(step===1){fr={...SEP[S],w:4*PX+16,h:3*PY+42};lb={x:fr.x+12,y:fr.y+11,al:'left'};}
+      else if(step<=6){
+        fr=ovFrame(S);lb=LBPOS[S];
+        if(step===3)o=.85;
+        if(dim)o=.12;
+        if(step===6&&ph!=='a'){o=.55;cls+=' f-empty';fod=2.6;}
+      }else{fr={...COMP[S],w:3*PX+16,h:4*PY+42};cls='f-comp';lb={x:fr.x+12,y:fr.y+11,al:'left'};if(step===8)o=0;}
+      L['fr'+S]={...fr,o,cls,od:fod};
+      L['lb'+S]={...lb,o,od:fod};
+
+      members(S).forEach((c,k)=>{
+        const multi=c.m.length>1,mi=c.m.indexOf(S);
+        let st;
+        if(step===1){
+          st={...hcell(SEP[S],k%4,Math.floor(k/4)),k:'std'+S};
+        }else if(step===7){
+          st={...hcell(COMP[S],k%3,Math.floor(k/3)),k:kindOf(c),t:true,td:k*.04+si*.05};
+        }else if(step===2||(!multi&&(step<=5||a6))){
+          const p=ovCell(OVL[c.id]),off=step===2&&multi?mi*3:0;
+          st={x:p.x+off,y:p.y+off,k:'std'+S,ov:step===2&&multi,cnt:step===2&&multi&&mi===c.m.length-1,
+              o:dim?.12:1,dh:a6,s:a6?1.05:1};
+        }else{
+          const slow=!multi&&step===6;
+          const td=slow?si*.65+DOMJ[c.id]*.1:k*.04+si*.03;
+          st={...libPos(c.id),o:0,od:(slow?1.15:.7)+td,k:kindOf(c),t:step>=5,td,dur:slow?1.3:.9};
+        }
+        st.z=Z[S];st.mono=c.tier==='enc';
+        L[`C_${S}_${c.id}`]=st;
+      });
+    });
+
+    Object.keys(LIB).forEach(t=>{
+      const show=t==='dom'?domIn:t==='own'?step>=8:step>=3;
+      const rowDelay={core:.8,shared:.9,enc:1,dom:.75,own:1.2}[t];
+      LIB[t].forEach((id,i)=>{
+        const c=byId[id];
+        let od=0;
+        if(show){
+          if(t==='dom'&&step===6)od=1.2+Ss.indexOf(c.m)*.65+DOMJ[id]*.1;
+          else od=rowDelay+i*.05;
+        }
+        L['L_'+id]={...libPos(id),o:show?1:0,od,k:kindOf(c),t:step>=5,z:3,mono:t==='enc',
+                    f:(step===5&&id==='geo')||(step===4&&t==='enc')};
+      });
+      L['R_'+t]={x:36,y:ROWY[t]+(term==='block'?-2:5),o:show?1:0};
+      if(t!=='own'){
+        const gd=t==='dom'&&step===6?3.2:rowDelay+.4;
+        L['G_'+t]={...ghostPos(t),o:show?1:0,od:show?gd:0,k:'ghost',z:3};
+      }
+    });
+
+    const dsz={w:5*PX+16,h:2*PY+42};
+    L.frD={...DF,...dsz,o:step===8?1:0,cls:'f-comp f-new'};
+    L.lbD={x:DF.x+12,y:DF.y+11,al:'left',o:step===8?1:0};
+    DITEMS.forEach(([id,cc,rr],q)=>{
+      const c=byId[id],own=c.tier==='own',p=hcell(DF,cc,rr);
+      let st;
+      if(own)st=step===8?{...p,k:'own',t:true,od:.7+(q-7)*.15,td:.7+(q-7)*.15,s:1}:{...p,o:0,s:.4,k:'own',t:true};
+      else st=step===8?{...p,k:kindOf(c),t:true,td:.15+q*.05}:{...libPos(id),o:0,od:.7,k:kindOf(c),t:true};
+      st.z=7;st.mono=c.tier==='enc';
+      L['D_'+id]=st;
+    });
+
+    L.badge={x:16,y:10,o:step<=7?1:0};
+    L.gD={x:40,y:262,o:step===1?1:0};
+    L.gE={x:816,y:262,o:step===1?1:0};
+    L.note1={x:40,y:452,w:1040,o:step===1?1:0};
+    L.pill2={x:390,y:44,o:step===2?1:0};
+    L.hole={x:336,y:76,w:448,h:132,o:a6?1:0};
+    L.pill5={x:390,y:44,o:a6?1:0};
+    L.panel={x:26,y:330,w:1068,h:280,o:step>=3?1:0};
+    L.ptitle={x:28,y:304,o:step>=3?1:0};
+    L.note3={x:750,y:370,w:330,o:step>=3&&step<=6?1:0};
+    L.noteEnc={x:750,y:470,w:330,o:step>=3&&step<=6?1:0};
+    L.card2={x:176,y:40,o:step===4?1:0,s:step===4?1:.96};
+    L.card={x:176,y:40,o:step===5?1:0,s:step===5?1:.96};
+    L.conn={x:227,y:296,w:2,h:64,o:step===5?1:0};
+    L.note7={x:16,y:268,w:1088,o:step===7?1:0};
+    L.note8={x:DF.x,y:DF.y+dsz.h+12,w:dsz.w,o:step===8?1:0};
+    return L;
+  }
+
+  function apply(id,st){
+    const e=ents[id];if(!e||!st)return;
+    const el=e.el,s=el.style;
+    s.setProperty('--od',(st.od||0)+'s');
+    s.setProperty('--td',(st.td||0)+'s');
+    s.setProperty('--dur',(st.dur||.9)+'s');
+    s.transform=`translate(${st.x}px,${st.y}px) scale(${st.s==null?1:st.s})`;
+    s.opacity=st.o==null?1:st.o;
+    if(st.w!=null)s.width=st.w+'px';
+    if(st.h!=null)s.height=st.h+'px';
+    if(e.type==='tile'){
+      el.className='tile k-'+st.k+(st.t?' tested':'')+(st.f?' focus':'')+(st.ov?' ov':'')+(st.dh?' dh':'')+(st.mono?' mono':'')+(st.cnt?' has-cnt':'');
+      s.zIndex=st.z||3;
+    }else if(e.type==='frame'){
+      el.className='frame '+st.cls;
+    }else if(e.type==='label'){
+      s.textAlign=st.al||'left';
+    }
+  }
+  const applyAll=L=>Object.keys(L).forEach(id=>apply(id,L[id]));
+
+  /* ---------- scaling ---------- */
+  const SW=1120,SH=630;
+  const wrap=document.getElementById('wrap'),sizer=document.getElementById('sizer');
+  function fit(){
+    const sc=Math.max(wrap.clientWidth,660)/SW;
+    stage.style.transform=`scale(${sc})`;
+    sizer.style.width=(SW*sc)+'px';
+    sizer.style.height=(SH*sc)+'px';
+  }
+  try{new ResizeObserver(fit).observe(wrap);}catch(err){window.addEventListener('resize',fit);}
+  fit();
+
+  /* ---------- controls ---------- */
+  const stepsNav=document.getElementById('steps');
+  const btns=STEPS.map((d,i)=>{
+    const b=document.createElement('button');
+    b.type='button';b.id='go-'+(i+1);
+    b.innerHTML=`<span class="n">${i+1}</span><span class="s">${d.s}</span>`;
+    b.addEventListener('click',()=>{stopPlay();go(i+1,{replay:i+1===cur});});
+    stepsNav.appendChild(b);
+    return b;
+  });
+  const capK=document.getElementById('capK'),capT=document.getElementById('capT'),capX=document.getElementById('capX');
+  const prev=document.getElementById('prev'),next=document.getElementById('next'),play=document.getElementById('play');
+  let cur=1,timer=null,phaseT=null;
+
+  function renderText(){
+    document.querySelectorAll('[data-tpl]').forEach(el=>{el.innerHTML=tpl(el.dataset.tpl);});
+    const d=STEPS[cur-1];
+    capK.textContent=`Step ${cur} of ${N}`;
+    capT.textContent=tpl(d.t);
+    capX.textContent=tpl(d.x);
+  }
+  function go(n,opts){
+    const from=cur;
+    cur=Math.min(N,Math.max(1,n));
+    clearTimeout(phaseT);
+    const two=cur===6&&(from<6||(opts&&opts.replay));
+    applyAll(layout(cur,two?'a':'b'));
+    if(two)phaseT=setTimeout(()=>{if(cur===6)applyAll(layout(6,'b'));},2000);
+    btns.forEach((b,i)=>{if(i+1===cur)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');});
+    prev.disabled=cur===1;
+    next.disabled=cur===N;
+    renderText();
+    try{history.replaceState(null,'','#step-'+cur);}catch(err){}
+  }
+  function stopPlay(){if(timer){clearTimeout(timer);timer=null;play.textContent='Play';}}
+  function schedule(){
+    timer=setTimeout(()=>{
+      if(cur>=N){stopPlay();return;}
+      go(cur+1);
+      if(cur>=N){stopPlay();return;}
+      schedule();
+    },HOLD[cur-1]);
+  }
+  function startPlay(){
+    if(cur===N)go(1);
+    play.textContent='Pause';
+    schedule();
+  }
+  prev.addEventListener('click',()=>{stopPlay();go(cur-1);});
+  next.addEventListener('click',()=>{stopPlay();go(cur+1);});
+  play.addEventListener('click',()=>{timer?stopPlay():startPlay();});
+  document.addEventListener('keydown',e=>{
+    if(e.target.closest&&e.target.closest('input,textarea'))return;
+    if(e.key==='ArrowRight'){stopPlay();go(cur+1);}
+    if(e.key==='ArrowLeft'){stopPlay();go(cur-1);}
+  });
+  ['element','block'].forEach(k=>{
+    document.getElementById('t-'+k).addEventListener('click',()=>{
+      term=k;
+      document.getElementById('t-element').setAttribute('aria-pressed',k==='element');
+      document.getElementById('t-block').setAttribute('aria-pressed',k==='block');
+      renderText();
+      applyAll(layout(cur,'b'));
+    });
+  });
+  const HASH=/^#step-([1-8])$/;
+  window.addEventListener('hashchange',()=>{const m=HASH.exec(location.hash);if(m&&+m[1]!==cur)go(+m[1]);});
+
+  const m=HASH.exec(location.hash);
+  cur=m?+m[1]:1;
+  applyAll(layout(cur,'b'));
+  go(cur);
+  void stage.offsetWidth;
+  requestAnimationFrame(()=>requestAnimationFrame(()=>document.body.classList.add('anim')));
+})();
+</script>
+</body>
+</html>
