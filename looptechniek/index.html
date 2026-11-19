@@ -1,0 +1,2390 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Veerpop Trainingsbord</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Settings (doe-opdrachten, hulp, donker) sit beside the menu; a help bubble points at the next thing to do. */
+/* Layout: a training board for the big screen. An overview of seven trainings; each training walks through look together (the puppet with one question), do (a clock and three steps) and check (a show of hands). The puppet with all its controls lives under "Vrij spelen". Everything wraps to one column on a phone. */
+:root {
+  --bg: #F2F4F7;
+  --surface: #FFFFFF;
+  --stage: #F8FAFB;
+  --ink: #0F1E2B;
+  --muted: #3B4A57;
+  --line: #D5DBE2;
+  --accent: #1D4ED8;
+  --accent-ink: #FFFFFF;
+  --hot: #C2410C;
+  --hot-ink: #FFFFFF;
+  --hot-text: #B93C0A;
+  --deep: #0F1E2B;
+  --deep-2: #1B2D3D;
+  --deep-3: #3A5168;
+  --deep-ink: #FFFFFF;
+  --deep-soft: #D3DCE4;
+  --deep-accent: #FFB48A;
+  --track: #C6532F;
+  --track-line: #F6E9E2;
+  --spring: #E9A400;
+  --spring-hot: #E2571A;
+  --wood: #E6BC80;
+  --wood-far: #B88A52;
+  --rivet: #8C6A2A;
+  --outline: #1B2530;
+  --shirt: #2A3948;
+  --yoke: #5E7A94;
+  --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0C141C; --surface: #16212C; --stage: #121B25; --ink: #E7ECF1; --muted: #A9B5C0;
+    --line: #2B3948; --accent: #7AA0FF; --accent-ink: #0B1220; --hot: #F27A45; --hot-ink: #1A0C05; --hot-text: #FF9A68;
+    --deep: #1D2B3A; --deep-2: #283A4D; --deep-3: #44596E; --deep-ink: #FFFFFF; --deep-soft: #D3DCE4; --deep-accent: #FFB48A;
+    --track: #9C4226; --track-line: #E9CFC3;
+    --spring: #FFC53A; --spring-hot: #FF7A3A; --wood: #DDB277; --wood-far: #9C7648; --rivet: #5E4517;
+    --outline: #070B10; --shirt: #C5CFD9; --yoke: #8FA6BC; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0C141C; --surface: #16212C; --stage: #121B25; --ink: #E7ECF1; --muted: #A9B5C0;
+  --line: #2B3948; --accent: #7AA0FF; --accent-ink: #0B1220; --hot: #F27A45; --hot-ink: #1A0C05; --hot-text: #FF9A68;
+  --deep: #1D2B3A; --deep-2: #283A4D; --deep-3: #44596E; --deep-ink: #FFFFFF; --deep-soft: #D3DCE4; --deep-accent: #FFB48A;
+  --track: #9C4226; --track-line: #E9CFC3;
+  --spring: #FFC53A; --spring-hot: #FF7A3A; --wood: #DDB277; --wood-far: #9C7648; --rivet: #5E4517;
+  --outline: #070B10; --shirt: #C5CFD9; --yoke: #8FA6BC; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.45;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.app {
+  max-width: 1320px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 18px 40px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.tabs { display: inline-flex; align-self: flex-start; max-width: 100%; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 4px; gap: 4px; }
+.tabs button {
+  font: 600 20px/1 var(--font-display); letter-spacing: .04em; text-transform: uppercase;
+  border: 0; background: transparent; color: var(--muted); padding: 9px 15px; border-radius: 999px; cursor: pointer;
+}
+.tabs button[aria-selected="true"] { background: var(--ink); color: var(--bg); }
+
+.layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; align-items: start; }
+.stage {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: var(--bg); padding-bottom: 6px; min-width: 0;
+}
+.canvas-wrap { position: relative; border: 1px solid var(--line); border-radius: 14px 14px 0 0; overflow: hidden; background: var(--stage); }
+#cv { display: block; width: 100%; height: clamp(240px, 36vh, 320px); touch-action: pan-y; cursor: grab; }
+#cv:active { cursor: grabbing; }
+.grab {
+  position: absolute; left: 0; top: 0; width: 96px; height: 150px; margin: -75px 0 0 -48px;
+  touch-action: none; cursor: grab; border-radius: 48px; outline-offset: -4px;
+}
+.grab:active { cursor: grabbing; }
+#d3wrap { position: absolute; inset: 0; }
+#cv3 { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; cursor: grab; background: var(--stage); }
+#cv3:active { cursor: grabbing; }
+.d3-hint { position: absolute; left: 10px; bottom: 8px; margin: 0; font-size: 12px; color: var(--muted); pointer-events: none; transition: opacity .4s; }
+.d3-views { position: absolute; right: 8px; top: 8px; display: flex; gap: 4px; flex-wrap: wrap; justify-content: flex-end; }
+.d3-views .btn { padding: 5px 8px; font-size: 12px; border-radius: 8px; }
+.viewbar { display: flex; flex-wrap: nowrap; gap: 6px; padding: 6px 8px; border: 1px solid var(--line); border-top: 0; background: var(--surface); }
+.viewbar .seg { flex: 1 1 0; min-width: 0; }
+.viewbar .seg span, .viewbar .btn { padding: 7px 6px; font-size: 13px; line-height: 1.2; border-radius: 8px; }
+.viewbar .btn { flex: 0 0 auto; font-weight: 600; }
+.strip-wrap { border: 1px solid var(--line); border-top: 0; border-radius: 0 0 14px 14px; background: var(--surface); overflow: hidden; }
+#strip { display: block; width: 100%; height: 48px; }
+.strip-cap { margin: 0; padding: 0 12px 6px; font-size: 12.5px; line-height: 1.3; color: var(--muted); }
+
+.panel { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 14px; }
+.card h2 { margin: 0; font: 700 21px/1 var(--font-display); letter-spacing: .04em; text-transform: uppercase; }
+.card h2 small { font: 500 13px/1 var(--font-body); letter-spacing: 0; text-transform: none; color: var(--muted); margin-left: 6px; }
+
+.ctl { display: flex; flex-direction: column; gap: 6px; }
+.ctl-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.ctl-head label, .ctl-head .lbl { font-weight: 600; }
+.ctl-head output { font: 700 20px/1 var(--font-display); font-variant-numeric: tabular-nums; }
+.ends { display: flex; justify-content: space-between; font-size: 12.5px; color: var(--muted); }
+input[type="range"] { width: 100%; height: 28px; margin: 0; accent-color: var(--accent); }
+.seg { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 6px; }
+.seg label { position: relative; }
+.seg input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+.seg span {
+  display: block; text-align: center; padding: 10px 8px; border-radius: 10px; border: 1.5px solid var(--line);
+  font-weight: 600; background: var(--surface);
+}
+.seg input:checked + span { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.seg input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
+.btn {
+  font: 600 16px/1 var(--font-body); padding: 12px 14px; border-radius: 10px; border: 1.5px solid var(--line);
+  background: var(--surface); color: var(--ink); cursor: pointer;
+}
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.row.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.row.three .btn { padding: 12px 6px; font-size: 15px; }
+button:focus-visible, .grab:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.meters { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.meter {
+  text-align: left; font: inherit; color: inherit; background: var(--stage); border: 1px solid var(--line); border-radius: 10px;
+  padding: 9px 10px 10px; display: flex; flex-direction: column; gap: 5px; min-width: 0; cursor: default;
+}
+button.meter { cursor: not-allowed; }
+.meter-name { display: flex; justify-content: space-between; align-items: center; gap: 6px; font-size: 12.5px; color: var(--muted); font-weight: 500; }
+.meter-name svg { flex: none; width: 12px; height: 12px; fill: currentColor; opacity: .75; }
+.meter-val { font: 700 24px/1 var(--font-display); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.meter-bar { height: 6px; border-radius: 3px; background: var(--line); overflow: hidden; }
+.meter-bar i { display: block; height: 100%; width: 0; background: var(--ink); border-radius: 3px; transition: width .18s linear; }
+.meter-bar.energy i { background: var(--spring); transition: none; }
+.meter.shake { animation: shake .32s; border-color: var(--spring-hot); }
+@keyframes shake { 20% { transform: translateX(-5px); } 45% { transform: translateX(5px); } 70% { transform: translateX(-3px); } 100% { transform: none; } }
+
+.explain { margin: 0; padding: 12px 14px; border-radius: 12px; background: var(--ink); color: var(--bg); font-weight: 500; min-height: 4.4em; }
+.note { margin: 0; font-size: 13px; color: var(--muted); }
+
+.snaps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+.snaps .btn { padding: 10px 8px; font-size: 15px; }
+.uitleg { display: flex; flex-direction: column; gap: 12px; }
+.uitleg > h2 { margin: 6px 0 0; font: 700 30px/1 var(--font-display); letter-spacing: .03em; text-transform: uppercase; }
+.uitleg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; }
+.ex { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px; min-width: 0; }
+.ex h3 { margin: 0 0 6px; font: 700 21px/1.05 var(--font-display); letter-spacing: .02em; text-wrap: balance; }
+.ex p { margin: 0; font-size: 15px; }
+.ex .tag { display: inline-block; margin-top: 8px; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); font-size: 12px; color: var(--muted); }
+details.sources { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; }
+details.sources summary { cursor: pointer; font-weight: 600; }
+details.sources ul { margin: 10px 0 0; padding-left: 18px; display: flex; flex-direction: column; gap: 8px; max-width: 72ch; font-size: 14.5px; }
+details.sources a { color: var(--accent); }
+details.sources p { max-width: 72ch; font-size: 14.5px; margin: 10px 0 0; color: var(--muted); }
+
+@media (max-width: 440px) { .tabs button { font-size: 18px; padding: 8px 11px; letter-spacing: .02em; } .viewbar .seg { gap: 4px; } .viewbar .seg span, .viewbar .btn { padding: 7px 3px; font-size: 12.5px; } .viewbar .btn { padding: 7px 8px; } }
+@media (min-width: 860px) {
+  .layout { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 18px; }
+  .stage { top: calc(env(safe-area-inset-top, 0px) + 12px); }
+  #cv { height: 460px; }
+  #strip { height: 70px; }
+}
+@media (prefers-reduced-motion: reduce) { .meter.shake { animation: none; } .meter-bar i { transition: none; } }
+
+/* ===== Trainingsbord: the shell around the puppet ===== */
+.tabs button { font: 800 15px/1 var(--font-display); letter-spacing: .05em; }
+.card h2 { font: 800 15px/1.15 var(--font-display); letter-spacing: .06em; }
+.card h2 small { font: 500 13px/1 var(--font-body); }
+.ctl-head output { font: 800 17px/1 var(--font-display); }
+.meter-val { font: 800 19px/1.1 var(--font-display); }
+.uitleg > h2 { font: 800 26px/1.05 var(--font-display); letter-spacing: 0; text-transform: none; }
+.ex h3 { font: 800 18px/1.15 var(--font-display); letter-spacing: 0; }
+.btn.primary { background: var(--hot); border-color: var(--hot); color: var(--hot-ink); }
+
+.top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 20px; }
+.brand { font: 800 15px/1 var(--font-display); letter-spacing: .08em; text-transform: uppercase; color: var(--hot-text); text-decoration: none; padding: 14px 0; }
+.nav { display: flex; flex-wrap: wrap; gap: 6px; }
+.nav a, .nav button {
+  font: 600 15px/1 var(--font-body); display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 10px;
+  border: 1.5px solid var(--line); background: var(--surface); color: var(--ink); text-decoration: none; cursor: pointer;
+}
+.nav a[aria-current="page"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.view { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+.tb-eyebrow { font: 800 14px/1.2 var(--font-display); letter-spacing: .08em; text-transform: uppercase; color: var(--hot-text); }
+.tb-h1 { margin: 0; font: 800 clamp(28px, 4.2vw, 46px)/1.05 var(--font-display); text-wrap: balance; }
+.tb-sub { margin: 0; font-size: clamp(16px, 1.5vw, 19px); line-height: 1.4; color: var(--muted); max-width: 62ch; }
+.head-row { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 24px; }
+.head-row > div:first-child { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.tb-progress { margin: 0; font-weight: 600; color: var(--muted); }
+
+/* overview: seven trainings */
+.tcards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.tcard {
+  display: flex; flex-direction: column; gap: 8px; height: 100%; padding: 18px; border-radius: 18px; text-decoration: none;
+  background: var(--surface); border: 1.5px solid var(--line); color: var(--ink);
+}
+.tcard:hover { border-color: var(--ink); }
+.tcard-top { display: flex; justify-content: space-between; align-items: center; }
+.tnum { width: 36px; height: 36px; border-radius: 18px; display: flex; align-items: center; justify-content: center; font: 800 16px/1 var(--font-display); border: 2px solid var(--muted); color: var(--muted); }
+.tstate { font-size: 14px; font-weight: 600; color: var(--muted); }
+.tcard h2 { margin: 0; font: 800 23px/1.1 var(--font-display); }
+.tcard p { margin: 0; font-size: 16px; line-height: 1.4; color: var(--muted); }
+.tcard.done .tnum { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.tcard.done .tstate { color: var(--accent); }
+.tcard.today { background: var(--deep); border-color: var(--deep); color: var(--deep-ink); }
+.tcard.today p { color: var(--deep-soft); }
+.tcard.today .tnum { background: var(--hot); border-color: var(--hot); color: var(--hot-ink); }
+.tcard.today .tstate { color: var(--deep-accent); }
+.tcard .go { margin-top: auto; padding: 13px; border-radius: 12px; text-align: center; font-weight: 600; font-size: 17px; background: var(--hot); color: var(--hot-ink); }
+.tb-foot { margin: 0; color: var(--muted); display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; }
+.linkbtn { font: 600 16px/1.2 var(--font-body); background: none; border: 0; padding: 12px 0; color: var(--accent); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; text-align: left; }
+
+/* one training */
+.train-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; }
+.train-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; }
+.train-step { font-weight: 600; color: var(--muted); }
+.phases { display: flex; flex-wrap: wrap; gap: 8px; }
+.phases button {
+  font: 600 16px/1 var(--font-body); min-height: 44px; padding: 0 16px; border-radius: 10px; cursor: pointer;
+  border: 2px solid var(--muted); background: transparent; color: var(--muted);
+}
+.phases button.past { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.phases button[aria-pressed="true"] { background: var(--hot); border-color: var(--hot); color: var(--hot-ink); }
+
+/* the plan of one training: the seven steps, the puppet, and look / do / check */
+.kijk { display: flex; flex-wrap: wrap; gap: 18px; align-items: flex-start; }
+.rail { flex: 1 1 100%; min-width: 0; }
+.rail ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px; }
+.rail a {
+  display: flex; align-items: center; justify-content: center; gap: 12px; min-width: 44px; min-height: 44px; padding: 6px; border-radius: 12px;
+  font-weight: 600; font-size: 16px; line-height: 1.2; color: var(--muted); text-decoration: none;
+}
+.rail a:hover { background: var(--surface); color: var(--ink); }
+.rail .rnum { flex: 0 0 30px; height: 30px; border-radius: 15px; display: flex; align-items: center; justify-content: center; border: 2px solid var(--muted); font-size: 15px; }
+.rail .rname { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.rail a.done .rnum { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.rail a[aria-current="step"] { background: var(--deep); color: var(--deep-ink); }
+.rail a[aria-current="step"] .rnum { background: var(--hot); border-color: var(--hot); color: var(--hot-ink); }
+.stage-card { flex: 999 1 420px; min-width: 0; background: var(--surface); border: 1.5px solid var(--line); border-radius: 20px; padding: 14px; display: flex; flex-direction: column; gap: 12px; }
+.kijk-stage { min-width: 0; }
+.kijk-side { flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 12px; }
+#trainStage .stage { position: static; padding-bottom: 0; background: transparent; }
+#trainStage .viewbar { display: none; }
+#trainStage #cv { height: clamp(280px, calc(100vh - 470px), 620px); }
+.stage-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px; }
+.stage-head { margin: 0; font: 800 clamp(20px, 2vw, 25px)/1.12 var(--font-display); text-wrap: balance; }
+.looks { display: flex; flex-wrap: wrap; gap: 6px; }
+.looks .btn { min-height: 44px; padding: 0 14px; }
+.tempo-row { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; }
+.tempo-row label { font-weight: 600; }
+.tempo-row input { flex: 1 1 200px; height: 44px; }
+.caption { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.45; min-height: 3em; }
+.plan-row { background: var(--surface); border: 1.5px solid var(--line); border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 8px; }
+.plan-row h2 { margin: 0; font: 800 20px/1.1 var(--font-display); display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.plan-row h2 span { font: 600 15px/1.2 var(--font-body); color: var(--muted); }
+.plan-row p { margin: 0; font-size: 17px; line-height: 1.45; color: var(--muted); }
+.plan-row .plan-q { color: var(--ink); font-weight: 500; }
+.plan-row details { border-top: 1px solid var(--line); margin-top: 2px; }
+.plan-row summary { cursor: pointer; font-weight: 600; padding: 10px 0; color: var(--accent); }
+.plan-row details p { margin: 0 0 2px; color: var(--ink); }
+.plan-row.deep { background: var(--deep); border-color: var(--deep); color: var(--deep-ink); }
+.plan-row.deep p, .plan-row.deep h2 span { color: var(--deep-soft); }
+.plan-clock { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.plan-clock span { font: 800 48px/1 var(--font-display); font-variant-numeric: tabular-nums; }
+.cta { font: 600 17px/1 var(--font-body); min-height: 50px; padding: 0 24px; border: 0; border-radius: 12px; background: var(--hot); color: var(--hot-ink); cursor: pointer; }
+.plan-row.deep .cta:focus-visible { outline: 2px solid var(--deep-accent); outline-offset: 2px; }
+.next-link { display: block; text-align: center; font-weight: 600; padding: 12px; color: var(--accent); text-decoration: none; }
+.next-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+@media (min-width: 980px) {
+  .kijk { flex-wrap: nowrap; }
+  .rail { flex: 0 0 clamp(170px, 16vw, 220px); }
+  .rail ol { flex-direction: column; flex-wrap: nowrap; gap: 6px; }
+  .rail a { justify-content: flex-start; padding: 8px 12px; min-height: 48px; }
+  .rail .rname { position: static; width: auto; height: auto; overflow: visible; clip-path: none; white-space: normal; }
+  .rail a[aria-current="step"] { font-size: 18px; padding: 11px 12px; }
+  .stage-card { flex: 1 1 0; }
+  .kijk-side { flex: 0 0 clamp(300px, 28vw, 380px); }
+}
+
+/* the task, with the clock running */
+.doe { background: var(--deep); color: var(--deep-ink); border-radius: 24px; padding: clamp(16px, 2.6vw, 30px); }
+.doe-wrap { display: flex; flex-wrap: wrap; gap: clamp(16px, 2.4vw, 28px); align-items: stretch; }
+.clock { flex: 1 1 380px; min-width: 0; background: var(--deep-2); border-radius: 20px; padding: clamp(16px, 2.2vw, 26px); display: flex; flex-direction: column; gap: 16px; justify-content: space-between; }
+.clock-lbl { font-size: 18px; font-weight: 600; color: var(--deep-soft); }
+.clock-time { font: 800 clamp(64px, 9vw, 118px)/0.95 var(--font-display); font-variant-numeric: tabular-nums; }
+.clock-bar { height: 14px; border-radius: 7px; background: var(--deep-3); overflow: hidden; }
+.clock-bar i { display: block; height: 100%; width: 0; background: var(--deep-accent); }
+.clock-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; font-size: 17px; font-weight: 600; color: var(--deep-soft); }
+.clock-btns { display: flex; flex-wrap: wrap; gap: 8px; }
+.clock-btns button { font: 600 16px/1 var(--font-body); min-height: 48px; padding: 0 16px; border-radius: 12px; cursor: pointer; background: transparent; color: var(--deep-ink); border: 2px solid var(--deep-soft); }
+.clock-btns button.big { font-size: 18px; padding: 0 28px; background: var(--deep-ink); color: var(--deep); border-color: var(--deep-ink); }
+.doe button:focus-visible { outline: 2px solid var(--deep-accent); outline-offset: 2px; }
+.task { flex: 999 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 14px; }
+.task-title { margin: 0; font: 800 clamp(28px, 4vw, 48px)/1.04 var(--font-display); text-wrap: balance; }
+.task-pairs { margin: 0; font-size: clamp(18px, 1.9vw, 23px); color: var(--deep-soft); }
+.task-steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; counter-reset: step; }
+.task-steps li { counter-increment: step; display: flex; gap: 16px; align-items: center; padding: 14px 18px; background: var(--deep-2); border-radius: 16px; font-size: clamp(18px, 2vw, 24px); line-height: 1.3; }
+.task-steps li::before { content: counter(step); flex: 0 0 44px; height: 44px; border-radius: 22px; background: var(--deep-ink); color: var(--deep); font: 800 21px/44px var(--font-display); text-align: center; }
+.watch { padding: 14px 18px; border: 2px solid var(--deep-accent); border-radius: 16px; display: flex; flex-direction: column; gap: 4px; }
+.watch span { font: 800 14px/1.2 var(--font-display); letter-spacing: .06em; text-transform: uppercase; color: var(--deep-accent); }
+.watch p { margin: 0; font-size: clamp(18px, 1.9vw, 23px); line-height: 1.35; }
+.doe .linkbtn { color: var(--deep-ink); align-self: flex-start; }
+
+/* the check: hands up */
+.check { display: flex; flex-direction: column; gap: 18px; }
+.check-q { margin: 0; font: 800 clamp(30px, 4.6vw, 54px)/1.04 var(--font-display); text-wrap: balance; }
+.tally { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+.tally-card { background: var(--surface); border: 2px solid var(--line); border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 14px; justify-content: space-between; }
+.tally-card.top-one { border-color: var(--accent); }
+.tally-card h3 { margin: 0; font: 600 clamp(18px, 1.9vw, 22px)/1.25 var(--font-body); }
+.tally-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.tally-row output { font: 800 clamp(48px, 6vw, 72px)/1 var(--font-display); font-variant-numeric: tabular-nums; }
+.tally-row button { width: 56px; height: 56px; border-radius: 14px; font: 600 28px/1 var(--font-body); cursor: pointer; }
+.tally-row .minus { background: var(--surface); color: var(--ink); border: 2px solid var(--muted); }
+.tally-row .plus { background: var(--ink); color: var(--bg); border: 2px solid var(--ink); }
+.check-foot { display: flex; flex-wrap: wrap; gap: 14px; align-items: stretch; }
+.say { flex: 999 1 420px; min-width: 0; background: var(--deep); color: var(--deep-ink); border-radius: 20px; padding: 20px; display: flex; flex-direction: column; gap: 8px; }
+.say span { font: 800 14px/1.2 var(--font-display); letter-spacing: .06em; text-transform: uppercase; color: var(--deep-accent); }
+.say p { margin: 0; font-size: clamp(18px, 2vw, 23px); line-height: 1.4; }
+.check-btns { flex: 1 1 280px; min-width: 0; display: flex; flex-direction: column; gap: 10px; justify-content: center; }
+.check-btns button { font: 600 18px/1.2 var(--font-body); min-height: 54px; padding: 8px 16px; border-radius: 14px; cursor: pointer; }
+.check-btns .again { background: var(--surface); color: var(--ink); border: 2px solid var(--muted); }
+.check-btns .finish { background: var(--hot); color: var(--hot-ink); border: 2px solid var(--hot); }
+.home-task { margin: 0; font-size: 18px; line-height: 1.4; color: var(--muted); }
+.home-task strong { color: var(--ink); font-weight: 600; }
+
+/* the trainer's script */
+.book-wrap { overflow-x: auto; background: var(--surface); border: 1.5px solid var(--line); border-radius: 18px; }
+.book { width: 100%; min-width: 820px; border-collapse: collapse; font-size: 16px; line-height: 1.4; }
+.book th, .book td { padding: 14px 16px; text-align: left; vertical-align: top; }
+.book thead th { background: var(--deep); color: var(--deep-ink); font: 800 15px/1.2 var(--font-display); }
+.book tbody tr { border-top: 1px solid var(--line); }
+.book tbody th { font-weight: 600; white-space: nowrap; }
+.book tbody th a { color: var(--accent); }
+.book td strong { font-weight: 600; }
+.book-notes { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
+.book-notes > div { background: var(--surface); border: 1.5px solid var(--line); border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 6px; }
+.book-notes h2 { margin: 0; font: 800 18px/1.1 var(--font-display); }
+.book-notes p { margin: 0; color: var(--muted); }
+
+/* settings: switches next to the menu */
+.top-right { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 6px 14px; margin-left: auto; min-width: 0; }
+.tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 6px; }
+.sw, .tools .tool-btn {
+  font: 600 14px/1 var(--font-body); display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 12px; border-radius: 10px;
+  border: 1.5px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer;
+}
+/* the three switches are quiet: small grey text without a box, so the menu and the training stay in front */
+.sw { font: 500 13px/1 var(--font-body); gap: 6px; padding: 0 6px; border-color: transparent; background: transparent; color: var(--muted); }
+.sw:hover { color: var(--ink); }
+.sw-track { position: relative; flex: 0 0 28px; height: 16px; border-radius: 8px; background: transparent; border: 1.5px solid var(--muted); }
+.sw-track i { position: absolute; top: 2px; left: 2px; width: 9px; height: 9px; border-radius: 50%; background: var(--muted); transition: transform .15s; }
+.sw[aria-checked="true"] .sw-track { background: var(--muted); }
+.sw[aria-checked="true"] .sw-track i { transform: translateX(12px); background: var(--bg); }
+.sw-state { min-width: 1.7em; text-align: left; }
+.nav .tools-btn { display: none; }
+.nav .tools-btn[aria-expanded="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+@media (max-width: 760px) {
+  .nav .tools-btn { display: inline-flex; }
+  .tools { display: none; flex: 1 1 100%; justify-content: flex-start; }
+  .tools.open { display: flex; }
+}
+@media (prefers-reduced-motion: reduce) { .sw-track i { transition: none; } }
+
+/* the "doe" assignments can be switched off: then only looking together is left */
+.no-doe .needs-doe { display: none !important; }
+.app:not(.no-doe) .only-nodoe { display: none !important; }
+.no-doe .book { min-width: 620px; }
+.cta:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* help: a bubble that points at the next thing to do, and small tooltips on hover and focus */
+.coach {
+  position: absolute; z-index: 30; left: 0; top: 0; width: max-content; max-width: min(270px, calc(100vw - 20px)); padding: 11px 14px 12px; border-radius: 12px;
+  background: var(--accent); color: var(--accent-ink); font-size: 15px; line-height: 1.35; box-shadow: 0 8px 24px rgb(0 0 0 / .3);
+  display: flex; flex-direction: column; gap: 8px;
+}
+.coach::after { content: ""; position: absolute; width: 14px; height: 14px; background: var(--accent); transform: rotate(45deg); left: var(--ax, 50%); top: -6px; margin-left: -7px; }
+.coach[data-side="above"]::after { top: auto; bottom: -6px; }
+.coach[data-side="left"]::after { left: auto; right: -6px; top: var(--ay, 50%); margin: -7px 0 0; }
+.coach[data-side="right"]::after { left: -6px; top: var(--ay, 50%); margin: -7px 0 0; }
+.coach.inflow { position: relative; left: auto !important; top: auto !important; width: auto; max-width: none; box-shadow: none; margin-top: 2px; }
+.coach.no-arrow::after { display: none; }
+.check > .coach.inflow { align-self: flex-start; max-width: min(440px, 100%); }
+.coach p { margin: 0; font-weight: 500; }
+.coach-n { font: 800 12px/1 var(--font-display); letter-spacing: .08em; text-transform: uppercase; }
+.coach-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.coach-x { font: 600 20px/1 var(--font-body); width: 32px; height: 32px; margin: -6px -8px -6px 0; border-radius: 8px; border: 0; background: transparent; color: inherit; cursor: pointer; }
+.coach .ok { align-self: flex-start; font: 600 14px/1 var(--font-body); min-height: 40px; padding: 0 14px; border-radius: 8px; cursor: pointer; background: var(--accent-ink); color: var(--accent); border: 0; }
+.coach button:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 2px; }
+.coach-target { box-shadow: 0 0 0 3px var(--bg), 0 0 0 6px var(--accent); animation: coachPulse 1.6s ease-in-out infinite; }
+@keyframes coachPulse { 50% { box-shadow: 0 0 0 3px var(--bg), 0 0 0 10px var(--accent); } }
+@media (prefers-reduced-motion: reduce) { .coach-target { animation: none; } }
+.coach-jump {
+  position: fixed; z-index: 31; left: 50%; transform: translateX(-50%); bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+  font: 600 15px/1 var(--font-body); min-height: 44px; padding: 0 18px; border-radius: 22px; border: 2px solid var(--accent-ink);
+  background: var(--accent); color: var(--accent-ink); cursor: pointer; box-shadow: 0 6px 18px rgb(0 0 0 / .3);
+}
+.tip {
+  position: fixed; z-index: 40; left: 0; top: 0; width: max-content; max-width: min(260px, calc(100vw - 16px)); padding: 8px 10px; border-radius: 8px;
+  background: var(--ink); color: var(--bg); outline: 1.5px solid var(--bg); font-size: 14px; line-height: 1.3; font-weight: 500;
+  pointer-events: none; box-shadow: 0 4px 14px rgb(0 0 0 / .25);
+}
+
+@media (max-width: 520px) {
+  .nav a, .nav button { padding: 0 11px; font-size: 14px; }
+  .task-steps li { padding: 12px 14px; gap: 12px; }
+}
+</style>
+<script>
+document.documentElement.setAttribute('data-theme', 'light');   // the page always opens light; the switch Donker changes it for this visit
+</script>
+
+<div class="app no-doe">
+  <header class="top">
+    <a class="brand" href="#trainingen">Veerpop · Trainingsbord</a>
+    <div class="top-right">
+      <nav class="nav" aria-label="Onderdelen">
+        <a href="#trainingen" data-nav="home" data-tip="Het overzicht van de zeven trainingen en de afronding">Trainingen</a>
+        <a href="#draaiboek" data-nav="book" data-tip="Alle trainingen op één blad, voor de trainer">Draaiboek</a>
+        <a href="#vrij" data-nav="free" data-tip="De pop met alle knoppen, zonder stappenplan">Vrij spelen</a>
+        <button type="button" id="btnTools" class="tools-btn" aria-expanded="false" aria-controls="tools">Instellingen</button>
+      </nav>
+      <div class="tools" id="tools" role="group" aria-label="Instellingen">
+        <button type="button" class="sw" role="switch" id="swDoe" aria-checked="false" data-tip="Zet de opdrachten met de klok en de check aan of uit. Uit: alleen samen naar de pop kijken"><span>Doe-opdrachten</span><span class="sw-track" aria-hidden="true"><i></i></span><span class="sw-state" aria-hidden="true">uit</span></button>
+        <button type="button" class="sw" role="switch" id="swHelp" aria-checked="true" data-tip="Zet de blauwe aanwijzingen aan of uit die laten zien wat de volgende stap is"><span>Hulp</span><span class="sw-track" aria-hidden="true"><i></i></span><span class="sw-state" aria-hidden="true">aan</span></button>
+        <button type="button" class="sw" role="switch" id="swDark" aria-checked="false" data-tip="Wissel tussen een licht en een donker scherm"><span>Donker</span><span class="sw-track" aria-hidden="true"><i></i></span><span class="sw-state" aria-hidden="true">uit</span></button>
+        <button type="button" class="tool-btn" id="btnFull" aria-pressed="false" data-tip="Vul het hele scherm. Handig op een beamer of tv" hidden>Volledig scherm</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- OVERZICHT -->
+  <section id="view-home" class="view" aria-labelledby="homeH">
+    <div class="head-row">
+      <div>
+        <h1 class="tb-h1" id="homeH">Acht stappen, elke keer samen kijken</h1>
+        <p class="tb-sub" id="homeSub">Zeven trainingen en een afronding. In elke stap kijk je samen naar de pop en bespreek je één vraag. De doe-opdrachten staan uit.</p>
+      </div>
+      <p class="tb-progress" id="homeProgress">0 van 7 gedaan</p>
+    </div>
+    <ol class="tcards" id="tcards"></ol>
+    <p class="tb-foot"><span>Een stap overslaan of herhalen kan altijd.</span> <button type="button" class="linkbtn" id="btnResetProgress" data-tip="Zet alle trainingen terug op Nog te doen. Klik twee keer om het zeker te weten">Begin opnieuw bij training 1</button></p>
+  </section>
+
+  <!-- EEN TRAINING -->
+  <section id="view-train" class="view" aria-labelledby="trainTitle" hidden>
+    <div class="train-head">
+      <h1 class="tb-h1" id="trainTitle">Training 1 · Stuiter</h1>
+      <div class="train-meta">
+        <span class="train-step" id="trainEyebrow">Stap 1 van 7 · ongeveer 10 minuten</span>
+        <div class="phases needs-doe" role="group" aria-label="Onderdelen van deze training">
+          <button type="button" data-phase="kijk" aria-pressed="true" data-tip="Het plan: de pop, de vraag en de opdracht">Kijk samen</button>
+          <button type="button" data-phase="doe" aria-pressed="false" data-tip="De opdracht groot in beeld. De klok start pas als je op Start drukt">Doe</button>
+          <button type="button" data-phase="check" aria-pressed="false" data-tip="Handen tellen na de opdracht">Check</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="phase-kijk" class="kijk">
+      <nav class="rail" aria-label="De zeven trainingen en de afronding"><ol id="rail"></ol></nav>
+      <section class="stage-card" aria-label="Kijk samen naar de pop">
+        <div class="kijk-stage" id="trainStage"></div>
+        <div class="stage-foot">
+          <p class="stage-head" id="kijkHead"></p>
+          <div class="looks" id="looks" role="group" aria-label="Laat zien"></div>
+        </div>
+        <div class="tempo-row" id="trainTempoRow" hidden>
+          <label for="trainTempo">Tempo: van laag naar hoog</label>
+          <input type="range" id="trainTempo" min="0" max="100" value="22" data-tip="Schuif om de pop langzamer of sneller te laten lopen">
+        </div>
+        <p class="caption" id="kijkCaption" aria-live="polite"></p>
+      </section>
+      <section class="kijk-side" aria-label="Het plan van deze training">
+        <div class="plan-row" id="planKijkCard">
+          <h2>Kijk samen <span>2 min</span></h2>
+          <p class="plan-q" id="kijkQ"></p>
+          <details id="kijkAnswer">
+            <summary data-tip="Laat de groep eerst zelf antwoorden">Laat het antwoord zien</summary>
+            <p id="kijkHint"></p>
+          </details>
+        </div>
+        <div class="plan-row deep needs-doe" id="planDoeCard">
+          <h2>Doe <span>6 min</span></h2>
+          <p id="planDoe"></p>
+          <div class="plan-clock">
+            <span id="planClock">6:00</span>
+            <button type="button" class="cta" id="btnToDoe" data-tip="Zet de opdracht groot in beeld en start de klok">Start</button>
+          </div>
+        </div>
+        <div class="plan-row needs-doe" id="planCheckCard">
+          <h2>Check <span>2 min</span></h2>
+          <p id="planCheck"></p>
+        </div>
+        <button type="button" class="cta only-nodoe" id="btnPlanFinish" data-tip="Zet deze training op Gedaan en ga terug naar het overzicht">Training afronden</button>
+        <a class="next-link" id="nextTraining" href="#training-2" data-tip="Open de volgende training. Deze training wordt dan niet op Gedaan gezet">Volgende training</a>
+      </section>
+    </div>
+
+    <section class="uitleg" id="wrapExtra" aria-labelledby="wrapH" hidden>
+      <h2 id="wrapH">Het begint bijna altijd bij je heup en je romp</h2>
+      <p class="tb-sub">Loopscholing, heupoefeningen en core stability helpen niet alleen bij hardlopen. Bij bijna elk onderdeel van atletiek begint de beweging bij je heup, en moet je romp stevig zijn om die kracht door te geven.</p>
+      <div class="uitleg-grid">
+        <div class="ex"><h3>Sprint</h3><p>Sprinten is dezelfde beweging als hardlopen, maar groter en sneller: een hoge heup, een korte stuiter op de grond en een lange afzet achter je.</p></div>
+        <div class="ex"><h3>Horden</h3><p>Je voorste been gaat met de knie omhoog over de horde, zoals bij een A'tje. Je achterste been draait opzij in de heup. Met soepele heupen blijf je laag over de horde en blijft je romp rustig.</p></div>
+        <div class="ex"><h3>Verspringen</h3><p>In de laatste passen blijft je heup hoog. Bij de afzet is je been een stijve veer en gaat de knie van je andere been omhoog, net als bij een A'tje. Een stevige romp zorgt dat je niet inzakt.</p></div>
+        <div class="ex"><h3>Hoogspringen</h3><p>De afzet is kort en veert, met de knie van je zwaaibeen omhoog. Boven de lat duw je je heup omhoog. Daarvoor heb je een soepele heup en een sterke romp nodig.</p></div>
+        <div class="ex"><h3>Speerwerpen</h3><p>Je heup draait als eerste naar voren, terwijl je schouder en de speer nog achter blijven. Je romp spant op als een boog en schiet los. Dat is dezelfde schuine veer als bij het lopen. Je arm is het laatste stukje.</p></div>
+        <div class="ex"><h3>Kogelstoten en discuswerpen</h3><p>De kracht komt uit je benen. Je heup draait eerst in, daarna volgen je romp en je schouder, en pas als laatste je arm.</p></div>
+      </div>
+      <p class="tb-sub">Daarom doe je bij elk onderdeel dezelfde oefeningen. Wie zijn heup goed kan bewegen en zijn romp stil kan houden, heeft daar overal iets aan.</p>
+    </section>
+
+    <div id="phase-doe" class="doe" hidden>
+      <div class="doe-wrap">
+        <section class="clock" aria-label="De klok">
+          <div style="display: flex; flex-direction: column; gap: 6px">
+            <span class="clock-lbl" id="clockLbl">Klaar om te starten</span>
+            <span class="clock-time" id="clockTime" role="timer">6:00</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px">
+            <div class="clock-bar" role="img" aria-label="Voortgang van de klok"><i id="clockBar"></i></div>
+            <div class="clock-meta"><span id="clockRound">Ronde 1 van 2</span><span id="clockSwitch">Wissel na 3:00</span></div>
+          </div>
+          <div class="clock-btns">
+            <button type="button" class="big" id="btnClock" data-tip="Start of pauzeer de klok">Start</button>
+            <button type="button" id="btnClockPlus" data-tip="Geef de groep een minuut extra">Een minuut erbij</button>
+            <button type="button" id="btnClockReset" data-tip="Zet de klok terug naar het begin">Opnieuw</button>
+            <button type="button" id="btnSound" aria-pressed="true" data-tip="De piep halverwege en aan het eind: aan of uit">Geluid aan</button>
+          </div>
+        </section>
+        <section class="task" aria-labelledby="doeTitle">
+          <h2 class="task-title" id="doeTitle"></h2>
+          <p class="task-pairs" id="doePairs"></p>
+          <ol class="task-steps" id="doeSteps"></ol>
+          <div class="watch"><span id="doeWatchLbl">Voor wie kijkt</span><p id="doeWatch"></p></div>
+          <button type="button" class="linkbtn" id="btnToCheck" data-tip="Sla de rest van de klok over">Ga naar de check</button>
+        </section>
+      </div>
+    </div>
+
+    <div id="phase-check" class="check" hidden>
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <h2 class="check-q" id="checkQ"></h2>
+        <p class="tb-sub">Steek je hand op. Er is geen fout antwoord. Tel met plus en min.</p>
+      </div>
+      <div class="tally" id="tally"></div>
+      <div class="check-foot">
+        <div class="say" aria-live="polite"><span id="sayLbl">Wat je kunt zeggen</span><p id="sayText"></p></div>
+        <div class="check-btns">
+          <button type="button" class="again" id="btnAgain" data-tip="Terug naar de opdracht, met een korte klok van 2 minuten">Nog één ronde van 2 minuten</button>
+          <button type="button" class="finish" id="btnFinish" data-tip="Zet deze training op Gedaan en ga terug naar het overzicht">Training afronden</button>
+        </div>
+      </div>
+      <p class="home-task"><strong>Voor thuis:</strong> <span id="homeTask"></span></p>
+    </div>
+  </section>
+
+  <!-- DRAAIBOEK -->
+  <section id="view-book" class="view" aria-labelledby="bookH" hidden>
+    <div class="head-row">
+      <div>
+        <span class="tb-eyebrow">Voor de trainer</span>
+        <h1 class="tb-h1" id="bookH">Draaiboek</h1>
+        <p class="tb-sub" id="bookSub">Per training één vraag bij de pop, één opdracht en één check. Samen ongeveer tien minuten.</p>
+      </div>
+    </div>
+    <div class="book-wrap">
+      <table class="book">
+        <thead id="bookHead"></thead>
+        <tbody id="bookBody"></tbody>
+      </table>
+    </div>
+    <div class="book-notes" id="bookNotes"></div>
+  </section>
+
+  <!-- VRIJ SPELEN -->
+  <section id="view-free" class="view" aria-labelledby="freeH" hidden>
+    <div class="head-row">
+      <div>
+        <h1 class="tb-h1" id="freeH">Vrij spelen</h1>
+        <p class="tb-sub">De pop met alle knoppen. Trek eraan, laat hem rennen en kijk wat er vanzelf gebeurt.</p>
+      </div>
+    </div>
+  <div class="tabs" role="tablist" aria-label="Kies een proef">
+    <button type="button" role="tab" id="tab-hop" aria-selected="true" aria-controls="panel-hop" data-tip="Trek aan de pop en zie de veer in het been">Stuiteren</button>
+    <button type="button" role="tab" id="tab-toy" aria-selected="false" aria-controls="panel-toy" data-tip="Benen zonder spieren: de heup doet het werk">Vanzelf</button>
+    <button type="button" role="tab" id="tab-run" aria-selected="false" aria-controls="panel-run" data-tip="De hele loopbeweging, met tempo en momentopnames">Rennen</button>
+  </div>
+
+  <div class="layout">
+    <section class="stage" aria-label="De pop">
+      <div class="canvas-wrap">
+        <canvas id="cv" role="img" aria-label="De pop. Sleep om hem te draaien, of kies een kijkrichting eronder."></canvas>
+        <div id="grab" class="grab" tabindex="0" role="button" aria-label="Trek de pop omlaag. Pijl omlaag trekt dieper, spatie laat los."></div>
+        <div id="d3wrap" hidden>
+          <canvas id="cv3" role="img" aria-label="De pop in 3D. Sleep om rond de pop te draaien."></canvas>
+          <div class="d3-views" role="group" aria-label="Kijk van">
+            <button type="button" class="btn" data-cam="side">Opzij</button>
+            <button type="button" class="btn" data-cam="front">Voor</button>
+            <button type="button" class="btn" data-cam="back">Achter</button>
+            <button type="button" class="btn" data-cam="top">Boven</button>
+          </div>
+          <p class="d3-hint" id="d3hint">Sleep om rond de pop te draaien</p>
+        </div>
+      </div>
+      <div class="viewbar" id="viewbar">
+        <div class="seg" id="viewSeg" role="radiogroup" aria-label="Kijkrichting">
+          <label><input type="radio" name="view3" id="viewSide" value="side"><span>Opzij</span></label>
+          <label><input type="radio" name="view3" id="viewThree" value="three" checked><span>Schuin</span></label>
+          <label><input type="radio" name="view3" id="viewFront" value="front"><span>Voor</span></label>
+          <label><input type="radio" name="view3" id="viewRear" value="rear"><span>Achter</span></label>
+          <label><input type="radio" name="view3" id="viewTop" value="top"><span>Boven</span></label>
+        </div>
+        <button type="button" class="btn" id="btn3d" aria-pressed="false" aria-label="Bekijk de pop in 3D" data-tip="Bekijk de pop als 3D-model dat je rond kunt draaien">3D</button>
+      </div>
+      <div class="strip-wrap">
+        <canvas id="strip" role="img" aria-label="Tijdlijn van het grondcontact"></canvas>
+        <p class="strip-cap" id="stripCap"></p>
+      </div>
+    </section>
+
+    <div class="panel">
+      <!-- STUITEREN -->
+      <div id="panel-hop" role="tabpanel" aria-labelledby="tab-hop" class="panel">
+        <p class="explain" id="hopExplain" aria-live="polite">Sleep de pop omlaag en laat los. Hoe dieper je trekt, hoe meer energie er in de veer komt.</p>
+        <div class="card">
+          <h2>Jij bedient</h2>
+          <div class="ctl">
+            <div class="ctl-head"><span class="lbl" id="lblPosture">Heup</span></div>
+            <div class="seg" role="radiogroup" aria-labelledby="lblPosture">
+              <label data-tip="Hoge heup: de veer is stevig"><input type="radio" name="posture" id="postureHoog" value="hoog" checked><span>Hoog</span></label>
+              <label data-tip="Ingezakt: de knieën staan al gebogen en de veer is slapper"><input type="radio" name="posture" id="postureZak" value="zak"><span>Ingezakt</span></label>
+            </div>
+          </div>
+          <button type="button" class="btn primary" id="btnJump" data-tip="De pop springt een paar keer achter elkaar">Laat de pop springen</button>
+        </div>
+        <div class="card">
+          <h2>Wat de veer doet</h2>
+          <div class="meters">
+            <div class="meter"><span class="meter-name">Hoogste sprong</span><span class="meter-val" id="hopHeight">–</span></div>
+            <div class="meter"><span class="meter-name">Kortste grondcontact</span><span class="meter-val" id="hopContact">–</span></div>
+          </div>
+          <div class="meter"><span class="meter-name">Energie in de veer</span><span class="meter-bar energy"><i id="hopEnergy"></i></span></div>
+        </div>
+      </div>
+
+      <!-- VANZELF -->
+      <div id="panel-toy" role="tabpanel" aria-labelledby="tab-toy" class="panel" hidden>
+        <p class="explain" id="toyExplain" aria-live="polite">Deze pop hangt aan een touwtje. De benen hebben geen spieren. Schuif de heup rustig heen en weer en zoek het ritme waarin de benen meegaan. De heup draait dan rond als een trapper.</p>
+        <div class="card">
+          <h2>Jij bedient</h2>
+          <div class="ctl">
+            <div class="ctl-head"><span class="lbl" id="lblDriver">Wat beweeg jij?</span></div>
+            <div class="seg" role="radiogroup" aria-labelledby="lblDriver">
+              <label data-tip="Jij schuift de heup. De schouders volgen"><input type="radio" name="driver" id="driveHip" value="hip" checked><span>De heup</span></label>
+              <label data-tip="Jij schuift de schouders. De schuine veren trekken de heup mee"><input type="radio" name="driver" id="driveSh" value="sh"><span>De schouders</span></label>
+            </div>
+          </div>
+          <div class="ctl">
+            <div class="ctl-head"><label for="toyPad">Schuif heen en weer</label></div>
+            <input type="range" id="toyPad" min="-100" max="100" value="0" data-tip="Schuif rustig heen en weer en zoek het ritme">
+            <div class="ends"><span>naar achteren</span><span>naar voren</span></div>
+          </div>
+          <button type="button" class="btn primary" id="btnToyAuto" aria-pressed="false" data-tip="De pop schuift zelf, in het goede ritme">Doe het voor</button>
+        </div>
+        <div class="card">
+          <h2>Meters <small>volgen vanzelf</small></h2>
+          <div class="meters">
+            <div class="meter"><span class="meter-name">Heup beweegt</span><span class="meter-val" id="tHip">stil</span><span class="meter-bar"><i id="tbHip"></i></span></div>
+            <div class="meter"><span class="meter-name">Benen zwaaien</span><span class="meter-val" id="tLeg">stil</span><span class="meter-bar"><i id="tbLeg"></i></span></div>
+            <div class="meter"><span class="meter-name">Schuine veren</span><span class="meter-val" id="tSpring">slap</span><span class="meter-bar energy"><i id="tbSpring"></i></span></div>
+            <div class="meter"><span class="meter-name">Beenspieren</span><span class="meter-val">uit</span><span class="meter-bar"><i></i></span></div>
+          </div>
+          <p class="note">De benen van deze pop kunnen zelf niets. Alles wat ze doen, komt van de heup.</p>
+        </div>
+      </div>
+
+      <!-- RENNEN -->
+      <div id="panel-run" role="tabpanel" aria-labelledby="tab-run" class="panel" hidden>
+        <p class="explain" id="runExplain" aria-live="polite">De romp staat bijna rechtop, als één rechte lijn, en veert in zijn geheel een klein beetje op en neer (de gele stippellijn). Kijk naar het blauwe bekken en de twee grijze schouders: die bewegen.</p>
+        <div class="card">
+          <h2>Jij bedient</h2>
+          <div class="ctl">
+            <div class="ctl-head"><label for="tempo">Tempo</label><output id="tempoOut" for="tempo">laag</output></div>
+            <input type="range" id="tempo" min="0" max="100" value="22" data-tip="Van laag naar hoog tempo. Kijk wat er groter wordt">
+            <div class="ends"><span>laag</span><span>hoog</span></div>
+          </div>
+          <div class="ctl">
+            <div class="ctl-head"><label for="hip">Heup</label><output id="hipOut" for="hip">hoog</output></div>
+            <input type="range" id="hip" min="0" max="100" value="100" data-tip="Laat de heup inzakken en kijk naar de energiemeter">
+            <div class="ends"><span>ingezakt</span><span>hoog</span></div>
+          </div>
+          <div class="row three">
+            <button type="button" class="btn" id="btnPlay" aria-pressed="false" data-tip="Zet de pop stil of laat hem weer lopen">Pauze</button>
+            <button type="button" class="btn" id="btnSlow" aria-pressed="false" data-tip="Laat de pop vertraagd lopen">Slow motion</button>
+            <button type="button" class="btn" id="btnZoom" aria-pressed="true" aria-label="Draaiing 2 keer vergroot tekenen" data-tip="Tekent de draaiing van bekken en schouders twee keer zo groot, zodat je hem beter ziet">Draaiing ×2</button>
+          </div>
+        </div>
+        <div class="card">
+          <h2>Momentopnames <small>zet de pop stil</small></h2>
+          <div class="snaps" id="snaps">
+            <button type="button" class="btn" data-snap="land" aria-pressed="false">Landing</button>
+            <button type="button" class="btn" data-snap="mid" aria-pressed="false">Veer ingedrukt</button>
+            <button type="button" class="btn" data-snap="off" aria-pressed="false">Afzet</button>
+            <button type="button" class="btn" data-snap="par" aria-pressed="false">Onderbenen</button>
+            <button type="button" class="btn" data-snap="heel" aria-pressed="false">Voet hoog</button>
+            <button type="button" class="btn" data-snap="hipup" aria-pressed="false">Heup omhoog</button>
+            <button type="button" class="btn" data-snap="hipdown" aria-pressed="false">Heup omlaag</button>
+            <button type="button" class="btn" data-snap="wind" aria-pressed="false">Buikveer strak</button>
+            <button type="button" class="btn" data-snap="free" aria-pressed="false">Rugveer strak</button>
+          </div>
+          <div class="ctl">
+            <div class="ctl-head"><label for="scrub">Of kies zelf een moment in de pas</label></div>
+            <input type="range" id="scrub" min="0" max="200" value="20" data-tip="Schuif om zelf door één pas te bladeren">
+            <div class="ends"><span>rechts landt</span><span>links landt</span><span>rechts landt</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <h2>Meters <small>volgen vanzelf</small></h2>
+          <div class="meters" id="runMeters">
+            <button type="button" class="meter"><span class="meter-name">Afzet <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 5V3.6a3 3 0 0 1 6 0V5h.6c.5 0 .9.4.9.9v4.2c0 .5-.4.9-.9.9H2.4a.9.9 0 0 1-.9-.9V5.9c0-.5.4-.9.9-.9H3Zm1.4 0h3.2V3.6a1.6 1.6 0 0 0-3.2 0V5Z"/></svg></span><span class="meter-val" id="mPush">kort</span><span class="meter-bar"><i id="bPush"></i></span></button>
+            <button type="button" class="meter"><span class="meter-name">Voet achter <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 5V3.6a3 3 0 0 1 6 0V5h.6c.5 0 .9.4.9.9v4.2c0 .5-.4.9-.9.9H2.4a.9.9 0 0 1-.9-.9V5.9c0-.5.4-.9.9-.9H3Zm1.4 0h3.2V3.6a1.6 1.6 0 0 0-3.2 0V5Z"/></svg></span><span class="meter-val" id="mHeel">laag</span><span class="meter-bar"><i id="bHeel"></i></span></button>
+            <button type="button" class="meter"><span class="meter-name">Kniehoogte <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 5V3.6a3 3 0 0 1 6 0V5h.6c.5 0 .9.4.9.9v4.2c0 .5-.4.9-.9.9H2.4a.9.9 0 0 1-.9-.9V5.9c0-.5.4-.9.9-.9H3Zm1.4 0h3.2V3.6a1.6 1.6 0 0 0-3.2 0V5Z"/></svg></span><span class="meter-val" id="mKnee">laag</span><span class="meter-bar"><i id="bKnee"></i></span></button>
+            <button type="button" class="meter"><span class="meter-name">Grondcontact <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 5V3.6a3 3 0 0 1 6 0V5h.6c.5 0 .9.4.9.9v4.2c0 .5-.4.9-.9.9H2.4a.9.9 0 0 1-.9-.9V5.9c0-.5.4-.9.9-.9H3Zm1.4 0h3.2V3.6a1.6 1.6 0 0 0-3.2 0V5Z"/></svg></span><span class="meter-val" id="mContact">lang</span><span class="meter-bar"><i id="bContact"></i></span></button>
+            <button type="button" class="meter"><span class="meter-name">Passen per minuut <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 5V3.6a3 3 0 0 1 6 0V5h.6c.5 0 .9.4.9.9v4.2c0 .5-.4.9-.9.9H2.4a.9.9 0 0 1-.9-.9V5.9c0-.5.4-.9.9-.9H3Zm1.4 0h3.2V3.6a1.6 1.6 0 0 0-3.2 0V5Z"/></svg></span><span class="meter-val" id="mCadence">–</span><span class="meter-bar"><i id="bCadence"></i></span></button>
+            <button type="button" class="meter"><span class="meter-name">Energie per meter <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 5V3.6a3 3 0 0 1 6 0V5h.6c.5 0 .9.4.9.9v4.2c0 .5-.4.9-.9.9H2.4a.9.9 0 0 1-.9-.9V5.9c0-.5.4-.9.9-.9H3Zm1.4 0h3.2V3.6a1.6 1.6 0 0 0-3.2 0V5Z"/></svg></span><span class="meter-val" id="mEnergy">normaal</span><span class="meter-bar"><i id="bEnergy"></i></span></button>
+          </div>
+          <p class="note">De meters zitten op slot. Je kunt ze alleen veranderen via tempo en heup.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="uitleg" aria-labelledby="uitlegH">
+    <h2 id="uitlegH">Uitleg</h2>
+    <div class="uitleg-grid">
+      <div class="ex"><h3>Je been is een veer</h3><p>Bij de landing rekken je pezen en spieren uit: je voetboog, je achillespees en kuit, maar ook je bil en je dij. Daarna veren ze terug en duwen ze je weer omhoog. Die energie hoef je niet opnieuw op te wekken. Hardlopen is daarom meer stuiteren dan duwen: je hinkelt van je ene been op je andere.</p></div>
+      <div class="ex"><h3>Heup hoog, veer stevig</h3><p>Met een hoge heup buigt je knie maar een beetje en veert je been stevig terug. Helemaal recht is je knie nooit. Zak je in, dan buigen je knieën diep. De veer wordt slap en je spieren moeten het werk overnemen.</p></div>
+      <div class="ex"><h3>Bijna rechtop, één rechte lijn</h3><p>Je romp is één rechte lijn van je heup tot je schouders en helt hooguit drie à vier graden voorover. Dat is bijna niets: schuif je neus één centimeter naar voren en je bent er. Verder leunen maakt je niet sneller. Niet knikken in je middel en je borst niet vooruit duwen. Je lichaam gaat voorop; armen en benen werken vooral erachter.</p></div>
+      <div class="ex"><h3>Rustige romp, losse buik</h3><p>Je romp draait niet als één blok mee. Wat beweegt, zit eromheen: heupen, schouderbladen, armen en benen. Rustig betekent niet gespannen: je buik blijft los.</p></div>
+      <div class="ex"><h3>Schouders, niet armen</h3><p>Je linker- en rechterschouder gaan om de beurt met een korte tik naar achteren. Je schouderblad glijdt dan naar je ruggengraat toe. Je armen hangen er ontspannen aan en gaan mee. De elleboog zwaait vooral naar achteren, maar blijft daar niet hangen: bij het terugkomen hangt je bovenarm ongeveer recht naar beneden. Je handen blijven hoog en dicht bij je lichaam en gaan meer omhoog dan naar voren. Zo is je arm een korte slinger, en je benen volgen dat ritme. De tik helpt ook je heupen. Gaat je linkerschouder naar achteren, dan draait je linkerheup makkelijker naar voren en omhoog, en je rechterheup verder naar achteren. Je heupen draaien zo verder, en met een heup die verder naar achteren gaat, zet je sterker af.</p></div>
+      <div class="ex"><h3>Handen dicht bij je borst</h3><p>Houd je handen hoog en dicht bij je borst. Handen verder naar voren is net als voorover hangen: je gewicht komt voor je te liggen. Bij elke landing ben je dan bezig je eigen gewicht tegen te houden, en dat kost te veel energie.</p><span class="tag">aanwijzing van trainers</span></div>
+      <div class="ex"><h3>Hoofd rechtop</h3><p>Je hoofd staat recht boven je romp en je gezicht wijst naar de horizon. Wil je de grond zien, kijk dan omlaag met je ogen. Hangt je hoofd naar voren, dan schuift je heup naar achteren.</p><span class="tag">aanwijzing van trainers</span></div>
+      <div class="ex"><h3>Schuine veren over je buik en je rug</h3><p>Stel je twee elastieken voor tussen je linkerschouder en je rechterheup: één over je buik en één over je rug. Zet je af met rechts, dan zijn die schouder en die heup allebei naar achteren en staat het elastiek over je buik strak. Schiet het los, dan komt je rechterheup naar voren en omhoog en volgt het been vanzelf. Nu zijn schouder en heup allebei voor en staat het elastiek over je rug strak. Dat trekt je elleboog naar achteren en helpt je rechterbeen bij de afzet. Aan de andere kant gebeurt hetzelfde, een halve pas later.</p><span class="tag">denkbeeld van trainers</span></div>
+      <div class="ex"><h3>De heup als trapper</h3><p>Je heup draait rond als een trapper. Omhoog en naar voren: dat gooit je knie mee omhoog. Het werkt ook als een kajakpeddel: gaat de heup aan de zwaaikant omhoog, dan drukt je andere voet juist steviger in de grond, en dat geeft de veer meer energie. Omlaag en naar achteren: je heup gaat met je afzettende been mee naar achteren. Dat doe je niet met kracht: je laat je heup los.</p><span class="tag">denkbeeld van trainers</span></div>
+      <div class="ex"><h3>Benen bewegen vanzelf</h3><p>Je heup zet je bovenbeen in beweging. Je onderbeen vouwt daarna op en strekt weer, als een slinger. Je benen mogen zo slap zijn als de armen van een octopus: je heup en je schouders doen het werk. Probeer het bij Vanzelf.</p></div>
+      <div class="ex"><h3>Hak hoog, korte slinger</h3><p>Loop je sneller, dan maak je grotere passen. Je heup en je been moeten dan sneller van achteren weer naar voren. Iets wat lang en log is, zwaait moeilijk naar voren. Maak je het klein, dan gaat het makkelijker. Een kunstschaatser die een pirouette draait, gaat sneller rond met de armen ingetrokken en langzamer met de armen uitgestoken. Zo werkt het ook bij je been: met je hak dicht bij je bil is het een korte slinger, en die zwaait makkelijk naar voren. Dat gaat meestal vanzelf. Bij een rustig tempo gebeurt het dus niet, en dat is goed. Let er niet te veel op en volg je gevoel. Houd het vooral niet tegen: je voeten laag houden spaart geen energie. Lopen moet natuurlijk aanvoelen.</p></div>
+      <div class="ex"><h3>Je onderbeen is een skistok</h3><p>Een langlaufer prikt zijn stok niet schuin voor zich in de sneeuw, want dan remt hij. Je onderbeen is jouw skistok. Bij de landing staat het ongeveer recht, met je knie licht gebogen, en je voet komt nooit voor je knie. Bij een rustig tempo landt je voet vlak voor je heup. Hoe sneller je loopt, hoe verder naar voren hij neerkomt. Dat komt doordat je romp dan sneller vooruit gaat en dus sneller boven je voet is. Je gewicht komt er pas op als de voet onder je romp is, en dat is bij elk tempo op dezelfde plek. Of je hak, middenvoet of voorvoet eerst de grond raakt, maakt minder uit dan waar en hoe je voet neerkomt.</p></div>
+      <div class="ex"><h3>Onderbenen evenwijdig</h3><p>Kijk naar het moment dat je achterste voet loskomt van de grond. Je twee onderbenen wijzen dan dezelfde kant op: schuin naar achteren. Staat het voorste onderbeen dan al rechtop, dan zwaait die voet door naar voren en land je te ver voor je.</p></div>
+      <div class="ex"><h3>Sneller is dezelfde beweging, maar groter</h3><p>Loop je sneller, dan wordt alles groter: je afzet wordt langer, je voet komt achter hoger, je knie komt hoger en je voet landt verder naar voren. Het aantal passen per minuut verandert maar een beetje. Loop je rustig, maak dan alles kleiner. Een magisch aantal passen per minuut bestaat niet: wie lange benen heeft, zet er meestal wat minder.</p></div>
+      <div class="ex"><h3>Knieën omhoog? Draai je heupen</h3><p>Je knie komt vanzelf omhoog als je heup aan die kant naar voren en omhoog draait. Zegt iemand “knieën omhoog”, denk dan: heupen beter draaien. Dat kost minder energie dan je knie optillen. En het levert meer op: gaat je heup aan de ene kant naar voren, dan gaat hij aan de andere kant naar achteren, en daar zet je sterker mee af. Mensen zeggen “knieën omhoog” omdat ze zien dat goede lopers hun knieën hoog hebben. Maar goede lopers bewegen vooral hun heupen heel goed. De hoge knie is een gevolg, niet iets om op te letten.</p></div>
+      <div class="ex"><h3>Kort grondcontact?</h3><p>Ook dat is een gevolg, geen opdracht. Je voet staat maar ongeveer een kwart seconde op de grond, of nog korter. Dat is te kort om er onderweg iets aan te veranderen. Kort grondcontact krijg je door dicht bij je lichaam te landen, stevig neer te komen en veerkrachtige pezen te hebben. Tijdens het lopen hoef je er niet aan te denken.</p></div>
+      <div class="ex"><h3>Rechtop lopen? Niet forceren</h3><p>Borst vooruit, schouders naar achteren, “maak je lang”: dat geeft spanning die je niet lang volhoudt. Laat je knieën los en je heup hoog op je voet komen. Dan word je vanzelf lang.</p></div>
+      <div class="ex"><h3>Meer spieren, minder moe</h3><p>Doen je heupen en romp mee, dan delen meer en grotere spieren het werk. Elke spier hoeft dan minder te doen. Daardoor worden vooral je bovenbenen minder snel moe.</p></div>
+    </div>
+  </section>
+
+  <section class="uitleg needs-doe" id="probeer" aria-labelledby="probeerH">
+    <h2 id="probeerH">Probeer het zelf</h2>
+    <div class="uitleg-grid">
+      <div class="ex"><h3>Van hinkelen naar hardlopen</h3><p>Hinkel een paar keer op je rechterbeen, dan op je linker. Daarna twee keer per been, dan één keer per been. Laat je nu heel licht voorover vallen en je loopt. Op één been kun je bijna niet ver voor je landen, dus je voet komt vanzelf dicht bij je lichaam neer.</p></div>
+      <div class="ex"><h3>Begin met wandelen</h3><p>Wandel de eerste honderd meter met een beetje beweging in je heupen en schouders, alsof je rustig danst. Begin dan pas te lopen. Je lichaam zit dan al in het ritme.</p></div>
+      <div class="ex"><h3>Te veel, te weinig, precies goed</h3><p>Probeer iets eerst veel te groot, dan veel te klein, en zoek daartussen wat lekker voelt. Bij elk tempo past een andere maat. Wat bij jou niet werkt, laat je gewoon even liggen.</p></div>
+      <div class="ex"><h3>Springproef</h3><p>Spring op de plaats met kleine, snelle sprongetjes. Spring daarna langzaam en hoog, en dan weer klein en snel. De snelle sprongetjes kosten bijna geen moeite: je pezen veren. Bij de trage moeten je spieren het doen.</p></div>
+      <div class="ex"><h3>Touwtjespringen zonder touw</h3><p>Een paar minuten huppelen of touwtjespringen voor je gaat lopen maakt je pezen veerkrachtiger. Een touw heb je er niet voor nodig.</p></div>
+      <div class="ex"><h3>Handen hoog, handen laag</h3><p>Zwaai op de plaats met je armen in een vast ritme, met je handen hoog bij je borst. Laat ze dan zakken tot je heupen en probeer hetzelfde ritme vol te houden. Laag gaat vanzelf trager: een lange slinger.</p></div>
+      <div class="ex"><h3>Film jezelf</h3><p>Wat je voelt en wat je doet, is vaak niet hetzelfde. Laat iemand je van opzij en van achteren filmen en zet het beeld stil. Komt je voet voor je knie? Staat je onderbeen recht bij de landing? Staan je onderbenen evenwijdig bij de afzet? Vergelijk het met de pop.</p></div>
+      <div class="ex"><h3>Rustig aan</h3><p>Begin langzaam: met alles erbij word je vanzelf sneller. Loop je anders dan eerst, dan moeten sommige spieren wennen, vaak je kuiten. Wat spierpijn mag. Doet het echt pijn, doe dan rustiger aan en laat je hak weer wat meer meedoen.</p></div>
+    </div>
+  </section>
+
+  <details class="sources">
+    <summary>Waar komt dit vandaan?</summary>
+    <p>De pop is een vereenvoudigd model, geen meting aan jou. Dit is gemeten in onderzoek:</p>
+    <ul>
+      <li><strong>Bekken en schouders.</strong> Bij 28 lopers draaiden bekken en borstkas dezelfde kant op, tegen het zwaaiende been in. Het bekken volgde net na de borstkas. <a href="https://salford-repository.worktribe.com/output/1409206/the-coordinated-movement-of-the-spine-and-pelvis-during-running" target="_blank" rel="noopener">Preece, Mason &amp; Bramah, 2016</a></li>
+      <li><strong>Rustige romp.</strong> In dezelfde meting kantelden bekken en borstkas van achteren gezien tegen elkaar in. Het zwaartepunt bewoog nauwelijks opzij: de zijwaartse snelheid bleef binnen ongeveer 0,06 m/s. De borstkas bewoog minder dan het bekken.</li>
+      <li><strong>Landing.</strong> Bij 56 lopers in de WK-marathon van 2017 landde de voet gemiddeld 29 tot 37 cm voor het zwaartepunt. Precies onder het zwaartepunt landen gebeurt dus niet. De pop zet zijn voet bij het laagste tempo 2 cm voor het midden van het lichaam neer en bij het hoogste tempo 24 cm. Dat is een schaal naar wat een looptrainer aanhoudt (zie onderaan), en nog steeds minder ver dan deze marathonlopers. De pop staat daardoor korter op de grond dan echte lopers; deze marathonlopers stonden 210 tot 250 ms op de grond. Daarom toont de meter voor grondcontact geen milliseconden, alleen korter of langer. <a href="https://www.frontiersin.org/articles/10.3389/fspor.2020.00102/full" target="_blank" rel="noopener">Hanley, Bissas &amp; Merlino, 2020</a></li>
+      <li><strong>Passen per minuut.</strong> Dezelfde marathonlopers zetten 3,0 tot 3,2 passen per seconde (180 tot 190 per minuut). Toen de mannen later in de race 10% langzamer liepen, daalde hun pasfrequentie 2% en hun paslengte 8%.</li>
+      <li><strong>Ingezakt lopen.</strong> Lopen met diep gebogen knieën maakt de veer slapper en kostte tot 50% meer energie, niet bij elke proefpersoon even veel. McMahon, Valiant &amp; Frederick, 1987 (doi 10.1152/jappl.1987.62.6.2326)</li>
+      <li><strong>Grondcontact.</strong> 10 getrainde lopers hadden elk een eigen beste grondcontacttijd. 9 van de 10 zaten daar vanzelf binnen 5% van. <a href="https://www.frontiersin.org/articles/10.3389/fspor.2019.00053" target="_blank" rel="noopener">Moore e.a., 2019</a></li>
+    </ul>
+    <p>Dit is model: bij Stuiteren rekent de pop als een gewicht van 50 kg op een veer. Bij Rennen volgen de lengte van de afzet, het grondcontact, de passen per minuut, de kniehoogte en de voethoogte de bekende richting, maar de precieze waarden zijn geschat. Het tempo is alleen laag of hoog; hoe snel dat precies is, doet er niet toe. De tussenstanden van de energiemeter ook. De pop veert in zijn geheel ongeveer 6 tot 9 cm op en neer; de gele stippellijn achter het hoofd laat dat zien.</p>
+    <p>Vanzelf is een speelmodel. De benen zijn slingers zonder spieren en de heup hangt met een veer aan de schouders. Zo zie je het principe. Bij echt lopen helpen je heupspieren en pezen mee. In onderzoek naar sprinten ontstond de beweging van het onderbeen in de zwaaifase vooral door de beweging van het been zelf; de spieren stuurden en remden vooral bij (<a href="https://read.qxmd.com/read/23834897/segment-interaction-and-its-relevance-to-the-control-of-movement-during-sprinting" target="_blank" rel="noopener">Huang e.a., 2013</a>).</p>
+    <p>Keuzes uit de trainingspraktijk, geen meetresultaten: de romp als één rechte lijn die 2° tot 3,5° voorover helt, het hoofd rechtop met de blik op de horizon, alleen de schouders die bewegen (in de meting draait de hele borstkas een beetje mee), ellebogen niet voor het lichaam, handen dichtbij, het onderbeen dat bij de landing ongeveer recht staat, de evenwijdige onderbenen bij de afzet, en de schuine veren over buik en rug. Ook een keuze: het bekken draait in de pop met het been mee naar voren, de heup gaat rond als een trapper en de schouders gaan daar tegenin. In de meting hierboven draaide het bekken bij hardlopen juist een beetje de andere kant op, samen met de borstkas. Bij wandelen gaat het bekken wel met het been mee.</p>
+    <p>Veel van deze keuzes en beelden komen uit de online cursus van de Zweedse looptrainer Fredrik Zillén: het onderbeen als skistok, de evenwijdige onderbenen, drie à vier graden voorover, de landing die met het tempo verder naar voren schuift (hooguit 5 à 6 cm bij een rustig tempo, ongeveer 20 cm bij een hoog tempo), de heup als kajakpeddel, de tik van de schouder, het elastiek over de buik, de losse knie en de slappe benen. De veer over de rug is het spiegelbeeld van die over de buik: de twee kunnen nooit tegelijk strak staan. Zijn cursus is gemaakt voor volwassenen; getallen zoals passen per minuut gelden niet zomaar voor jou.</p>
+    <p>De afronding (stap 8) verbindt de pop met loopscholing en met andere onderdelen van atletiek. Ook dat is trainingspraktijk, geen meetresultaat.</p>
+    <p>Hoe ver bekken en schouders bewegen is geschat: het bekken draait 11° en kantelt 8°, elke schouder gaat ongeveer 8 cm heen en weer. De pop tekent dat standaard 2× vergroot; met de knop “Draaiing ×2” bij Rennen zet je dat uit.</p>
+  </details>
+
+  </section>
+</div>
+
+<div class="coach" id="coach" role="status" hidden>
+  <div class="coach-top"><span class="coach-n" id="coachN"></span><button type="button" class="coach-x" id="coachOff" aria-label="Zet de hulp uit" data-tip="Zet de hulp uit. Weer aanzetten kan met de schakelaar Hulp, bovenaan">×</button></div>
+  <p id="coachText"></p>
+  <button type="button" class="ok" id="coachOk">Volgende</button>
+</div>
+<button type="button" class="coach-jump" id="coachJump" hidden>Volgende stap</button>
+<div class="tip" id="tip" role="tooltip" hidden></div>
+
+<script>
+(() => {
+'use strict';
+const $ = s => document.querySelector(s);
+const G = 9.81, THIGH = 0.5, SHIN = 0.5, FOOT = 0.2, ANKLE_H = 0.068, GAM0 = Math.asin(ANKLE_H / FOOT);
+const TRUNK = 0.56, HEAD_R = 0.115, UARM = 0.30, FARM = 0.26, HIPW = 0.15, SHW = 0.19;
+const rad = d => d * Math.PI / 180, clamp = (x, a, b) => Math.max(a, Math.min(b, x)), lerp = (a, b, t) => a + (b - a) * t;
+const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- theme tokens for canvas ---------- */
+const C = {};
+function readTheme() {
+  const cs = getComputedStyle(document.documentElement);
+  for (const k of ['bg','surface','stage','ink','muted','line','accent','track','track-line','spring','spring-hot','wood','wood-far','rivet','outline','shirt','yoke'])
+    C[k] = cs.getPropertyValue('--' + k).trim();
+}
+readTheme();
+if (window.matchMedia) window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', readTheme);
+new MutationObserver(readTheme).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+/* ---------- canvas setup ---------- */
+const cv = $('#cv'), ctx = cv.getContext('2d'), sp = $('#strip'), sx = sp.getContext('2d');
+let W = 0, H = 0, SW = 0, SHt = 0, dpr = 1, mode = 'hop';
+function syncViewbar() {
+  const seg = document.getElementById('viewSeg'); if (!seg) return;
+  seg.hidden = mode === 'run' && run.d3;                       // the three.js view has its own buttons
+  document.getElementById('btn3d').hidden = mode !== 'run';
+}
+function resize() {
+  dpr = Math.min(window.devicePixelRatio || 1, 2.5);
+  let r = cv.getBoundingClientRect(); W = r.width; H = r.height;
+  cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+  r = sp.getBoundingClientRect(); SW = r.width; SHt = r.height;
+  sp.width = Math.round(SW * dpr); sp.height = Math.round(SHt * dpr);
+  syncViewbar();
+}
+new ResizeObserver(resize).observe(cv);
+resize();
+
+/* ---------- leg geometry ---------- */
+// Angles: thigh th from straight down (forward +), knee flexion ka, foot angle rho relative to shin.
+function ik(dx, dy) {
+  let d = Math.hypot(dx, dy);
+  d = clamp(d, 0.2, THIGH + SHIN - 0.004);
+  const alpha = Math.atan2(dx, dy);
+  const K = Math.acos(clamp((THIGH * THIGH + SHIN * SHIN - d * d) / (2 * THIGH * SHIN), -1, 1));
+  const delta = Math.acos(clamp((THIGH * THIGH + d * d - SHIN * SHIN) / (2 * THIGH * d), -1, 1));
+  return { th: alpha + delta, ka: Math.PI - K };
+}
+function legFK(hx, hy, th, ka, rho) {
+  const kx = hx + THIGH * Math.sin(th), ky = hy - THIGH * Math.cos(th);
+  const sa = th - ka;
+  const ax = kx + SHIN * Math.sin(sa), ay = ky - SHIN * Math.cos(sa);
+  const fa = sa + rho;
+  const tx = ax + FOOT * Math.sin(fa), ty = ay - FOOT * Math.cos(fa);
+  const so = fa + GAM0;                       // sole direction
+  const lx = tx - 0.24 * Math.sin(so), ly = ty + 0.24 * Math.cos(so);
+  return { hx, hy, kx, ky, ax, ay, tx, ty, lx, ly };
+}
+
+/* =====================================================
+   STUITEREN: a 50 kg mass on a spring (leg), real physics
+   ===================================================== */
+const HOP = { m: 50, zeta: 0.07, maxPull: 0.15, presets: { hoog: { L0: 1.075, k: 15000 }, zak: { L0: 0.98, k: 7000 } } };
+const hop = { posture: 'hoog', state: 'rest', y: 0, v: 0, pull: 0, t: 0, launched: false, inContact: true,
+  tTouch: 0, apex: 0, apexes: [], contacts: [], buf: [], blocks: [], autoT: 0, hinted: false };
+function hopP() {
+  const p = HOP.presets[hop.posture];
+  return { L0: p.L0, k: p.k, c: 2 * HOP.zeta * Math.sqrt(p.k * HOP.m), yeq: p.L0 - HOP.m * G / p.k };
+}
+function hopReset() {
+  const P = hopP();
+  Object.assign(hop, { state: 'rest', y: P.yeq, v: 0, pull: 0, launched: false, inContact: true, apex: 0, apexes: [], contacts: [], buf: [], blocks: [], t: 0 });
+  showHop();
+}
+function hopGrab() {
+  const P = hopP();
+  if (hop.state === 'rest') { hop.apexes = []; hop.contacts = []; hop.buf = []; hop.blocks = []; hop.t = 0; }
+  hop.pull = clamp(P.yeq - hop.y, 0, HOP.maxPull);
+  hop.state = 'drag'; hop.v = 0; hop.apex = 0; hop.hinted = true;
+  $('#hopExplain').textContent = 'Hoe dieper je trekt, hoe meer energie er in de veer komt. Laat los.';
+}
+function hopRelease() {
+  if (hop.state !== 'drag' && hop.state !== 'auto') return;
+  if (hop.pull < 0.004) { hop.state = 'rest'; return; }
+  hop.apexes = []; hop.contacts = []; hop.blocks = [];
+  hop.state = 'sim'; hop.v = 0; hop.launched = false; hop.inContact = true; hop.apex = 0;
+}
+function hopAuto() {
+  hopReset(); hop.state = 'auto'; hop.autoT = 0; hop.hinted = true;
+}
+function hopSettle() {
+  const P = hopP();
+  hop.state = 'rest'; hop.y = P.yeq; hop.v = 0; hop.pull = 0;
+  const ex = $('#hopExplain');
+  if (!hop.apexes.length) { ex.textContent = 'Te zacht getrokken: de pop komt niet los van de grond. Trek dieper.'; return; }
+  let s;
+  if (hop.contacts.length >= 2) {
+    const a = Math.round(hop.contacts[0] / 5) * 5, b = Math.round(hop.contacts[hop.contacts.length - 1] / 5) * 5;
+    s = `Eerste landing: ${a} ms op de grond. Laatste landing: ${b} ms. Hoe harder de stuit, hoe korter het grondcontact. Dat regelt de veer zelf.`;
+  } else {
+    s = `Sprong van ${Math.round(Math.max(...hop.apexes) * 100)} cm.` + (hop.contacts.length ? ` Daarna ${Math.round(hop.contacts[0] / 5) * 5} ms op de grond.` : '');
+  }
+  if (hop.posture === 'zak') s += ' Ingezakt is de veer slapper: even diep getrokken, minder sprong en langer op de grond.';
+  ex.textContent = s;
+}
+function hopStep(dt) {
+  const P = hopP();
+  if (hop.state === 'rest') { hop.y = P.yeq; return; }
+  if (hop.state === 'auto') {
+    hop.autoT += dt;
+    const u = clamp(hop.autoT / 0.55, 0, 1);
+    hop.pull = HOP.maxPull * u * u * (3 - 2 * u); hop.y = P.yeq - hop.pull; hop.v = 0; hop.t += dt;
+    if (hop.autoT > 0.8) hopRelease();
+  } else if (hop.state === 'drag') {
+    hop.y = P.yeq - hop.pull; hop.v = 0; hop.t += dt;
+  } else {
+    const n = Math.max(1, Math.round(dt / 0.001)), h = dt / n;
+    for (let i = 0; i < n; i++) {
+      const comp = P.L0 - hop.y, was = hop.inContact;
+      let F = 0;
+      if (comp > 0) { F = P.k * comp - P.c * hop.v; if (F < 0) F = 0; }
+      hop.v += (F / HOP.m - G) * h; hop.y += hop.v * h; hop.t += h;
+      const now = hop.y < P.L0;
+      if (was && !now) {
+        if (hop.launched) { const ms = (hop.t - hop.tTouch) * 1000; hop.contacts.push(ms); hop.blocks.push({ t0: hop.tTouch, t1: hop.t, ms }); }
+        hop.launched = true; hop.apex = 0;
+      }
+      if (!was && now) { hop.tTouch = hop.t; hop.apexes.push(hop.apex); }
+      if (!now) hop.apex = Math.max(hop.apex, hop.y - P.L0);
+      hop.inContact = now;
+    }
+    if (hop.inContact && Math.abs(hop.v) < 0.03 && Math.abs(hop.y - P.yeq) < 0.003) hopSettle();
+  }
+  hop.buf.push({ t: hop.t, y: hop.y });
+  while (hop.buf.length && hop.buf[0].t < hop.t - 4) hop.buf.shift();
+}
+let hopShown = {};
+function setText(id, s) { if (hopShown[id] !== s) { hopShown[id] = s; $(id).textContent = s; } }
+function showHop() {
+  const P = hopP();
+  const best = Math.max(0, hop.apex, ...hop.apexes);
+  setText('#hopHeight', best > 0.004 ? Math.round(best * 100) + ' cm' : '–');
+  setText('#hopContact', hop.contacts.length ? Math.round(Math.min(...hop.contacts) / 5) * 5 + ' ms' : '–');
+  const comp = Math.max(0, P.L0 - hop.y), cmax = HOP.m * G / P.k + HOP.maxPull;
+  $('#hopEnergy').style.width = clamp(100 * (comp * comp) / (cmax * cmax), 0, 100).toFixed(1) + '%';
+}
+function armJoints(sx, sy, alpha, eps, flen) {
+  const ex = sx + UARM * Math.sin(alpha), ey = sy - UARM * Math.cos(alpha), fa = alpha + eps;
+  return { sx, sy, ex, ey, hx: ex + flen * Math.sin(fa), hy: ey - flen * Math.cos(fa) };
+}
+function hopPose() {
+  const P = hopP();
+  const lift = Math.max(0, hop.y - P.L0);
+  const cr = clamp((1.075 - hop.y) / 0.30, 0, 1);
+  const hx = -0.14 * cr, hy = hop.y;
+  const a = ik(0 - hx, hy - (ANKLE_H + lift));
+  const rho = (Math.PI / 2 - GAM0) - (a.th - a.ka);
+  const near = legFK(hx + 0.03, hy, a.th, a.ka, rho), far = legFK(hx - 0.03, hy, a.th, a.ka, rho);
+  const lean = rad(30 * clamp(cr - 0.11, 0, 1));          // upright when standing tall
+  const air = clamp(lift / 0.05, 0, 1);
+  const topX = hx + TRUNK * Math.sin(lean), topY = hy + TRUNK * Math.cos(lean);
+  const alpha = lean + rad(lerp(-4 - 45 * cr, -2, air)), eps = rad(35 + 45 * cr);   // elbows stay at or behind the body
+  return { hx, hy, lean, topX, topY, legs: [near, far],
+    arms: [armJoints(topX + 0.03, topY - 0.05, alpha, eps, FARM), armJoints(topX - 0.03, topY - 0.05, alpha - rad(5), eps, FARM)],
+    spring: { on: true, heat: clamp((P.L0 - hop.y) / (HOP.m * G / P.k + HOP.maxPull), 0, 1) } };
+}
+
+/* =====================================================
+   RENNEN: spring-mass bounce + scripted leg swing
+   ===================================================== */
+const run = { d3: false, s: 0.22, sit: 0, locked: false, lock: 0, zoom: true, snap: null, phi: 0.1, playing: !reduceMotion, slow: false, gait: null, key: '' };
+function makeSpline(us, vs, ms) {
+  const n = us.length, m = ms.slice();
+  for (let i = 1; i < n - 1; i++) if (m[i] === null) m[i] = (vs[i + 1] - vs[i - 1]) / (us[i + 1] - us[i - 1]);
+  return u => {
+    let i = 0; while (i < n - 2 && u > us[i + 1]) i++;
+    const h = us[i + 1] - us[i], t = (u - us[i]) / h, t2 = t * t, t3 = t2 * t;
+    return (2 * t3 - 3 * t2 + 1) * vs[i] + (t3 - 2 * t2 + t) * h * m[i] + (-2 * t3 + 3 * t2) * vs[i + 1] + (t3 - t2) * h * m[i + 1];
+  };
+}
+// Height of the pelvis through one step. It lands at Hland on an almost straight leg, sinks while the spring is loaded,
+// leaves the ground at Hto and floats back up to Hland. The speed up and down has no jumps anywhere.
+function hipH(g, t) {
+  const sm = x => x * x * (3 - 2 * x);
+  if (t < g.tc) { const x = t / g.tc; return g.Hland + (g.Hto - g.Hland) * sm(x) - g.D * Math.sin(Math.PI * x); }
+  const tt = t - g.tc; return g.Hto + (g.Hland - g.Hto) * sm(tt / g.tf) + g.B * (G * g.tf / 2 * tt - G * tt * tt / 2);
+}
+// Model amplitudes with free arms. Pelvis and shoulders turn (yaw) and tip (seen from behind).
+const YAW_S = rad(12), YAW_P = rad(5.5), OBL = rad(4), TILT = rad(2);
+// Timing within the stride (0 = right foot lands): the right hip is furthest forward at PH_P, just before its foot lands;
+// the right shoulder is furthest back at PH_S, a touch earlier, so the shoulders lead the hips.
+const PH_P = 0.88, PH_S = 0.86;
+// The hip joint goes round like a pedal: highest a quarter stride before it is furthest forward.
+const PH_UP = PH_P - 0.25;
+// Hip joint of a leg at its own stride phase p (0 = that foot lands). Same formula for both legs.
+function hipOffset(g, p) {
+  return { dx: HIPW * Math.sin(g.P * Math.cos(2 * Math.PI * (p - PH_P))), dy: HIPW * Math.sin(g.OB * Math.cos(2 * Math.PI * (p - PH_UP))) };
+}
+function stanceGeom(g, tau) {
+  const F = g.xLand - g.Lc * tau;
+  const x = clamp((tau - 0.45) / 0.55, 0, 1), gam = GAM0 + g.betaMax * x * x;
+  const toeX = F + FOOT * Math.cos(GAM0);
+  const ax = toeX - FOOT * Math.cos(gam), ay = FOOT * Math.sin(gam);
+  const o = hipOffset(g, tau * g.duty);
+  return { gam, dx: ax - o.dx, dy: hipH(g, tau * g.tc) + o.dy - ay };
+}
+function stanceLeg(g, tau) {
+  const q = stanceGeom(g, tau), a = ik(q.dx, q.dy);
+  return { th: a.th, ka: a.ka, rho: (Math.PI / 2 - q.gam) - (a.th - a.ka) };
+}
+function buildGait(s, sit, lock = 0, zoom = 1) {
+  const v = 2.0 + 4.0 * s;                                           // low to high tempo; the exact speed does not matter
+  const tc0 = 0.55 * Math.pow(v, -0.75) * (1 + 0.2 * sit);          // contact time a real runner would have at this pace
+  const fstep = 2.77 + 0.053 * (v - 2.0), Tstep = 1 / fstep, Tstride = 2 * Tstep;
+  const g = { s, sit, v, fstep, Tstep, Tstride, betaMax: rad(40 + 18 * s) };
+  g.P = YAW_P * lerp(1, 2.02, lock) * zoom; g.S = YAW_S * lerp(1, 1.44, lock) * zoom; g.OB = OBL * zoom; g.TL = TILT * zoom;
+  // First touch (the ankle) ahead of the middle of the body: a scale with the tempo. At a low tempo right in front of the hip,
+  // at a high tempo much further forward (the course of Fredrik Zillen: at most 5 to 6 cm at 6:40 per km, about 20 cm at 3:10 per km).
+  g.xLand = 0.02 + 0.22 * Math.pow(s, 1.5);
+  g.lean = rad(lerp(2, 3.5, s));                                     // almost upright; never more than 3 to 4 degrees
+  const lim = THIGH + SHIN - 0.012;
+  // The landing: the lower leg stands about upright (a little back at a low tempo) and the knee is slightly bent.
+  // That fixes how high the pelvis is when the foot touches down.
+  const o0 = hipOffset(g, 0), sg0 = rad(lerp(-6, -3.5, s)), dx0 = g.xLand - o0.dx;
+  const ph0 = Math.asin(clamp((dx0 - SHIN * Math.sin(sg0)) / THIGH, -0.9, 0.9));
+  const dy0 = Math.min(THIGH * Math.cos(ph0) + SHIN * Math.cos(sg0), Math.sqrt(Math.max(0.01, (lim - 0.002) * (lim - 0.002) - dx0 * dx0)));   // the knee is never quite straight
+  const Hmid = lerp(1.015, 1.0, s) - 0.10 * sit;                     // lowest point, spring loaded
+  g.Hland = dy0 + ANKLE_H - o0.dy - 0.10 * sit;
+  g.Hto = Hmid + lerp(0.02, 0.05, s);
+  const setTc = tc => {
+    const tf = Tstep - tc, D1 = G * tf * tc / (2 * Math.PI);
+    g.tc = tc; g.tf = tf; g.duty = tc / Tstride; g.Lc = v * tc;
+    g.B = clamp(Math.max(0.012, (g.Hland + g.Hto) / 2 - Hmid) / D1, 0.25, 1.6);   // how deep the spring is pressed in sets the bounce
+    g.D = D1 * g.B;
+  };
+  setTc(tc0);
+  // The foot touches down just ahead of the hip; the leg can then only reach so far behind before it lifts off.
+  for (let i = 0; i < 4; i++) {
+    const o = hipOffset(g, g.duty), gam = GAM0 + g.betaMax, dy = g.Hto + o.dy - FOOT * Math.sin(gam);
+    const Fmin = o.dx - Math.sqrt(Math.max(0.01, lim * lim - dy * dy)) - FOOT * Math.cos(GAM0) + FOOT * Math.cos(gam);
+    setTc(Math.min(tc0, (g.xLand - Fmin - 0.004) * lerp(0.66, 1, s) / v));   // a higher tempo pushes off further back
+  }
+  for (let i = 0; i < 4; i++) {                                      // safety: lower the hips a little if the leg still could not reach
+    let drop = 0;
+    for (const tau of [0, 0.1, 0.7, 0.8, 0.85, 0.9, 0.95, 1]) { const q = stanceGeom(g, tau); if (Math.hypot(q.dx, q.dy) > lim) drop = Math.max(drop, q.dy - Math.sqrt(Math.max(0.01, lim * lim - q.dx * q.dx))); }
+    if (drop <= 0) break; g.Hto -= drop + 0.001; g.Hland -= drop + 0.001;
+  }
+  const e = 0.015, k = (1 - g.duty) / g.duty;
+  const a1 = stanceLeg(g, 1), a1b = stanceLeg(g, 1 - e), a0 = stanceLeg(g, 0), a0b = stanceLeg(g, e);
+  const sl = (p, q) => clamp((p - q) / e * k, -6, 6);
+  g.thLift = rad(lerp(38, 70, s));                                   // drives the knee-height meter (tempo only)
+  const thMax = Math.max(g.thLift, a0.th + rad(8));
+  g.heel = lerp(92, 142, s);                                        // how far the leg folds behind (degrees of knee bend)
+  const kaMax = rad(g.heel + 8 * sit), kaLate = Math.max(rad(lerp(40, 50, s) + 20 * sit), a0.ka + rad(12));
+  // When the back foot leaves the ground, the front leg is at uPar of its swing. Its lower leg then slopes the same way
+  // as the back one (parallel lower legs), so the foot does not swing out ahead and lands close to the body.
+  g.uPar = 0.5 / (1 - g.duty);
+  const thS = makeSpline([0, 0.15, 0.68, 1], [a1.th, a1.th - rad(4), thMax, a0.th], [sl(a1.th, a1b.th), null, 0, sl(a0b.th, a0.th)]);
+  const kaPar = clamp(thS(g.uPar) - (a1.th - a1.ka) + rad(2), kaLate, kaMax);
+  g.sw = {
+    th: thS,
+    ka: makeSpline([0, 0.30, g.uPar, 1], [a1.ka, kaMax, kaPar, a0.ka], [sl(a1.ka, a1b.ka), 0, null, sl(a0b.ka, a0.ka)]),
+    rho0: a1.rho, rho1: a0.rho
+  };
+  return g;
+}
+function freeAnkleX(g, u) {
+  const p = g.duty + u * (1 - g.duty), o = hipOffset(g, p), e = u * u * (3 - 2 * u);
+  const th = g.sw.th(u), ka = Math.max(0.05, g.sw.ka(u));
+  const L = legFK(0, 1, th, ka, lerp(g.sw.rho0, g.sw.rho1, e));
+  return L.ax + o.dx;
+}
+function legAt(g, p) {
+  const o = hipOffset(g, p);
+  if (p < g.duty) { const a = stanceLeg(g, p / g.duty); a.stance = true; a.tau = p / g.duty; a.ox = o.dx; a.oy = o.dy; return a; }
+  const u = (p - g.duty) / (1 - g.duty), e = u * u * (3 - 2 * u);
+  let th = g.sw.th(u), ka = Math.max(0.05, g.sw.ka(u));
+  // late in the swing the foot turns level with the ground, ready to land flat
+  const wf = clamp((u - g.uPar) / (0.97 - g.uPar), 0, 1), wFlat = wf * wf * (3 - 2 * wf), FLAT = Math.PI / 2 - GAM0;
+  let fa = lerp(th - ka + lerp(g.sw.rho0, g.sw.rho1, e), FLAT, wFlat);          // foot angle in the world
+  const hy = hipH(g, ((p * 2) % 1) * g.Tstep) + o.dy;
+  const L = legFK(0, hy, th, ka, fa - (th - ka));
+  let ax = L.ax, ay = L.ay, solve = false;
+  // The last part of the swing. The foot reaches its furthest point ahead and then moves a little back towards the body,
+  // smoothly and without stopping, so it is still moving backwards when it touches down just ahead of the hip.
+  // Real runners do this too (swing-leg retraction): it lowers the braking at the landing.
+  const U0 = g.uPar, UB = lerp(U0, 1, 0.4);
+  if (u > U0) {
+    const Tsw = (1 - g.duty) * g.Tstride, du = 0.01;
+    const X0 = freeAnkleX(g, U0), m0 = (freeAnkleX(g, U0 + du) - X0) / du;   // where the free swing would take the ankle, in body coordinates
+    const reach = g.xLand + lerp(0.06, 0.04, g.s);                             // the foot gets no further ahead than this
+    const t = (u - U0) / (1 - U0), hU = 1 - U0;
+    const pk = 0.45, Xp = Math.min(Math.max(X0, reach), Math.max(X0 + 0.25 * m0 * hU * pk, reach));
+    const m1 = -0.45 * g.v * Tsw;                                               // still moving back at touchdown, a bit slower than the ground
+    const herm = (t, x0, s0, x1, s1) => { const t2 = t * t, t3 = t2 * t; return (2*t3 - 3*t2 + 1) * x0 + (t3 - 2*t2 + t) * s0 + (-2*t3 + 3*t2) * x1 + (t3 - t2) * s1; };
+    const X = t < pk ? herm(t / pk, X0, m0 * hU * pk, Xp, 0) : herm((t - pk) / (1 - pk), Xp, 0, g.xLand, m1 * hU * (1 - pk));
+    ax = X - o.dx; solve = true;
+    if (u > UB) { const wb = (u - UB) / (1 - UB), wB = wb * wb * (3 - 2 * wb); ay = lerp(ay, ANKLE_H + 0.6 * (1 - u), wB); fa = lerp(fa, FLAT, wB); }
+  }
+  // keep the foot clear of the ground: lift the ankle by whatever is missing
+  // and while the foot is well ahead of its landing spot it stays high (knee up, foot tucked under it), so it does not reach out in front
+  const ah = clamp((o.dx + ax + FOOT * Math.sin(fa) - (g.xLand + 0.19)) / 0.22, 0, 1), ahead = ah * ah * (3 - 2 * ah);
+  const need = Math.max(0.012 * clamp((u - 0.2) / 0.1, 0, 1) * clamp((1 - u) / 0.12, 0, 1), 0.24 * ahead);
+  const toeY = ay - FOOT * Math.cos(fa), low = Math.min(toeY, toeY + 0.24 * Math.cos(fa + GAM0));
+  if (low < need) { ay += need - low; solve = true; }
+  if (solve) { const a = ik(ax, hy - ay); th = a.th; ka = a.ka; }
+  return { th, ka, rho: fa - (th - ka), stance: false, tau: 0, ox: o.dx, oy: o.dy };
+}
+function getGait() {
+  const key = [run.s.toFixed(3), run.sit.toFixed(3), run.lock.toFixed(3), run.zoom ? 2 : 1].join('|');
+  if (key !== run.key) { run.gait = buildGait(run.s, run.sit, run.lock, run.zoom ? 2 : 1); run.key = key; }
+  return run.gait;
+}
+function runPose(g, phi, lock) {
+  const p = ((phi % 1) + 1) % 1, w = 2 * Math.PI;
+  const hy = hipH(g, ((p * 2) % 1) * g.Tstep);
+  const R = legAt(g, p), L = legAt(g, (p + 0.5) % 1);
+  const cT = Math.cos(w * (p - PH_S));
+  // + = right side forward (yaw) / right side up (obl) / leaning to the right (tilt)
+  const yawT = -g.S * cT, yawP = g.P * Math.cos(w * (p - PH_P)), obl = g.OB * Math.cos(w * (p - PH_UP)), tilt = g.TL * Math.cos(w * (p - PH_UP));
+  const legR = legFK(R.ox, hy + R.oy, R.th, R.ka, R.rho), legL = legFK(L.ox, hy + L.oy, L.th, L.ka, L.rho);
+  const lean = g.lean, topX = TRUNK * Math.sin(lean), topY = hy + TRUNK * Math.cos(lean);   // the whole trunk leans a touch forward in one straight line
+  // Arms hang from the shoulders: the elbow swings from beside the body backwards, never in front of it.
+  const A = rad(lerp(14, 24, g.s));
+  const arm = (sgn, f) => {                      // f: 0 = elbow fully back, 1 = elbow beside the body
+    const rel = lerp(-2 * A * (1 - f), rad(4), lock), eps = lerp(rad(lerp(100, 135, f)), rad(120), lock);
+    const j = armJoints(topX + sgn * SHW * Math.sin(yawT), topY - 0.05 - sgn * SHW * Math.sin(tilt), lean + rel, eps, lerp(lerp(0.26, 0.17, f), 0.11, lock));
+    j.hlat = lerp(lerp(0.16, 0.06, f), -0.05, lock);
+    return j;
+  };
+  // Slanted springs between the left shoulder and the right hip (first of each pair) and the other way round (second).
+  // Across the belly it is tight when both are back (the right leg has just pushed off); across the back when both are forward.
+  // The two can never be tight together: when the front one gets longer, the back one gets shorter.
+  const t1 = 0.5 - 0.5 * Math.cos(w * (p - PH_P));
+  return { hx: 0, hy, lean, topX, topY, legs: [legR, legL], arms: [arm(1, (1 - cT) / 2), arm(-1, (1 + cT) / 2)], yawT, yawP, obl, tilt, S: g.S, P: g.P, diag: [t1, 1 - t1], diagB: [1 - t1, t1],
+    stance: R.stance ? 0 : (L.stance ? 1 : -1), tau: R.stance ? R.tau : L.tau, spring: { on: R.stance || L.stance, heat: 0 } };
+}
+
+/* =====================================================
+   VANZELF: a toy. Legs are pendulums without muscles, hanging from the hips.
+   The pelvis hangs from the shoulders by a twisting spring (the slanted springs in the back).
+   ===================================================== */
+const TOY = { yawMax: rad(22), wf: 14, wn: 9, zeta: 0.3, c1: 0.6, c2: 1.2, fAuto: 0.77, HY: 1.19, lift: 0.035 };
+const toy = { driver: 'hip', auto: false, target: 0, t: 0, ps: 0, ws: 0, pp: 0, wp: 0,
+  tg: 0, apPrev: 0, hdy: 0, legs: [{ th: 0, w: 0, sh: 0, ws: 0 }, { th: 0, w: 0, sh: 0, ws: 0 }], ampHip: 0, ampLeg: 0, swinging: false, buf: [], key: '' };
+function toyStep(dt) {
+  const n = Math.max(1, Math.round(dt / 0.002)), h = dt / n, T = TOY;
+  for (let i = 0; i < n; i++) {
+    toy.t += h;
+    const raw = toy.auto ? T.yawMax * 0.9 * Math.sin(2 * Math.PI * T.fAuto * toy.t) : toy.target * T.yawMax;
+    toy.tg += (raw - toy.tg) * Math.min(1, h * 25); const tgt = toy.tg;
+    const KL = T.lift / (2 * Math.PI * T.fAuto * T.yawMax);        // hip height follows hip speed: up while going forward
+    let as, ap;
+    if (toy.driver === 'hip') {                                   // you move the pelvis; the shoulders follow through the spring
+      ap = T.wf * T.wf * (tgt - toy.pp) - 2 * T.wf * toy.wp;
+      as = T.wn * T.wn * (-toy.pp - toy.ps) - 2 * T.zeta * T.wn * toy.ws;
+    } else {                                                      // you move the shoulders; the spring pulls the pelvis along
+      as = T.wf * T.wf * (tgt - toy.ps) - 2 * T.wf * toy.ws;
+      ap = T.wn * T.wn * (-toy.ps - toy.pp) - 2 * T.zeta * T.wn * toy.wp;
+    }
+    toy.ws += as * h; toy.ps += toy.ws * h; toy.wp += ap * h; toy.pp += toy.wp * h;
+    const jerk = clamp(KL * (ap - toy.apPrev) / h, -5, 5); toy.apPrev = ap; toy.hdy = clamp(KL * toy.wp, -0.045, 0.045);
+    for (let k = 0; k < 2; k++) {
+      const L = toy.legs[k], sgn = k ? -1 : 1;
+      const ah = sgn * HIPW * (ap * Math.cos(toy.pp) - toy.wp * toy.wp * Math.sin(toy.pp));          // hip joint acceleration, forward +
+      const ay = sgn * jerk;                                                                          // hip joint acceleration, up +
+      const a1 = -23.1 * (1 + ay / G) * Math.sin(L.th) - 2.357 * ah * Math.cos(L.th) - T.c1 * L.w;      // thigh: pendulum on a moving pivot
+      const akx = ah + THIGH * (a1 * Math.cos(L.th) - L.w * L.w * Math.sin(L.th)), aky = THIGH * (a1 * Math.sin(L.th) + L.w * L.w * Math.cos(L.th));
+      const a2 = -(3 / (2 * 0.55)) * ((G + aky + ay) * Math.sin(L.sh) + akx * Math.cos(L.sh)) - T.c2 * L.ws; // lower leg: pendulum hanging from the knee
+      L.w += a1 * h; L.th += L.w * h; L.ws += a2 * h; L.sh += L.ws * h;
+      if (L.th > 1.3) { L.th = 1.3; if (L.w > 0) L.w = 0; } else if (L.th < -1.1) { L.th = -1.1; if (L.w < 0) L.w = 0; }
+      if (L.sh > L.th) { L.sh = L.th; if (L.ws > L.w) L.ws = L.w; }                                    // a knee cannot bend backwards
+      else if (L.th - L.sh > 2.3) { L.sh = L.th - 2.3; if (L.ws < L.w) L.ws = L.w; }
+    }
+  }
+  const dec = Math.exp(-dt / 1.3);
+  toy.ampHip = Math.max(Math.abs(toy.pp), toy.ampHip * dec);
+  toy.ampLeg = Math.max(Math.abs(toy.legs[0].th), Math.abs(toy.legs[1].th), toy.ampLeg * dec);
+  toy.buf.push({ t: toy.t, s: toy.ps, p: toy.pp, l: toy.legs[0].th, dx: HIPW * Math.sin(toy.pp), dy: toy.hdy });
+  while (toy.buf.length && toy.buf[0].t < toy.t - 5) toy.buf.shift();
+}
+function toyPose() {
+  const hy = TOY.HY, topY = hy + TRUNK, A = rad(18), ym = TOY.yawMax * 1.3;
+  const legs = [0, 1].map(k => { const L = toy.legs[k]; return legFK((k ? -1 : 1) * HIPW * Math.sin(toy.pp), hy + (k ? -1 : 1) * toy.hdy, L.th, L.th - L.sh, rad(62)); });
+  const arm = sgn => {
+    const f = clamp((1 + sgn * toy.ps / ym) / 2, 0, 1);
+    const j = armJoints(sgn * SHW * Math.sin(toy.ps), topY - 0.05, -2 * A * (1 - f), rad(lerp(100, 135, f)), lerp(0.26, 0.17, f));
+    j.hlat = lerp(0.16, 0.06, f); return j;
+  };
+  // The slanted springs take turns. Across the belly, left shoulder to right hip is tight while those two are back;
+  // across the back the same pair is tight while those two are forward.
+  const tw = (toy.ps - toy.pp) / 2 / (TOY.yawMax * 0.8);
+  return { hx: 0, hy, lean: 0, topX: 0, topY, legs, arms: [arm(1), arm(-1)], yawT: toy.ps, yawP: toy.pp, obl: 0, tilt: 0,
+    diag: [clamp(tw, 0, 1), clamp(-tw, 0, 1)], diagB: [clamp(-tw, 0, 1), clamp(tw, 0, 1)], spring: { on: false, heat: 0 } };
+}
+function showToy() {
+  const hipF = toy.ampHip / TOY.yawMax, legF = toy.ampLeg / 0.9, tw = Math.abs(toy.ps - toy.pp) / 2 / (TOY.yawMax * 0.8);
+  const word = f => f < 0.12 ? 'stil' : f < 0.5 ? 'een beetje' : 'flink';
+  put('#tHip', word(hipF)); bar('#tbHip', hipF); put('#tLeg', word(legF)); bar('#tbLeg', legF);
+  put('#tSpring', tw < 0.15 ? 'slap' : 'strak'); $('#tbSpring').style.width = (clamp(tw, 0, 1) * 100).toFixed(0) + '%';
+  if (toy.ampLeg > 0.3) toy.swinging = true; else if (toy.ampLeg < 0.12) toy.swinging = false;
+  const key = toy.driver + (toy.swinging ? 1 : 0);
+  if (key !== toy.key) {
+    toy.key = key;
+    $('#toyExplain').textContent = {
+      hip0: 'Deze pop hangt aan een touwtje. De benen hebben geen spieren. Schuif de heup rustig heen en weer en zoek het ritme waarin de benen meegaan. De heup draait dan rond als een trapper.',
+      hip1: 'De benen zwaaien vanzelf. Jij beweegt alleen de heup: omhoog en naar voren, dan omlaag en naar achteren (het gele bolletje). Gaat de heup omhoog en naar voren, dan wordt de knie mee omhoog gegooid.',
+      sh0: 'Nu beweeg jij alleen de schouders. Gaat de linkerschouder naar achteren, dan komt de schuine veer over de buik strak te staan en trekt die de rechterheup mee. Zoek weer het ritme.',
+      sh1: 'De schouders bewegen, de schuine veren trekken de heup mee en de heup zet de benen in beweging. De veer over de buik en de veer over de rug staan om de beurt strak. De benen zelf doen nog steeds niets.'
+    }[key];
+  }
+}
+
+/* ---------- drawing ---------- */
+function mix(a, b, t) {
+  const pa = parseInt(a.slice(1), 16), pb = parseInt(b.slice(1), 16);
+  const r = Math.round(lerp(pa >> 16, pb >> 16, t)), gg = Math.round(lerp((pa >> 8) & 255, (pb >> 8) & 255, t)), bl = Math.round(lerp(pa & 255, pb & 255, t));
+  return `rgb(${r},${gg},${bl})`;
+}
+function limb(c, x1, y1, x2, y2, w, fill) {
+  c.lineCap = 'round';
+  c.strokeStyle = C.outline; c.lineWidth = w + 3; c.beginPath(); c.moveTo(x1, y1); c.lineTo(x2, y2); c.stroke();
+  c.strokeStyle = fill; c.lineWidth = w; c.beginPath(); c.moveTo(x1, y1); c.lineTo(x2, y2); c.stroke();
+}
+function rivet(c, x, y, r) {
+  c.fillStyle = C.rivet; c.strokeStyle = C.outline; c.lineWidth = 1;
+  c.beginPath(); c.arc(x, y, r, 0, 7); c.fill(); c.stroke();
+}
+function coil(c, x1, y1, x2, y2, w, color, lw) {
+  const n = 9, dx = x2 - x1, dy = y2 - y1, len = Math.hypot(dx, dy) || 1, nx = -dy / len, ny = dx / len;
+  c.beginPath(); c.moveTo(x1, y1);
+  for (let i = 1; i < n * 2; i++) {
+    const t = i / (n * 2), s = (i % 2 ? 1 : -1) * w;
+    c.lineTo(x1 + dx * t + nx * s, y1 + dy * t + ny * s);
+  }
+  c.lineTo(x2, y2);
+  c.lineJoin = 'round'; c.lineCap = 'round';
+  c.strokeStyle = C.outline; c.lineWidth = lw + 2.5; c.stroke();
+  c.strokeStyle = color; c.lineWidth = lw; c.stroke();
+}
+function cap(c, x, y, r, fill) {
+  c.fillStyle = fill; c.strokeStyle = C.outline; c.lineWidth = 1.5; c.beginPath(); c.arc(x, y, r, 0, 7); c.fill(); c.stroke();
+}
+function label(c, s, x, y, color, size, align, weight) {
+  c.font = `${weight || 600} ${size || 12}px Barlow, system-ui, sans-serif`; c.fillStyle = color; c.textAlign = align || 'left'; c.textBaseline = 'alphabetic';
+  c.fillText(s, x, y);
+}
+
+/* ---------- 3D view: one puppet you can turn, drawn back to front ----------
+   World: x forward, y up, z to the runner's right. yaw 0 looks at the right side, yaw 90 from behind; pitch 90 from above. */
+const cam = { yaw: 0, pitch: 0, ty: 0, tp: 0, moving: false, touched: false };
+const VIEWS = { side: [0, 0], three: [rad(50), rad(14)], rear: [rad(90), 0], front: [rad(-90), 0], top: [rad(90), rad(90)] };
+function setView(name, instant) {
+  const t = VIEWS[name]; cam.ty = t[0]; cam.tp = t[1]; cam.moving = true;
+  if (instant || reduceMotion) { cam.yaw = t[0]; cam.pitch = t[1]; cam.moving = false; }
+  for (const el of document.querySelectorAll('#viewSeg input')) el.checked = el.value === name;
+}
+function camStep(dt) {
+  if (!cam.moving) return;
+  let dy = cam.ty - cam.yaw; dy = Math.atan2(Math.sin(dy), Math.cos(dy));
+  const k = Math.min(1, dt * 9), dp = cam.tp - cam.pitch;
+  cam.yaw += dy * k; cam.pitch += dp * k;
+  if (Math.abs(dy) < 0.002 && Math.abs(dp) < 0.002) { cam.yaw = cam.ty; cam.pitch = cam.tp; cam.moving = false; }
+}
+function makeView(hDiv, wDiv) {
+  const gp = 30, sc = Math.min((H - gp - 12) / hDiv, W / wDiv);
+  const ca = Math.cos(cam.yaw), sa = Math.sin(cam.yaw), cb = Math.cos(cam.pitch), sb = Math.sin(cam.pitch);
+  const v = { sc, cx: W / 2 + 0.06 * sc * ca, cy: H - gp - sc, ca, sa, cb, sb };
+  // flat projection, turned about the point one metre above the ground under the puppet; d grows towards the viewer
+  v.P = (x, y, z) => { const dh = z * ca - x * sa; return { x: v.cx + (x * ca + z * sa) * sc, y: v.cy - ((y - 1) * cb - dh * sb) * sc, d: dh * cb + (y - 1) * sb }; };
+  return v;
+}
+function drawSlab(v, scroll) {
+  // the track: a long slab; only the faces turned towards the viewer are drawn
+  const X0 = -6, X1 = 6, Z = 0.85, T = -0.5, P = v.P, sideCol = mix(C.track, C.outline, 0.3 * Math.min(1, Math.max(0, v.sb) * 4));
+  const quad = (pts, fill) => { ctx.beginPath(); pts.forEach((q, i) => { const p = P(q[0], q[1], q[2]); if (i) ctx.lineTo(p.x, p.y); else ctx.moveTo(p.x, p.y); }); ctx.closePath(); ctx.fillStyle = fill; ctx.fill(); };
+  const line = (a, b, w) => { const p = P(a[0], a[1], a[2]), q = P(b[0], b[1], b[2]); ctx.lineWidth = w; ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke(); };
+  const zf = v.ca * v.cb > 1e-3 ? Z : v.ca * v.cb < -1e-3 ? -Z : 0, xf = v.sa * v.cb > 1e-3 ? X0 : v.sa * v.cb < -1e-3 ? X1 : null;
+  if (xf !== null) quad([[xf, 0, -Z], [xf, 0, Z], [xf, T, Z], [xf, T, -Z]], sideCol);
+  if (zf) quad([[X0, 0, zf], [X1, 0, zf], [X1, T, zf], [X0, T, zf]], sideCol);
+  if (v.sb > 1e-3) quad([[X0, 0, -Z], [X1, 0, -Z], [X1, 0, Z], [X0, 0, Z]], C.track);
+  ctx.strokeStyle = C['track-line']; ctx.lineCap = 'butt';
+  if (v.sb > 0.02) { line([X0, 0, -Z], [X1, 0, -Z], 2); line([X0, 0, Z], [X1, 0, Z], 2); }
+  else if (zf) line([X0, 0, zf], [X1, 0, zf], 2);
+  ctx.globalAlpha = 0.55;
+  const off = ((scroll % 1) + 1) % 1;
+  for (let k = -7; k <= 7; k++) {
+    const x = k - off;
+    if (v.sb > 0.05) { line([x, 0, -0.62], [x + 0.42, 0, -0.62], 3); line([x, 0, 0.62], [x + 0.42, 0, 0.62], 3); }
+    if (zf) line([x, -0.085, zf], [x + 0.42, -0.085, zf], 3);
+  }
+  ctx.globalAlpha = 1;
+}
+function hull(pts) {                                            // convex outline of screen points
+  pts = pts.slice().sort((a, b) => a.x - b.x || a.y - b.y);
+  const cr = (o, a, b) => (a.x - o.x) * (b.y - o.y) - (a.y - o.y) * (b.x - o.x), lo = [], up = [];
+  for (const p of pts) { while (lo.length > 1 && cr(lo[lo.length - 2], lo[lo.length - 1], p) <= 0) lo.pop(); lo.push(p); }
+  for (let i = pts.length - 1; i >= 0; i--) { const p = pts[i]; while (up.length > 1 && cr(up[up.length - 2], up[up.length - 1], p) <= 0) up.pop(); up.push(p); }
+  lo.pop(); up.pop(); return lo.concat(up);
+}
+function drawScene(pose, v, o) {
+  o = o || {};
+  const P = v.P, sc = v.sc, S = [], LEGZ = 0.11;
+  const add = (d, fn) => { S.push({ d, fn }); return d; };
+  const seg = (a, b, w, fill, bias) => { const pa = P(a[0], a[1], a[2]), pb = P(b[0], b[1], b[2]); return add((pa.d + pb.d) / 2 + (bias || 0), () => limb(ctx, pa.x, pa.y, pb.x, pb.y, w * sc, fill)); };
+  const dot = (c, r, d) => { const p = P(c[0], c[1], c[2]); add(d, () => rivet(ctx, p.x, p.y, Math.max(1.6, r * sc))); };
+  const ball = (c, r, fill, bias) => { const p = P(c[0], c[1], c[2]); return add(p.d + (bias || 0), () => cap(ctx, p.x, p.y, r * sc, fill)); };
+  const sl = Math.sin(pose.lean), cl = Math.cos(pose.lean), R = pose.legs[0], L = pose.legs[1];
+  // shadow and the line through the middle of the body
+  if (v.sb > 0.02) {
+    ctx.fillStyle = C.outline; ctx.globalAlpha = 0.13; ctx.beginPath();
+    for (let k = 0; k < 20; k++) { const a = k / 20 * 2 * Math.PI, p = P(pose.hx + 0.30 * Math.cos(a), 0, 0.22 * Math.sin(a)); if (k) ctx.lineTo(p.x, p.y); else ctx.moveTo(p.x, p.y); }
+    ctx.closePath(); ctx.fill(); ctx.globalAlpha = 1;
+  }
+  if (o.guide) { const a = P(0, 0, 0), b = P(0, pose.topY + 0.5, 0); ctx.strokeStyle = C.muted; ctx.lineWidth = 1; ctx.lineCap = 'butt'; ctx.setLineDash([4, 4]); ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); ctx.setLineDash([]); }
+  // pelvis: from the left hip to the right hip, so turning and tipping show from every side
+  const dPel = seg([L.hx, L.hy + 0.03, -0.13], [R.hx, R.hy + 0.03, 0.13], 0.18, C.accent);
+  const sides = [{ sgn: 1, leg: R, arm: pose.arms[0], col: C.wood }, { sgn: -1, leg: L, arm: pose.arms[1], col: C['wood-far'] }];
+  const legD = [];
+  for (const s of sides) {
+    const z = s.sgn * LEGZ, G2 = s.leg, A = s.arm;
+    const dTh = seg([G2.hx, G2.hy, z], [G2.kx, G2.ky, z], 0.105, s.col), dSh = seg([G2.kx, G2.ky, z], [G2.ax, G2.ay, z], 0.085, s.col);
+    // foot: a short block from heel to toe, resting on its sole
+    let ux = G2.tx - G2.lx, uy = G2.ty - G2.ly; const ul = Math.hypot(ux, uy) || 1; ux /= ul; uy /= ul;
+    let nx = -uy, ny = ux; if (nx * (G2.ax - G2.lx) + ny * (G2.ay - G2.ly) < 0) { nx = -nx; ny = -ny; }
+    const rf = 0.033, h0 = [G2.lx + ux * rf + nx * rf, G2.ly + uy * rf + ny * rf, z], t0 = [G2.tx - ux * rf + nx * rf, G2.ty - uy * rf + ny * rf, z];
+    const dAn = seg([G2.ax, G2.ay, z], [h0[0] + ux * 0.04, h0[1] + uy * 0.04, z], 0.062, s.col, 0.0005);
+    const dFt = seg(h0, t0, 2 * rf, s.col, 0.001);
+    dot([G2.kx, G2.ky, z], 0.02, Math.max(dTh, dSh) + 0.002); dot([G2.ax, G2.ay, z], 0.016, Math.max(dSh, dAn, dFt) + 0.002);
+    dot([G2.hx, G2.hy, z], 0.024, Math.max(dTh, dPel) + 0.002);
+    legD.push(Math.max(dTh, dSh));
+    const zs = s.sgn * SHW, ze = s.sgn * 0.215, zh = s.sgn * (A.hlat === undefined ? 0.15 : A.hlat);
+    const dUa = seg([A.sx, A.sy, zs], [A.ex, A.ey, ze], 0.075, s.col), dFa = seg([A.ex, A.ey, ze], [A.hx, A.hy, zh], 0.062, s.col);
+    dot([A.ex, A.ey, ze], 0.016, Math.max(dUa, dFa) + 0.002);
+    const dCap = ball([A.sx, A.sy, zs], 0.072, C.yoke, 0.02); dot([A.sx, A.sy, zs], 0.022, dCap + 0.001);     // each shoulder moves on its own
+  }
+  // trunk: an upright oval column that does not turn
+  const b0 = [pose.hx + 0.07 * sl, pose.hy + 0.07 * cl], b1 = [pose.topX - 0.03 * sl, pose.topY - 0.03 * cl], ring = [];
+  for (let k = 0; k < 16; k++) { const a = k / 16 * 2 * Math.PI; ring.push(P(b0[0] + 0.082 * Math.cos(a), b0[1], 0.118 * Math.sin(a)), P(b1[0] + 0.082 * Math.cos(a), b1[1], 0.118 * Math.sin(a))); }
+  const hp = hull(ring), tA = P(b0[0] + 0.06 * sl, b0[1] + 0.06 * cl, 0), tB = P(b1[0] - 0.08 * sl, b1[1] - 0.08 * cl, 0);
+  const dTr = add(P((b0[0] + b1[0]) / 2, (b0[1] + b1[1]) / 2, 0).d, () => {
+    ctx.beginPath(); hp.forEach((p, i) => { if (i) ctx.lineTo(p.x, p.y); else ctx.moveTo(p.x, p.y); }); ctx.closePath();
+    ctx.lineJoin = 'round'; ctx.strokeStyle = C.outline; ctx.lineWidth = 0.03 * sc + 3; ctx.stroke(); ctx.strokeStyle = C.shirt; ctx.lineWidth = 0.03 * sc; ctx.stroke(); ctx.fillStyle = C.shirt; ctx.fill();
+    ctx.strokeStyle = C.stage; ctx.lineWidth = 1.5; ctx.setLineDash([4, 5]); ctx.lineCap = 'butt'; ctx.beginPath(); ctx.moveTo(tA.x, tA.y); ctx.lineTo(tB.x, tB.y); ctx.stroke(); ctx.setLineDash([]);
+  });
+  // head, with a nose and eyes so you can see which way it faces
+  const hc = [pose.topX + (0.07 + HEAD_R) * sl + 0.02, pose.topY + (0.07 + HEAD_R) * cl, 0];
+  if (o.string) { const a = P(hc[0], hc[1] + HEAD_R, 0), b = P(hc[0], hc[1] + 3, 0); add(a.d - 0.01, () => { ctx.strokeStyle = C.muted; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); }); }
+  ball(hc, HEAD_R, C.wood); ball([hc[0] + HEAD_R * 1.0, hc[1] - 0.012, 0], 0.034, C.wood);
+  for (const ez of [0.058, -0.058]) { const p = P(hc[0] + HEAD_R * 0.78, hc[1] + 0.03, ez); add(p.d, () => { ctx.fillStyle = C.outline; ctx.beginPath(); ctx.arc(p.x, p.y, Math.max(1.4, 0.014 * sc), 0, 7); ctx.fill(); }); }
+  // spring along the loaded leg
+  if (pose.spring && pose.spring.on) {
+    const i = o.springLeg || 0, G2 = pose.legs[i], z = (i ? -1 : 1) * LEGZ, heat = clamp(pose.spring.heat, 0, 1);
+    const a = P(G2.hx, G2.hy, z), b = o.springToToe ? P(G2.tx - 0.03, G2.ty + 0.03, z) : P(G2.ax, G2.ay, z);
+    add(legD[i] + 0.004, () => coil(ctx, a.x, a.y, b.x, b.y, (0.05 + 0.035 * heat) * sc, mix(C.spring, C['spring-hot'], heat), Math.max(2, 0.022 * sc)));
+  }
+  // slanted springs from a shoulder to the opposite hip: one pair across the belly (fb = 1), one pair across the back (fb = -1)
+  if (o.diag) for (const [fb, arr] of [[1, pose.diag], [-1, pose.diagB || [0, 0]]]) for (const [sg, t] of [[1, arr[0]], [-1, arr[1]]]) {
+    const A = pose.arms[sg > 0 ? 1 : 0], G2 = pose.legs[sg > 0 ? 0 : 1];
+    const a3 = [A.sx + fb * 0.085, A.sy - 0.03, -sg * SHW * 0.8], b3 = [G2.hx + fb * 0.095, G2.hy + 0.07, sg * 0.10], a = P(a3[0], a3[1], a3[2]), b = P(b3[0], b3[1], b3[2]);
+    const seen = fb * v.sa <= 0.2;                 // the belly springs show from the front and the side, the back springs from behind and the side
+    add(seen ? Math.max(dTr, (a.d + b.d) / 2) + 0.003 : -1.2, () => { ctx.globalAlpha = 0.4 + 0.6 * t; coil(ctx, a.x, a.y, b.x, b.y, (0.026 - 0.012 * t) * sc * Math.max(0.12, Math.abs(v.sa)), mix(C.spring, C['spring-hot'], t), 1.5 + 1.5 * t); ctx.globalAlpha = 1; });
+  }
+  // the path of the right hip, drawn 3x larger: it goes round like a pedal
+  if (o.pedal) {
+    const m = 3, Q = o.pedal, zz = 0.21, pp = Q.pts.map(q => P(pose.hx + q[0] * m, pose.hy + q[1] * m, zz)), c = P(pose.hx + Q.cur[0] * m, pose.hy + Q.cur[1] * m, zz);
+    add(P(pose.hx, pose.hy, zz).d + 0.01, () => {
+      ctx.strokeStyle = C.spring; ctx.lineWidth = 1.5; ctx.setLineDash([3, 3]); ctx.lineCap = 'butt'; ctx.beginPath();
+      pp.forEach((p, i) => { if (i) ctx.lineTo(p.x, p.y); else ctx.moveTo(p.x, p.y); }); if (Q.closed) ctx.closePath(); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle = C.spring; ctx.strokeStyle = C.outline; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(c.x, c.y, 4.5, 0, 7); ctx.fill(); ctx.stroke();
+    });
+  }
+  S.sort((p, q) => p.d - q.d);
+  for (const p of S) p.fn();
+}
+function annotate(pose, v) {
+  const id = run.snap; if (!id) return;
+  const R = pose.legs[0], Z = 0.11, ZO = 0.24, P = v.P, hot = C['spring-hot'];
+  const ring = (x, y, z) => { const p = P(x, y, z); ctx.setLineDash([]); ctx.strokeStyle = hot; ctx.lineWidth = 2.5; ctx.beginPath(); ctx.arc(p.x, p.y, 0.12 * v.sc, 0, 7); ctx.stroke(); };
+  const dash = (a, b, col) => { const p = P(a[0], a[1], a[2]), q = P(b[0], b[1], b[2]); ctx.strokeStyle = col; ctx.lineWidth = 2; ctx.lineCap = 'butt'; ctx.setLineDash([6, 5]); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke(); ctx.setLineDash([]); };
+  const head = (p, q) => { const ang = Math.atan2(q.y - p.y, q.x - p.x), n = 11, tx = q.x + Math.cos(ang) * 6, ty = q.y + Math.sin(ang) * 6; ctx.fillStyle = hot; ctx.beginPath(); ctx.moveTo(tx, ty);
+    ctx.lineTo(tx - n * Math.cos(ang - 0.45), ty - n * Math.sin(ang - 0.45)); ctx.lineTo(tx - n * Math.cos(ang + 0.45), ty - n * Math.sin(ang + 0.45)); ctx.closePath(); ctx.fill(); };
+  const pen = () => { ctx.setLineDash([]); ctx.strokeStyle = hot; ctx.lineWidth = 3.5; ctx.lineCap = 'round'; ctx.stroke(); };
+  const arrow = (a, b) => { const p = P(a[0], a[1], a[2]), q = P(b[0], b[1], b[2]); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); pen(); head(p, q); };
+  const plumb = () => dash([0, pose.topY + 0.32, 0], [0, 0, 0], C.accent);
+  if (id === 'land' || id === 'mid' || id === 'hipdown') plumb();
+  if (id === 'mid') ring(R.ax + 0.07, 0.04, Z);
+  if (id === 'land') {                                           // the foot comes back under the body and then straight down
+    const xe = R.tx + 0.10, a = P(R.hx + 0.52, R.hy - 0.30, Z), b = P(R.hx + 0.50, 0.62, Z), c = P(xe, 0.62, Z), d = P(xe, 0.20, Z);
+    ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.bezierCurveTo(b.x, b.y, c.x, c.y, d.x, d.y); pen(); head(P(xe, 0.30, Z), d);
+  }
+  if (id === 'off') {                                            // the leg pushes back, in one line from hip to foot
+    const dx = R.tx - R.hx, dy = R.ty - R.hy, n = Math.hypot(dx, dy) || 1, ux = dx / n, uy = dy / n, q = 0.14;
+    arrow([R.hx + ux * 0.18 + uy * q, R.hy + uy * 0.18 - ux * q, Z], [R.tx + ux * 0.06 + uy * q, R.ty + uy * 0.06 - ux * q, Z]);
+  }
+  const shin = (G2, z) => { const ux = G2.ax - G2.kx, uy = G2.ay - G2.ky; dash([G2.kx - ux * 0.35, G2.ky - uy * 0.35, z], [G2.ax + ux * 0.12, G2.ay + uy * 0.12, z], hot); };
+  if (id === 'land') shin(R, Z);
+  if (id === 'par') { shin(R, Z); shin(pose.legs[1], -Z); }
+  if (id === 'heel') { dash([R.hx, R.hy, Z], [R.ax, R.ay, Z], hot); ring(R.ax, R.ay, Z); }
+  if (id === 'hipup') { arrow([pose.hx - 0.30, pose.hy - 0.10, ZO], [pose.hx - 0.16, pose.hy + 0.12, ZO]); arrow([R.kx + 0.10, R.ky - 0.06, Z], [R.kx + 0.20, R.ky + 0.14, Z]); }
+  if (id === 'hipdown') { arrow([pose.hx - 0.26, pose.hy + 0.16, ZO], [pose.hx - 0.26, pose.hy - 0.08, ZO]); arrow([R.ax + 0.34, 0.42, Z], [R.ax + 0.34, 0.14, Z]); }
+}
+
+/* ---------- strips ---------- */
+function drawHopStrip() {
+  const c = sx; c.setTransform(dpr, 0, 0, dpr, 0, 0); c.clearRect(0, 0, SW, SHt);
+  const P = hopP(), win = 3.6, tNow = hop.t, X = t => SW - 8 - (tNow - t) / win * (SW - 16);
+  const yLo = P.yeq - HOP.maxPull - 0.01, yHi = P.L0 + 0.26, Y = y => SHt - 6 - (y - yLo) / (yHi - yLo) * (SHt - 24);
+  // ground-contact blocks
+  for (const b of hop.blocks) {
+    if (b.t1 < tNow - win) continue;
+    const x0 = Math.max(8, X(b.t0)), x1 = X(b.t1);
+    c.fillStyle = C.spring; c.globalAlpha = 0.45; c.fillRect(x0, 16, x1 - x0, SHt - 22); c.globalAlpha = 1;
+    if (x1 - x0 > 14) label(c, String(Math.round(b.ms / 5) * 5), (x0 + x1) / 2, 12, C.ink, 11, 'center', 600);
+  }
+  // spring rest length line: above = in the air
+  c.strokeStyle = C.line; c.lineWidth = 1; c.setLineDash([4, 4]); c.beginPath(); c.moveTo(8, Y(P.L0)); c.lineTo(SW - 8, Y(P.L0)); c.stroke(); c.setLineDash([]);
+  if (hop.buf.length > 1) {
+    c.strokeStyle = C.ink; c.lineWidth = 2; c.lineJoin = 'round'; c.beginPath();
+    let first = true;
+    for (const s of hop.buf) { const x = X(s.t); if (x < 8) continue; if (first) { c.moveTo(x, Y(s.y)); first = false; } else c.lineTo(x, Y(s.y)); }
+    c.stroke();
+  } else {
+    label(c, 'Hier verschijnt de hoogtelijn van de heup.', 12, SHt / 2 + 4, C.muted, 12, 'left', 500);
+  }
+}
+function drawRunStrip(g) {
+  const c = sx; c.setTransform(dpr, 0, 0, dpr, 0, 0); c.clearRect(0, 0, SW, SHt);
+  const win = 2.2, tNow = run.phi * g.Tstride, x0 = 26, X = t => SW - 8 - (tNow - t) / win * (SW - 8 - x0);
+  const rowH = (SHt - 14) / 2, rows = [{ y: 5, off: 0, col: C.wood, name: 'R' }, { y: 9 + rowH, off: 0.5, col: C['wood-far'], name: 'L' }];
+  for (const r of rows) {
+    label(c, r.name, 8, r.y + rowH / 2 + 4, C.muted, 12, 'left', 600);
+    c.fillStyle = C.line; c.globalAlpha = 0.5; c.fillRect(x0, r.y + rowH / 2 - 0.5, SW - 8 - x0, 1); c.globalAlpha = 1;
+    const nMax = Math.floor(tNow / g.Tstride - r.off) + 1;
+    for (let n = nMax; n >= nMax - 12; n--) {
+      const t0 = (n + r.off) * g.Tstride, t1 = t0 + g.tc;
+      if (t1 < tNow - win) break;
+      const a = Math.max(x0, X(t0)), b = Math.min(SW - 8, X(Math.min(t1, tNow)));
+      if (b <= a) continue;
+      c.fillStyle = r.col; c.strokeStyle = C.outline; c.lineWidth = 1;
+      c.beginPath(); c.roundRect(a, r.y + 2, b - a, rowH - 4, 3); c.fill(); c.stroke();
+    }
+  }
+}
+
+function drawToyStrip() {
+  const c = sx; c.setTransform(dpr, 0, 0, dpr, 0, 0); c.clearRect(0, 0, SW, SHt);
+  const win = 5, X = t => SW - 8 - (toy.t - t) / win * (SW - 16), mid = SHt / 2, amp = SHt / 2 - 5;
+  c.strokeStyle = C.line; c.lineWidth = 1; c.beginPath(); c.moveTo(8, mid); c.lineTo(SW - 8, mid); c.stroke();
+  for (const [k, col, norm] of [['s', C.yoke, TOY.yawMax * 1.6], ['p', C.accent, TOY.yawMax * 1.6], ['l', C.ink, 1.3]]) {
+    c.strokeStyle = col; c.lineWidth = 2; c.lineJoin = 'round'; c.beginPath(); let first = true;
+    for (const b of toy.buf) { const x = X(b.t); if (x < 8) continue; const y = mid - clamp(b[k] / norm, -1, 1) * amp; if (first) { c.moveTo(x, y); first = false; } else c.lineTo(x, y); }
+    c.stroke();
+  }
+}
+
+/* ---------- frame ---------- */
+let last = performance.now(), scroll = 0;
+const grab = $('#grab'), scrub = $('#scrub');
+const shown = {};
+function put(id, s) { if (shown[id] !== s) { shown[id] = s; $(id).textContent = s; } }
+function bar(id, f) { const s = (clamp(f, 0, 1) * 100).toFixed(0) + '%'; if (shown['b' + id] !== s) { shown['b' + id] = s; $(id).style.width = s; } }
+function updateRunMeters(g) {
+  const kn = (g.thLift - rad(38)) / rad(32), hl = (g.heel - 92) / 50, pu = (g.Lc - 0.40) / 0.46;
+  put('#mPush', pu < 0.33 ? 'kort' : pu < 0.7 ? 'middel' : 'lang'); bar('#bPush', 0.3 + 0.7 * pu);
+  put('#mHeel', hl < 0.3 ? 'laag' : hl < 0.6 ? 'middel' : hl < 0.85 ? 'hoog' : 'tot de bil'); bar('#bHeel', 0.2 + 0.8 * hl);
+  put('#mKnee', kn < 0.33 ? 'laag' : kn < 0.7 ? 'middel' : 'hoog'); bar('#bKnee', 0.15 + 0.85 * kn);
+  put('#mContact', g.tc > 0.16 ? 'lang' : g.tc > 0.1475 ? 'middel' : 'kort'); bar('#bContact', g.tc / 0.24);
+  put('#mCadence', String(Math.round(g.fstep * 60))); bar('#bCadence', (g.fstep * 60 - 120) / 110);
+  const e = 0.5 * Math.pow(g.sit, 1.5);
+  put('#mEnergy', g.sit > 0.6 ? 'veel hoger' : g.sit > 0.08 ? 'hoger' : 'normaal'); bar('#bEnergy', (1 + e) / 1.65);
+}
+const SNAPS = {
+  land: { view: 'side', p: g => 0, text: 'Landing. De voet komt van boven neer (de pijl). Het onderbeen staat ongeveer recht, als een skistok (de rode stippellijn), en de knie is licht gebogen. Bij een laag tempo landt de voet vlak voor de heup, bij een hoog tempo verder naar voren. Dat komt doordat de romp dan sneller boven de voet is. Het gewicht komt er pas op als de voet onder de romp is, bij elk tempo op dezelfde plek.' },
+  mid: { view: 'side', p: g => g.duty * 0.5, text: 'Veer ingedrukt. Het lichaam is op zijn laagst. Hier draagt het been het meeste gewicht en zit de meeste energie in de veer. De voet staat al ver achter het midden: het been werkt naar achteren.' },
+  off: { view: 'side', p: g => g.duty * 0.97, text: 'Afzet. De veer geeft zijn energie terug en het lichaam gaat omhoog. De heup is gestrekt: het been duwt in één lijn naar achteren (de pijl). Het werk van het been gebeurt achter het lichaam.' },
+  par: { view: 'side', p: g => g.duty * 0.97, text: 'Onderbenen evenwijdig. De achterste voet komt net los. De twee onderbenen wijzen dezelfde kant op (de rode stippellijnen). Daardoor zwaait de voorste voet niet door naar voren en landt hij straks dicht bij het lichaam.' },
+  heel: { view: 'side', p: g => g.duty + 0.30 * (1 - g.duty), text: 'Voet hoog. Het been vouwt op en de voet komt hoog achter het lichaam. Zo is het been een korte slinger (de stippellijn) en zwaait het makkelijk naar voren. Hoe hoger het tempo, hoe groter de passen en hoe hoger de voet. Dat gaat vanzelf: houd het niet tegen.' },
+  hipup: { view: 'side', p: g => 0.74, text: 'Heup omhoog. De rechterheup gaat omhoog en naar voren, zoals een trapper die over de top gaat (het gele bolletje). Het been hangt eraan en wordt meegegooid: de knie komt vanzelf omhoog. De pop tilt de knie niet zelf op.' },
+  hipdown: { view: 'side', p: g => 0.02, text: 'Heup omlaag. De rechterheup gaat nu naar beneden en daarna naar achteren. Daardoor komt de voet stevig op de grond en kan het been meteen afzetten.' },
+  wind: { p: g => Math.max(g.duty + 0.04, 0.36), view: 'front', text: 'Buikveer strak. Je kijkt van voren. Rechts heeft net afgezet. De linkerschouder en de rechterheup zijn allebei naar achteren. De schuine veer over de buik daartussen staat strak (rood). Schiet hij los, dan komt de rechterheup naar voren en omhoog.' },
+  free: { p: g => 0.88, view: 'rear', text: 'Rugveer strak. Je kijkt van achteren. De rechterheup en de linkerschouder zijn allebei naar voren gekomen en het rechterbeen gaat zo landen. Nu staat de schuine veer over de rug daartussen strak (rood). Die trekt de linkerelleboog naar achteren en helpt het rechterbeen bij de afzet.' }
+};
+function frame(now) {
+  requestAnimationFrame(frame);
+  const dt = Math.min(0.033, (now - last) / 1000); last = now;
+  if (W < 120 || H < 120) return;                 // not laid out yet
+  try { paint(now, dt); } catch (err) { window.__err = String(err) + ' W=' + W + ' H=' + H + ' mode=' + mode; }
+}
+function paint(now, dt) {
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
+  camStep(dt);
+  let v;
+  if (mode === 'hop') {
+    hopStep(dt); showHop();
+    v = makeView(2.3, 1.6);
+    drawSlab(v, 0);
+    const pose = hopPose();
+    drawScene(pose, v, { springLeg: 0 });
+    const g = v.P(pose.hx, pose.hy + 0.3, 0);
+    grab.style.transform = `translate(${g.x}px, ${g.y}px)`;
+    if (hop.state === 'rest' && !hop.hinted) {                  // pull hint
+      const ax = v.cx - 0.6 * v.sc, ay = v.cy - 0.25 * v.sc, bob = reduceMotion ? 0 : Math.sin(now / 320) * 5;
+      ctx.strokeStyle = C.accent; ctx.fillStyle = C.accent; ctx.lineWidth = 3; ctx.lineCap = 'round';
+      ctx.beginPath(); ctx.moveTo(ax, ay + bob); ctx.lineTo(ax, ay + 34 + bob); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(ax - 8, ay + 28 + bob); ctx.lineTo(ax, ay + 42 + bob); ctx.lineTo(ax + 8, ay + 28 + bob); ctx.closePath(); ctx.fill();
+      label(ctx, 'trek omlaag', ax, ay - 8, C.accent, 13, 'center', 600);
+    }
+    drawHopStrip();
+  } else if (mode === 'toy') {
+    toyStep(dt); showToy();
+    v = makeView(2.4, 1.9);
+    drawSlab(v, 0);
+    const pose = toyPose();
+    drawScene(pose, v, { string: true, diag: true, guide: true, pedal: { pts: toy.buf.filter(b => b.t > toy.t - 1.25).map(b => [b.dx, b.dy]), closed: false, cur: [HIPW * Math.sin(toy.pp), toy.hdy] } });
+    drawToyStrip();
+  } else {
+    run.lock += clamp((run.locked ? 1 : 0) - run.lock, -dt / 0.35, dt / 0.35);
+    const g = getGait();
+    const rate = run.playing ? (run.slow ? 0.25 : 1) : 0;
+    run.phi += dt * rate / g.Tstride; scroll += dt * rate * g.v;
+    if (run.snap) run.phi = Math.floor(run.phi) + SNAPS[run.snap].p(g) + 1e-4;
+    if (run.playing || run.snap) { const val = String(Math.round((((run.phi % 1) + 1) % 1) * 200)); if (scrub.value !== val) scrub.value = val; }
+    v = makeView(2.2, 1.9);
+    drawSlab(v, scroll);
+    const pose = runPose(g, run.phi, run.lock);
+    pose.spring.heat = pose.stance >= 0 ? Math.sin(Math.PI * pose.tau) : 0;
+    // the path of the head over the last stride: the whole puppet rides the spring up and down
+    ctx.strokeStyle = C.spring; ctx.lineWidth = 2; ctx.lineCap = 'round'; ctx.setLineDash([2, 6]); ctx.beginPath();
+    for (let k = 0; k <= 48; k++) {
+      const ph = run.phi - k / 48, yy = hipH(g, ((((ph * 2) % 1) + 1) % 1) * g.Tstep) + TRUNK + 0.07 + 2 * HEAD_R + 0.04;
+      const p = v.P(-(0.04 + k / 48 * 0.95), yy, 0);
+      if (k) ctx.lineTo(p.x, p.y); else ctx.moveTo(p.x, p.y);
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+    const pts = []; for (let k = 0; k < 32; k++) { const o = hipOffset(g, k / 32); pts.push([o.dx, o.dy]); }
+    drawScene(pose, v, { springLeg: pose.stance >= 0 ? pose.stance : 0, springToToe: true, diag: true, guide: true, pedal: { pts, closed: true, cur: [pose.legs[0].hx, pose.legs[0].hy - pose.hy] } });
+    if (pose.stance >= 0 && pose.tau < 0.3) {                   // the foot stamps down
+      const L = pose.legs[pose.stance], a = 1 - pose.tau / 0.3, z = pose.stance ? -0.11 : 0.11;
+      ctx.globalAlpha = a; ctx.strokeStyle = C.muted; ctx.lineWidth = 2.5; ctx.lineCap = 'round';
+      for (const [dx, up] of [[-0.13, 0.9], [0.27, 0.9], [-0.17, 0.25], [0.31, 0.25]]) {
+        const x0 = L.ax + dx, sg = Math.sign(dx), r0 = 0.02 + 0.04 * (1 - a), r1 = r0 + 0.06;
+        const p = v.P(x0 + sg * r0, 0.03 + up * r0, z), q = v.P(x0 + sg * r1, 0.03 + up * r1, z);
+        ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+    }
+    if (run.d3) draw3D(pose);
+    annotate(pose, v);
+    drawRunStrip(g);
+    updateRunMeters(g);
+  }
+  if (!cam.touched) label(ctx, 'sleep om te draaien', 12, 20, C.muted, 12, 'left', 500);
+}
+
+
+/* =====================================================
+   3D: the same running model, drawn with three.js
+   ===================================================== */
+const d3 = { ready: false, loading: false, az: rad(-50), el: rad(10), dist: 4.3, target: [0, 0.98, 0], dragged: false };
+function load3D() {
+  if (d3.ready || d3.loading) return; d3.loading = true;
+  $('#d3hint').textContent = '3D wordt geladen…';
+  const s = document.createElement('script');
+  s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+  s.onload = () => { try { init3D(); } catch (e) { $('#d3hint').textContent = '3D werkt niet in deze browser.'; } };
+  s.onerror = () => { d3.loading = false; $('#d3hint').textContent = '3D kon niet laden. Probeer het later nog eens.'; };
+  document.head.appendChild(s);
+}
+function init3D() {
+  const T = window.THREE, cv3 = $('#cv3');
+  const R3 = new T.WebGLRenderer({ canvas: cv3, antialias: true, alpha: false });
+  R3.shadowMap.enabled = true; R3.shadowMap.type = T.PCFSoftShadowMap;
+  const scene = new T.Scene(), cam = new T.PerspectiveCamera(32, 1, 0.05, 60);
+  scene.add(new T.HemisphereLight(0xffffff, 0x8a6a50, 0.75));
+  const sun = new T.DirectionalLight(0xffffff, 0.75); sun.position.set(1.5, 4, 2.5); sun.castShadow = true;
+  sun.shadow.mapSize.set(1024, 1024); Object.assign(sun.shadow.camera, { left: -1.6, right: 1.6, top: 1.6, bottom: -1.6, near: 0.5, far: 10 });
+  scene.add(sun); scene.add(sun.target);
+  const mat = c => new T.MeshStandardMaterial({ color: c, roughness: 0.75, metalness: 0 });
+  const M = { wood: mat(0xd9a86c), far: mat(0xb98a55), rivet: mat(0x6b4b2b), shirt: mat(0x283445), yoke: mat(0x5f7486), accent: mat(0x2f5bd3),
+    track: mat(0xc4572e), line: new T.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.7 }),
+    spring: new T.MeshStandardMaterial({ color: 0xf2b21b, roughness: 0.5, transparent: true }), diag: [] };
+  M.diag = [0, 1, 2, 3].map(() => new T.MeshStandardMaterial({ color: 0xf2b21b, roughness: 0.5, transparent: true }));
+  const cyl = new T.CylinderGeometry(1, 1, 1, 20), sph = new T.SphereGeometry(1, 20, 14), box = new T.BoxGeometry(1, 1, 1);
+  const add = (geo, m) => { const o = new T.Mesh(geo, m); o.castShadow = true; scene.add(o); return o; };
+  const up = new T.Vector3(0, 1, 0), va = new T.Vector3(), vb = new T.Vector3(), dir = new T.Vector3();
+  function seg(o, a, b, r) {                       // stretch a unit cylinder or helix from a to b
+    va.set(a[0], a[1], a[2]); vb.set(b[0], b[1], b[2]); dir.subVectors(vb, va); const L = Math.max(1e-4, dir.length());
+    o.position.copy(va).addScaledVector(dir, 0.5); o.quaternion.setFromUnitVectors(up, dir.multiplyScalar(1 / L)); o.scale.set(r, L, r);
+  }
+  function ball(o, a, r) { o.position.set(a[0], a[1], a[2]); o.scale.set(r, r, r); }
+  // a coil: unit helix from y = -0.5 to 0.5 with radius 1
+  // coils are built at their real thickness and only stretched along their length (which stays close to 1)
+  const coilGeo = (r, turns, wire) => { const pts = []; for (let i = 0; i <= 300; i++) { const t = i / 300, a = t * turns * 2 * Math.PI; pts.push(new T.Vector3(r * Math.cos(a), t - 0.5, r * Math.sin(a))); }
+    return new T.TubeGeometry(new T.CatmullRomCurve3(pts), 600, wire, 6, false); };
+  const helixLeg = coilGeo(0.07, 11, 0.009), helixBack = coilGeo(0.022, 9, 0.006);
+  const legParts = [0, 1].map(i => { const m = i ? M.far : M.wood;
+    return { thigh: add(cyl, m), shin: add(cyl, m), foot: add(box, m), j: [add(sph, M.rivet), add(sph, M.rivet), add(sph, M.rivet)], hipB: add(sph, m), kneeB: add(sph, m) }; });
+  const armParts = [0, 1].map(i => { const m = i ? M.far : M.wood;
+    return { up: add(cyl, m), fore: add(cyl, m), hand: add(sph, m), sh: add(sph, M.yoke), el: add(sph, M.rivet) }; });
+  const pelvis = add(cyl, M.accent), pelvisL = add(sph, M.accent), pelvisR = add(sph, M.accent);
+  const trunk = add(sph, M.shirt), neck = add(cyl, M.wood), head = add(sph, M.wood), nose = add(new T.ConeGeometry(1, 1, 16), M.wood);
+  const legSpring = add(helixLeg, M.spring), diag = [0, 1, 2, 3].map(k => add(helixBack, M.diag[k]));   // 0, 1 across the back; 2, 3 across the belly
+  // ground: a running track whose lines slide backwards
+  const ground = new T.Mesh(new T.PlaneGeometry(40, 6), M.track); ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; scene.add(ground);
+  const dashes = new T.Group(); scene.add(dashes);
+  for (const z of [-0.75, 0.75]) for (let i = -20; i <= 20; i++) { const d = new T.Mesh(box, M.line); d.scale.set(0.5, 0.004, 0.04); d.position.set(i, 0.002, z); dashes.add(d); }
+  Object.assign(d3, { T, R3, scene, cam, sun, M, seg, ball, legParts, armParts, pelvis, pelvisL, pelvisR, trunk, neck, head, nose, legSpring, diag, dashes, ready: true, loading: false });
+  theme3D(); $('#d3hint').textContent = 'Sleep om rond de pop te draaien';
+  // orbit by dragging
+  let drag = null;
+  cv3.addEventListener('pointerdown', e => { drag = { x: e.clientX, y: e.clientY, az: d3.az, el: d3.el }; cv3.setPointerCapture(e.pointerId); });
+  cv3.addEventListener('pointermove', e => {
+    if (!drag) return;
+    d3.az = drag.az - (e.clientX - drag.x) * 0.008; d3.el = clamp(drag.el + (e.clientY - drag.y) * 0.006, rad(-5), rad(85));
+    if (!d3.dragged) { d3.dragged = true; $('#d3hint').style.opacity = '0'; }
+  });
+  const end = () => { drag = null; }; cv3.addEventListener('pointerup', end); cv3.addEventListener('pointercancel', end);
+  cv3.addEventListener('wheel', e => { e.preventDefault(); d3.dist = clamp(d3.dist * Math.exp(e.deltaY * 0.001), 2.4, 8); }, { passive: false });
+  cv3.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') d3.az += 0.15; else if (e.key === 'ArrowRight') d3.az -= 0.15;
+    else if (e.key === 'ArrowUp') d3.el = Math.min(rad(85), d3.el + 0.1); else if (e.key === 'ArrowDown') d3.el = Math.max(rad(-5), d3.el - 0.1); else return;
+    e.preventDefault();
+  });
+  cv3.tabIndex = 0;
+}
+function theme3D() {
+  if (!d3.ready) return;
+  const k = ['wood','wood-far','rivet','shirt','yoke','accent','track','stage','spring'].map(n => C[n]).join('|');
+  if (k === d3.themeKey) return; d3.themeKey = k;
+  const set = (m, c) => { if (c) m.color.set(c); };
+  set(d3.M.wood, C.wood); set(d3.M.far, C['wood-far']); set(d3.M.rivet, C.rivet); set(d3.M.shirt, C.shirt); set(d3.M.yoke, C.yoke);
+  set(d3.M.accent, C.accent); set(d3.M.track, C.track);
+  d3.scene.background = new d3.T.Color(C.stage || '#f4f6f8');
+}
+function draw3D(pose) {
+  if (!d3.ready) return;
+  theme3D();
+  const { R3, cam, seg, ball, legParts, armParts } = d3, cv3 = R3.domElement;
+  const w = cv3.clientWidth, hgt = cv3.clientHeight; if (w < 10 || hgt < 10) return;
+  const pr = Math.min(window.devicePixelRatio || 1, 2);
+  if (cv3.width !== Math.round(w * pr) || cv3.height !== Math.round(hgt * pr)) { R3.setPixelRatio(pr); R3.setSize(w, hgt, false); cam.aspect = w / hgt; cam.updateProjectionMatrix(); }
+  // side-view coordinates (x forward, y up) plus the side: z = +right, -left
+  const LEGZ = 0.10;
+  pose.legs.forEach((L, i) => {
+    const z = i ? -LEGZ : LEGZ, P = legParts[i];
+    const hip = [L.hx, L.hy, z * 1.05], knee = [L.kx, L.ky, z], ank = [L.ax, L.ay, z], toe = [L.tx, L.ty, z], heel = [L.lx, L.ly, z];
+    seg(P.thigh, hip, knee, 0.05); seg(P.shin, knee, ank, 0.04);
+    ball(P.hipB, hip, 0.055); ball(P.kneeB, knee, 0.048);
+    // the foot: a flat block from heel to toe
+    const fx = toe[0] - heel[0], fy = toe[1] - heel[1], fl = Math.hypot(fx, fy);
+    P.foot.position.set((toe[0] + heel[0]) / 2 + 0.012 * fy / fl, (toe[1] + heel[1]) / 2 - 0.012 * fx / fl + 0.02, z);
+    P.foot.rotation.set(0, 0, Math.atan2(fy, fx)); P.foot.scale.set(fl, 0.05, 0.085);
+    ball(P.j[0], [hip[0], hip[1], z * 1.05 + Math.sign(z) * 0.045], 0.018); ball(P.j[1], [knee[0], knee[1], z + Math.sign(z) * 0.04], 0.016); ball(P.j[2], [ank[0], ank[1], z + Math.sign(z) * 0.035], 0.014);
+  });
+  const hR = [pose.legs[0].hx, pose.legs[0].hy, LEGZ * 1.05 + 0.03], hL = [pose.legs[1].hx, pose.legs[1].hy, -LEGZ * 1.05 - 0.03];
+  seg(d3.pelvis, hR, hL, 0.085); ball(d3.pelvisR, hR, 0.085); ball(d3.pelvisL, hL, 0.085);
+  // trunk: a flattened egg from the pelvis to the shoulders, leaning with the body
+  const lx = Math.sin(pose.lean), ly = Math.cos(pose.lean);
+  const b0 = [pose.hx + 0.10 * lx, pose.hy + 0.10 * ly], b1 = [pose.topX - 0.02 * lx, pose.topY - 0.02 * ly];
+  d3.trunk.position.set((b0[0] + b1[0]) / 2, (b0[1] + b1[1]) / 2, 0); d3.trunk.rotation.set(0, 0, -pose.lean);
+  d3.trunk.scale.set(0.115, Math.hypot(b1[0] - b0[0], b1[1] - b0[1]) / 2 + 0.04, 0.19);
+  const nb = [pose.topX, pose.topY, 0], hc = [pose.topX + (0.07 + HEAD_R) * lx + 0.02, pose.topY + (0.07 + HEAD_R) * ly, 0];
+  seg(d3.neck, nb, hc, 0.035); ball(d3.head, hc, HEAD_R);
+  d3.nose.position.set(hc[0] + HEAD_R + 0.025, hc[1] - 0.01, 0); d3.nose.rotation.set(0, 0, -Math.PI / 2); d3.nose.scale.set(0.028, 0.06, 0.028);
+  pose.arms.forEach((A, i) => {
+    const sg = i ? -1 : 1, P = armParts[i];
+    const sh = [A.sx, A.sy, sg * SHW], el = [A.ex, A.ey, sg * 0.215], hd = [A.hx, A.hy, sg * (A.hlat ?? 0.12)];
+    seg(P.up, sh, el, 0.034); seg(P.fore, el, hd, 0.03); ball(P.sh, sh, 0.06); ball(P.el, el, 0.036); ball(P.hand, hd, 0.04);
+  });
+  // spring in the leg that carries the weight
+  const st = pose.stance;
+  d3.legSpring.visible = st >= 0;
+  if (st >= 0) {
+    const L = pose.legs[st], z = st ? -LEGZ : LEGZ, heat = pose.spring.heat || 0;
+    seg(d3.legSpring, [L.hx, L.hy - 0.05, z], [L.tx - 0.04, L.ty + 0.03, z], 1);
+    d3.M.spring.color.set(mix(C.spring, C['spring-hot'], heat)); d3.M.spring.opacity = 0.95;
+  }
+  // slanted springs, shoulder to the opposite hip: a pair across the back and a pair across the belly
+  const dB = pose.diagB || [0, 0];
+  [[-1, 1, dB[0]], [-1, -1, dB[1]], [1, 1, pose.diag[0]], [1, -1, pose.diag[1]]].forEach(([fb, sg, t], k) => {
+    const A = sg > 0 ? pose.arms[1] : pose.arms[0], Lg = sg > 0 ? pose.legs[0] : pose.legs[1];
+    // the ends follow the shoulder and the hip only partly, so a tight spring still lies on the trunk and does not sink into it
+    seg(d3.diag[k], [lerp(pose.topX, A.sx, 0.3) + fb * 0.135 * ly, A.sy - 0.06, -sg * SHW * 0.8], [lerp(pose.hx, Lg.hx, 0.3) + fb * 0.125, Lg.hy + 0.06, sg * LEGZ], 1 - 0.3 * t);
+    d3.M.diag[k].color.set(mix(C.spring, C['spring-hot'], t)); d3.M.diag[k].opacity = 0.35 + 0.65 * t;
+  });
+  d3.dashes.position.x = -(((scroll % 1) + 1) % 1);
+  // camera on a sphere around the puppet
+  const [tx, ty, tz] = d3.target, ce = Math.cos(d3.el);
+  cam.position.set(tx + d3.dist * ce * Math.cos(d3.az), ty + d3.dist * Math.sin(d3.el), tz - d3.dist * ce * Math.sin(d3.az));
+  cam.lookAt(tx, ty, tz);
+  R3.render(d3.scene, cam);
+}
+const CAMS = { side: [rad(-90), rad(4)], front: [0, rad(6)], back: [Math.PI, rad(6)], top: [rad(-90), rad(84)] };
+function set3D(on) {
+  run.d3 = on; $('#btn3d').setAttribute('aria-pressed', String(on));
+  $('#d3wrap').hidden = !(mode === 'run' && on); syncViewbar();
+  if (on) load3D();
+}
+
+/* ---------- interaction ---------- */
+function setMode(m) {
+  mode = m;
+  for (const k of ['hop', 'toy', 'run']) { $('#tab-' + k).setAttribute('aria-selected', m === k); $('#panel-' + k).hidden = m !== k; }
+  grab.hidden = m !== 'hop'; $('#d3wrap').hidden = !(m === 'run' && run.d3); syncViewbar(); setView('three');            // everything that moves starts in the slanted view
+  $('#stripCap').textContent = {
+    hop: 'De lijn is de hoogte van de heup. Gele blokken: voeten op de grond, in milliseconden.',
+    toy: 'Lijnen: schouders (grijs), heup (blauw), been (donker). Het been loopt achter de heup aan.',
+    run: 'Voet op de grond, rechts (R) en links (L). In de gaten zweeft de pop.'
+  }[m];
+}
+for (const k of ['hop', 'toy', 'run']) $('#tab-' + k).addEventListener('click', () => setMode(k));
+
+/* toy controls */
+$('#toyPad').addEventListener('input', e => { toy.target = e.target.value / 100; if (toy.auto) setToyAuto(false); });
+function setToyAuto(on) {
+  toy.auto = on; $('#btnToyAuto').setAttribute('aria-pressed', String(on)); $('#btnToyAuto').textContent = on ? 'Stop' : 'Doe het voor';
+  if (!on) { toy.target = 0; $('#toyPad').value = 0; }
+}
+$('#btnToyAuto').addEventListener('click', () => setToyAuto(!toy.auto));
+for (const id of ['#driveHip', '#driveSh']) $(id).addEventListener('change', e => { toy.driver = e.target.value; toy.key = ''; });
+
+let dragStart = null;
+grab.addEventListener('pointerdown', e => {
+  if (mode !== 'hop') return;
+  grab.setPointerCapture(e.pointerId); hopGrab();
+  dragStart = { y: e.clientY, pull: hop.pull }; e.preventDefault();
+});
+grab.addEventListener('pointermove', e => {
+  if (!dragStart || hop.state !== 'drag') return;
+  const sc = Math.min((H - 42) / 2.3, W / 1.6);                // same scale as the stage in this tab
+  hop.pull = clamp(dragStart.pull + (e.clientY - dragStart.y) / sc, 0, HOP.maxPull);
+});
+const endDrag = () => { if (dragStart) { dragStart = null; hopRelease(); } };
+grab.addEventListener('pointerup', endDrag); grab.addEventListener('pointercancel', endDrag);
+grab.addEventListener('keydown', e => {
+  if (e.key === 'ArrowDown') { if (hop.state !== 'drag') hopGrab(); hop.pull = clamp(hop.pull + 0.03, 0, HOP.maxPull); e.preventDefault(); }
+  else if (e.key === ' ' || e.key === 'Enter' || e.key === 'ArrowUp') { hopRelease(); e.preventDefault(); }
+});
+$('#btnJump').addEventListener('click', hopAuto);
+for (const id of ['#postureHoog', '#postureZak']) $(id).addEventListener('change', e => {
+  hop.posture = e.target.value; hopReset();
+  $('#hopExplain').textContent = hop.posture === 'zak'
+    ? 'Ingezakt: de knieën staan al gebogen en de veer is slapper. Trek maar: er komt minder terug.'
+    : 'Heup hoog: het been buigt weinig en de veer is stevig. Trek en laat los.';
+});
+
+const runEx = $('#runExplain');
+function tempoText() {
+  $('#tempoOut').textContent = run.s < 0.34 ? 'laag' : run.s < 0.67 ? 'middel' : 'hoog';
+}
+$('#tempo').addEventListener('input', e => {
+  run.s = e.target.value / 100; tempoText();
+  runEx.textContent = run.s > 0.5
+    ? 'Hoog tempo: alles wordt groter. De afzet wordt langer, de voet komt achter hoger, de knie voor ook, en de voet landt verder voor het lichaam. Het aantal passen per minuut verandert maar een beetje.'
+    : 'Laag tempo: alles is kleiner. De afzet is korter, de voet komt achter minder hoog en hij landt vlak voor de heup. Dat is niet fout. Het hoort bij dit tempo.';
+});
+$('#hip').addEventListener('input', e => {
+  run.sit = 1 - e.target.value / 100;
+  $('#hipOut').textContent = run.sit > 0.6 ? 'ingezakt' : run.sit > 0.08 ? 'iets ingezakt' : 'hoog';
+  runEx.textContent = run.sit > 0.08
+    ? 'Ingezakte heup: de knieën buigen dieper en de veer wordt slap. De pop staat langer op de grond en stuitert minder. Lopen met diep gebogen knieën kostte in een proef tot 50% meer energie.'
+    : 'Heup hoog: het been buigt weinig en veert stevig terug.';
+});
+function syncPlay() {
+  const b = $('#btnPlay'); b.textContent = run.playing ? 'Pauze' : 'Speel af'; b.setAttribute('aria-pressed', String(!run.playing));
+  for (const el of document.querySelectorAll('#snaps .btn')) el.setAttribute('aria-pressed', String(el.dataset.snap === run.snap));
+}
+/* a snapshot turns the puppet to its own side; when it moves again it goes back to the slanted view, unless you picked a side yourself */
+function resumeView() { if (run.snapView && run.playing) setView('three'); run.snapView = false; }
+$('#btnPlay').addEventListener('click', () => { run.playing = !run.playing; run.snap = null; resumeView(); syncPlay(); });
+function applySnap(id) {
+  run.snap = id; run.playing = false; syncPlay();
+  if (SNAPS[id].view) { setView(SNAPS[id].view); run.snapView = true; }
+  runEx.textContent = SNAPS[id].text;
+}
+for (const el of document.querySelectorAll('#snaps .btn')) el.addEventListener('click', () => applySnap(el.dataset.snap));
+scrub.addEventListener('input', () => { run.snap = null; run.playing = false; run.phi = Math.floor(run.phi) + scrub.value / 200; syncPlay(); });
+for (const el of document.querySelectorAll('#viewSeg input')) el.addEventListener('change', e => {
+  const name = e.target.value; setView(name); cam.touched = true; run.snapView = false;
+  if (mode === 'run' && !run.snap) runEx.textContent = {
+    side: 'Van opzij: het onderbeen staat bij de landing ongeveer recht en het been werkt daarna naar achteren. De hele pop veert een beetje op en neer.',
+    front: 'Van voren: de schuine veren over de buik spannen om de beurt op (rood) en schieten weer los. De romp blijft op de stippellijn.',
+    three: 'Schuin van achteren: je ziet in één beeld hoe de heup met het been meegaat, de schouder aan die kant naar achteren gaat en de romp stil blijft.',
+    rear: 'Van achteren: de romp blijft op de stippellijn en de benen blijven naast elkaar. De schuine veren over de rug spannen om de beurt op (rood) en schieten weer los.',
+    top: 'Van boven: de romp blijft stil. De heup gaat met het been mee naar voren. De schouder aan die kant gaat juist naar achteren.'
+  }[name];
+});
+/* turn the puppet by dragging over the stage */
+let rot = null;
+cv.addEventListener('pointerdown', e => { rot = { id: e.pointerId, x: e.clientX, y: e.clientY, yaw: cam.yaw, pitch: cam.pitch, moved: false }; });
+cv.addEventListener('pointermove', e => {
+  if (!rot || e.pointerId !== rot.id) return;
+  const dx = e.clientX - rot.x, dy = e.clientY - rot.y;
+  if (!rot.moved) {
+    if (Math.hypot(dx, dy) < 4) return;
+    rot.moved = true; cam.moving = false; cam.touched = true; run.snapView = false;
+    try { cv.setPointerCapture(e.pointerId); } catch (err) {}
+    for (const el of document.querySelectorAll('#viewSeg input')) el.checked = false;
+  }
+  cam.yaw = rot.yaw + dx * 0.009;
+  if (e.pointerType === 'mouse') cam.pitch = clamp(rot.pitch + dy * 0.006, -0.06, Math.PI / 2);
+});
+const endRot = () => { rot = null; };
+cv.addEventListener('pointerup', endRot); cv.addEventListener('pointercancel', endRot);
+$('#btn3d').addEventListener('click', () => set3D(!run.d3));
+for (const b of document.querySelectorAll('[data-cam]')) b.addEventListener('click', () => {
+  const [az, el] = CAMS[b.dataset.cam]; d3.az = az; d3.el = el; d3.dist = 4.3;
+});
+$('#btnZoom').addEventListener('click', e => {
+  run.zoom = !run.zoom; e.target.setAttribute('aria-pressed', String(run.zoom));
+  runEx.textContent = run.zoom
+    ? 'Het draaien en kantelen van heupen en schouders is nu 2× vergroot getekend, zodat je het goed ziet.'
+    : 'Nu op ware grootte van het model. Heupen en schouders bewegen echt maar een klein beetje. De romp blijft rustig.';
+});
+$('#btnSlow').addEventListener('click', e => { run.slow = !run.slow; e.target.setAttribute('aria-pressed', String(run.slow)); });
+for (const m of document.querySelectorAll('#runMeters .meter')) m.addEventListener('click', () => {
+  m.classList.remove('shake'); void m.offsetWidth; m.classList.add('shake');
+  runEx.textContent = 'Deze meter zit op slot. Je kunt hem niet zelf verzetten. Verander het tempo of de heup en kijk wat hij doet.';
+});
+
+
+/* =====================================================
+   TRAININGSBORD: seven trainings, each with look together, do, check
+   ===================================================== */
+const TR = [
+  { name: 'Stuiter', head: 'Je been is een veer', tag: 'Je been is een veer. Hardlopen is stuiteren, niet duwen.',
+    q: 'Trek de pop omlaag en laat los. Wat duwt hem weer omhoog?',
+    hint: 'De veer in het been. Pezen en spieren rekken uit en veren terug. Met een hoge heup is de veer stevig, ingezakt is hij slap.',
+    looks: [
+      { label: 'Heup hoog', hop: 'hoog', cap: 'Trek de pop omlaag en laat los. Hoe dieper je trekt, hoe meer energie er in de veer komt.' },
+      { label: 'Ingezakt', hop: 'zak', cap: 'De knieën staan al gebogen en de veer is slapper. Even diep getrokken komt er minder terug.' },
+      { label: 'Laat springen', hop: 'jump', cap: 'De pop springt een paar keer. Onder in beeld zie je hoe lang de voeten op de grond staan.' }
+    ],
+    doe: 'De springproef', pairs: 'Iedereen tegelijk, op de plaats.', rounds: 1,
+    steps: ['Spring 10 keer klein en snel.', 'Spring 5 keer traag en hoog.', 'Hinkel 10 keer op elk been.'],
+    watchLbl: 'Let op', watch: 'Bij welke sprongen hoef je het minst te duwen?',
+    check: 'Welke sprongen voelden lichter?', opts: ['Klein en snel', 'Traag en hoog', 'Geen verschil'],
+    say: ['Klopt. Bij de snelle sprongen veren je pezen. Bij de trage moeten je spieren het doen. Bij hardlopen wil je dat stuiteren.',
+      'Probeer het nog eens en maak de snelle sprongen kleiner. Je hakken raken de grond bijna niet.',
+      'Maak het verschil groter: de snelle heel klein, de trage heel traag en diep.'],
+    home: 'Spring deze week elke dag een minuut touwtje, met of zonder touw.' },
+  { name: 'Land', head: 'Je onderbeen is een skistok', tag: 'Je onderbeen is een skistok: recht onder je, knie licht gebogen.',
+    q: 'Zet de pop stil bij de landing. Hoe staat het onderbeen?',
+    hint: 'Ongeveer recht, met de knie licht gebogen. De voet komt nooit voor de knie. Bij een hoger tempo landt de voet verder naar voren. Dat komt doordat de romp dan sneller vooruit gaat en dus sneller boven de voet is. Op het moment dat het gewicht op het been komt, staat de voet altijd onder de romp, bij elk tempo op dezelfde plek.',
+    tempo: true,
+    looks: [
+      { label: 'Landing', run: { snap: 'land' } },
+      { label: 'Onderbenen', run: { snap: 'par' } },
+      { label: 'Slow motion', run: { view: 'three', slow: true }, cap: 'Vertraagd, schuin van achteren. De voet komt van boven neer en het been werkt daarna naar achteren.' }
+    ],
+    doe: 'Loslaten en weglopen', pairs: 'In tweetallen: één loopt, één filmt van opzij.', rounds: 2,
+    steps: ['Loop op de plaats terwijl je een hek of paal vasthoudt.', 'Breng je gewicht iets naar voren en laat los.', 'Loop 20 meter door. Je maatje filmt van opzij.'],
+    watchLbl: 'Voor wie filmt', watch: 'Zet het filmpje stil bij de landing. Komt de voet voor de knie?',
+    check: 'Wat zag je op het filmpje?', opts: ['De voet onder de knie', 'De voet voor de knie', 'Niet goed te zien'],
+    say: ['Mooi. Zo remt de voet niet en komt je gewicht er snel op.',
+      'Dat doen veel lopers. Stap niet naar voren uit. Denk: mijn heup komt op mijn voet.',
+      'Film van opzij, op heuphoogte, en zet het beeld stil op het moment dat de voet de grond raakt.'],
+    home: 'Laat thuis iemand je één keer van opzij filmen en zet het beeld stil bij de landing.' },
+  { name: 'Heup', head: 'Je heup gaat omhoog en naar voren', tag: 'Omhoog en naar voren. Dat gooit je knie mee omhoog.',
+    q: 'Kijk naar het blauwe bekken. Welke kant gaat omhoog als de knie omhoog komt?',
+    hint: 'De heup aan de kant van die knie. Die gaat omhoog en naar voren en gooit de knie mee. De andere voet drukt daardoor steviger in de grond. Zegt iemand “knieën omhoog”, denk dan: heupen beter draaien. Dat kost minder energie. En gaat je heup aan de ene kant naar voren, dan gaat hij aan de andere kant naar achteren: daar zet je sterker mee af.',
+    looks: [
+      { label: 'Heup omhoog', run: { snap: 'hipup' } },
+      { label: 'Heup omlaag', run: { snap: 'hipdown' } },
+      { label: 'Schuin, vertraagd', run: { view: 'three', slow: true }, cap: 'Volg het gele bolletje bij de heup. Het gaat rond als een trapper: omhoog en naar voren, dan omlaag en naar achteren.' }
+    ],
+    doe: 'Laat je heup los', pairs: 'In tweetallen: één doet, één kijkt.', rounds: 2,
+    steps: ['Zet één voet achter je. Strek die knie en laat je heup mee naar achteren gaan.', 'Wandel 30 passen met een losse heup.', 'Loop 30 passen. Laat je heup omhoog en naar voren komen.'],
+    watchLbl: 'Voor wie kijkt', watch: 'Blijft het bovenlijf stil? De beweging zit in de taille.',
+    check: 'Wat voelde je?', opts: ['Mijn andere voet kwam steviger neer', 'Mijn schouders draaiden mee', 'Ik voelde niets bijzonders'],
+    say: ['Precies. Heup omhoog aan de ene kant geeft druk omlaag aan de andere kant, zoals bij een kajakpeddel.',
+      'Houd je bovenlijf stil. Draai alleen in je taille.',
+      'Dat is lastig. Begin met wandelen en maak de beweging eerst te groot.'],
+    home: 'Wandel deze week elke dag honderd meter met een losse heup.' },
+  { name: 'Schouders', head: 'Je schouder tikt naar achteren en helpt je heup draaien', tag: 'Je schouder tikt naar achteren. Dat helpt je heupen draaien en sterker afzetten.',
+    q: 'Bekijk de pop van achteren en van boven. Wat doet de heup als een schouder naar achteren tikt?',
+    hint: 'Tikt een schouder naar achteren, dan gaat de heup aan die kant naar voren en omhoog, en de heup aan de andere kant naar achteren. Schouders en heupen draaien dus tegen elkaar in. De romp ertussen blijft stil. Zo helpt de tik van je schouder je heupen verder te draaien. En met een heup die verder naar achteren gaat, zet je sterker af. De handen blijven hoog en dicht bij de borst. Handen verder naar voren is net als voorover hangen: bij elke landing moet je dan je eigen gewicht tegenhouden, en dat kost te veel energie.',
+    looks: [
+      { label: 'Van achteren', run: { view: 'rear', slow: true }, cap: 'Van achteren, vertraagd. De twee grijze schouders gaan om de beurt naar achteren. De romp blijft op de stippellijn. Kijk daarna van boven wat de heupen doen.' },
+      { label: 'Van boven', run: { view: 'top', slow: true }, cap: 'Van boven zie je het best dat schouders en heupen tegen elkaar in draaien. Tikt een schouder naar achteren, dan gaat de heup aan die kant naar voren. De heup aan de andere kant gaat naar achteren: daar zet de pop mee af. De romp blijft stil.' },
+      { label: 'Schuin', run: { view: 'three', slow: true }, cap: 'Schuin van achteren. Volg één schouder en de heup aan dezelfde kant: gaat de schouder naar achteren, dan komt de heup naar voren en omhoog. De arm hangt aan de schouder en gaat mee. De elleboog komt niet voor het lichaam.' }
+    ],
+    doe: 'Wandel, dribbel, loop met de tik', pairs: 'In tweetallen: één loopt, één kijkt.', rounds: 2,
+    steps: ['Wandel 30 passen. Eén schouder tikt kort naar achteren.', 'Dribbel 30 passen met dezelfde tik.', 'Loop 30 passen. Eerst te groot, dan te klein, dan precies goed.'],
+    watchLbl: 'Voor wie kijkt', watch: 'Blijft de borst naar voren wijzen? Blijven de handen hoog?',
+    check: 'Hoe voelde de tik?', opts: ['Alleen mijn schouders tikten', 'Mijn hele romp draaide mee', 'Ik voelde niets bijzonders'],
+    say: ['Precies. Je arm hangt eraan en gaat vanzelf mee. De tik helpt je heupen verder te draaien, en daardoor zet je sterker af.',
+      'Dat is normaal. Maak de tik kleiner en houd je borst naar voren. Alleen je schouderblad schuift naar je ruggengraat.',
+      'Maak de tik eerst overdreven groot, zodat je hem voelt. Maak hem daarna kleiner.'],
+    home: 'Wandel deze week elke dag honderd meter met een losse heup en de tik van je schouder.' },
+  { name: 'Schuine veer', head: 'Je schouder trekt je andere heup mee', tag: 'Je schouder trekt je heup aan de andere kant mee.',
+    q: 'Kijk van voren. Welke veer staat strak als rechts afzet?',
+    hint: 'De veer over de buik, van de linkerschouder naar de rechterheup. Schiet hij los, dan komt de rechterheup naar voren en omhoog.',
+    looks: [
+      { label: 'Buikveer strak', run: { snap: 'wind' } },
+      { label: 'Rugveer strak', run: { snap: 'free' } },
+      { label: 'Van voren, vertraagd', run: { view: 'front', slow: true }, cap: 'Van voren, vertraagd. De twee veren over de buik spannen om de beurt op (rood) en schieten weer los.' }
+    ],
+    doe: 'Been en arm', pairs: 'In tweetallen: één doet, één kijkt.', rounds: 2,
+    steps: ['Zwaai één been naar achteren. Gooi de arm aan de andere kant mee naar achteren.', 'Doe hetzelfde zonder arm.', 'Loop 30 passen met de tik van je schouder.'],
+    watchLbl: 'Voor wie kijkt', watch: 'Gaat de arm aan de andere kant mee naar achteren?',
+    check: 'Wat was zwaarder?', opts: ['Zonder arm', 'Met arm', 'Geen verschil'],
+    say: ['Klopt. Je arm en schouder spannen de schuine veer. Die helpt je been.',
+      'Probeer het nog eens. De arm aan de andere kant gaat tegelijk met het been naar achteren.',
+      'Zwaai het been wat harder en gooi de arm echt mee. Dan voel je het verschil.'],
+    home: 'Doe thuis tien keer per been de beenzwaai met arm.' },
+  { name: 'Los', head: 'Losse knieën, slappe benen', tag: 'Losse knieën, slappe benen. Je voet komt vanzelf omhoog.',
+    q: 'De benen van deze pop hebben geen spieren. Wat zet ze in beweging?',
+    hint: 'De heup. En via de schuine veren en de schouders kun je de heup verder en beter draaien. De benen hangen eraan en zwaaien mee.',
+    looks: [
+      { label: 'Beweeg de heup', toy: 'hip', cap: 'Alleen de heup beweegt: omhoog en naar voren, dan omlaag en naar achteren. De benen zwaaien vanzelf mee.' },
+      { label: 'Beweeg de schouders', toy: 'sh', cap: 'Nu bewegen alleen de schouders. De schuine veren trekken de heup mee en de heup zet de benen in beweging.' },
+      { label: 'Stil', toy: 'stop', cap: 'Zonder heup en schouders hangen de benen stil. Zelf kunnen ze niets.' }
+    ],
+    doe: 'Circuspaard en slappe benen', pairs: 'In tweetallen: één loopt, één kijkt.', rounds: 2,
+    steps: ['Twee grote passen: je voet gaat recht omhoog langs je andere onderbeen.', 'Twee kleinere passen op dezelfde manier.', 'Loop door met slappe benen. Alleen je heup en schouders werken.'],
+    watchLbl: 'Voor wie kijkt', watch: 'Komt de voet achter hoger als de knie los is?',
+    check: 'Kwam je voet omhoog zonder dat je eraan trok?', opts: ['Ja, vanzelf', 'Nee, ik moest trekken', 'Weet ik niet'],
+    say: ['Mooi. Een losse knie maakt van je been een korte slinger.',
+      'Maak je knie los, alsof er olie in zit. Loop iets sneller: dan komt de voet makkelijker omhoog.',
+      'Laat je maatje kijken of filmen van opzij.'],
+    home: 'Begin elke loop met de drie stappen: groot paard, klein paard, slappe benen.' },
+  { name: 'Alles samen', head: 'Sneller is dezelfde beweging, maar groter', tag: 'Van hinkelen naar hardlopen. Sneller is dezelfde beweging, maar groter.',
+    q: 'Schuif het tempo van laag naar hoog. Wat wordt groter?',
+    hint: 'Alles: de afzet wordt langer, de voet komt achter hoger, de knie komt hoger en de voet landt verder naar voren. Het aantal passen per minuut verandert maar een beetje. De hak komt hoger omdat je grotere passen maakt: een opgevouwen been zwaait makkelijker naar voren. Dat gaat vanzelf. Let er niet te veel op, maar houd het ook niet tegen.',
+    tempo: true,
+    looks: [
+      { label: 'Schuin', run: { view: 'three' }, cap: 'Schuif het tempo en kijk wat er groter wordt. Heup, schouders en schuine veren werken samen. De benen volgen.' },
+      { label: 'Slow motion', run: { view: 'three', slow: true }, cap: 'Vertraagd, schuin van achteren. Bij elk tempo is het dezelfde beweging, alleen groter of kleiner.' },
+      { label: 'Van opzij', run: { view: 'side' }, cap: 'Van opzij zie je het best de afzet, de voet achter, de knie voor en de plek waar de voet landt.' }
+    ],
+    doe: 'Van hinkelen naar hardlopen', pairs: 'In tweetallen: één loopt, één filmt van opzij.', rounds: 2,
+    steps: ['Hinkel een paar keer op je ene been, dan op je andere.', 'Twee keer per been, dan één keer per been.', 'Hel licht voorover en loop door. Voeg de tik en de losse heup toe.'],
+    watchLbl: 'Voor wie filmt', watch: 'Landt de voet dicht bij het lichaam?',
+    check: 'Vergelijk het filmpje met de pop. Wat valt op?', opts: ['Het lijkt erop', 'Ik land te ver voor me', 'Mijn romp draait mee'],
+    say: ['Goed bezig. Blijf spelen met te veel, te weinig en precies goed.',
+      'Ga terug naar hinkelen. Op één been kun je bijna niet te ver voor je landen.',
+      'Maak de tik kleiner en houd je handen hoog en dicht bij je lichaam.'],
+    home: 'Begin deze week elke loop met een halve minuut hinkelen.' },
+  /* step 8 closes the series: it ties the drills the group already does to what they saw in the puppet */
+  { name: 'Afronding', wrap: true, head: 'Waarom je loopscholing doet', tag: 'Waarom je skipping, A\'tjes en planken doet. Het begint bij je heup en je romp.',
+    q: 'Je doet elke training skipping, A\'tjes, planken en heupoefeningen. Waarvoor eigenlijk?',
+    hint: 'Elke oefening traint één stukje van de looppas: de veer, de heup die de knie optilt, de korte slinger, de stille romp en de lange afzet. Bijna alles begint bij je heup en een stevige romp. Verderop op deze pagina staat hoe dat ook bij werpen, springen en horden werkt.',
+    looks: [
+      { label: 'Skipping en A\'tjes', run: { snap: 'hipup' }, cap: 'Bij skipping en A\'tjes gaat je heup omhoog en naar voren en komt je knie mee. Daarna komt je voet van boven neer, recht onder je lichaam. Dat is dit moment uit de looppas. Let dus op je heup en op de landing, niet op hoe hoog je knie komt.' },
+      { label: 'Tripling en touwtjespringen', hop: 'jump', cap: 'Kleine, snelle sprongetjes maken je pezen veerkrachtig. Je leert kort en stevig van de grond te komen. Dat is de veer in je been.' },
+      { label: 'Hakken-billen', run: { snap: 'heel' }, cap: 'Bij hakken-billen komt je voet hoog achter je. Zo voel je wat een opgevouwen been is: een korte slinger die makkelijk naar voren zwaait. Bij het lopen zelf trek je de voet niet op. Je knie is los en de voet komt vanzelf.' },
+      { label: 'Planken', run: { view: 'three', slow: true }, cap: 'Kijk naar de romp: die blijft stil, terwijl de heupen en schouders eromheen bewegen. Daarvoor moet je romp stevig zijn. Dat train je met planken en andere oefeningen voor je buik en rug. Een stevige romp houdt ook je heup hoog als je moe wordt. Stevig is iets anders dan gespannen: tijdens het lopen blijft je buik los.' },
+      { label: 'Heupoefeningen', run: { snap: 'off' }, cap: 'Je been duwt ver achter je lichaam af, in één lijn vanaf de heup. Dat lukt alleen als je heup aan de voorkant soepel is. Met uitvalspassen en beenzwaaien maak je daar ruimte. Een soepele heup draait ook makkelijker omhoog en naar voren.' }
+    ],
+    doe: 'Oefening met een reden', pairs: 'In tweetallen: één doet, één kijkt.', rounds: 2,
+    steps: ['Kies skipping, A\'tjes of hakken-billen. Zeg hardop welk stukje van de looppas je oefent.', 'Doe de oefening 20 meter.', 'Loop meteen 30 meter door en zoek hetzelfde gevoel in je looppas.'],
+    watchLbl: 'Voor wie kijkt', watch: 'Blijft de romp stil en hoog? Landt de voet onder het lichaam?',
+    check: 'Van welke oefening snap je nu beter waarvoor hij is?', opts: ['Skipping en A\'tjes', 'Planken en core stability', 'Heupoefeningen'],
+    say: ['Daar oefen je de heup die omhoog en naar voren gaat, en de voet die onder je landt. Je knie komt vanzelf mee.',
+      'Een stevige romp blijft stil, zodat je heupen en schouders eromheen kunnen werken. Dat heb je ook nodig bij werpen en springen.',
+      'Een soepele heup geeft je een lange afzet achter je lichaam. Die ruimte heb je ook nodig bij horden en hoogspringen.'],
+    home: 'Zeg deze week bij elke oefening van de loopscholing in je hoofd waarvoor hij is.' }
+];
+const hrefOf = k => TR[k].wrap ? '#afronding' : '#training-' + (k + 1);
+
+const tb = { view: 'home', n: 0, phase: 'kijk', counts: [0, 0, 0], done: [], look: -1 };
+/* settings: doe = the assignments with clock and check, help = the bubbles that point at the next step.
+   The page always opens with help on, doe off and the light theme; a switch changes it for this visit only. */
+const prefs = { doe: false, help: true, theme: 'light' };
+try {
+  const s = JSON.parse(localStorage.getItem('veerpop-trainingsbord') || '{}');
+  if (Array.isArray(s.done)) tb.done = s.done.filter(k => Number.isInteger(k) && k >= 0 && k < TR.length);
+} catch (err) {}
+const saveTb = () => { try { localStorage.setItem('veerpop-trainingsbord', JSON.stringify({ done: tb.done })); } catch (err) {} };
+/* what the help bubble has already seen happen in this training and in free play */
+const g = { asked: false, looks: new Set([0]), answered: false, bookAck: false, freeTab: false, free: {} };
+const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+const mmss = s => { s = Math.max(0, Math.ceil(s)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
+
+/* the stage with the puppet lives in "Vrij spelen" and moves into a training while you look together */
+const stageEl = document.querySelector('.stage'), stageHome = stageEl.parentNode;
+function placeStage(where) {
+  const slot = $('#trainStage');
+  if (where === 'train') { if (stageEl.parentNode !== slot) slot.appendChild(stageEl); }
+  else if (stageEl.parentNode !== stageHome) stageHome.insertBefore(stageEl, stageHome.firstChild);
+}
+
+/* ---- overview ---- */
+function renderHome() {
+  const today = TR.findIndex((t, k) => !tb.done.includes(k)), box = $('#tcards');
+  box.textContent = '';
+  TR.forEach((t, k) => {
+    const done = tb.done.includes(k), li = el('li'), a = el('a', 'tcard' + (done ? ' done' : '') + (k === today ? ' today' : ''));
+    a.href = hrefOf(k);
+    a.dataset.tip = done ? 'Gedaan. Klik om deze stap te herhalen' : k === today ? 'Deze stap is aan de beurt. Klik om te beginnen' : 'Nog niet aan de beurt. Openen mag wel';
+    const top = el('div', 'tcard-top'); top.append(el('span', 'tnum', String(k + 1)), el('span', 'tstate', done ? 'Gedaan' : k === today ? 'Nu aan de beurt' : 'Nog te doen'));
+    a.append(top, el('h2', '', t.name), el('p', '', t.tag));
+    if (k === today) a.append(el('span', 'go', t.wrap ? 'Start de afronding' : 'Start training'));
+    li.append(a); box.append(li);
+  });
+  $('#homeProgress').textContent = tb.done.length + ' van ' + TR.length + ' gedaan';
+}
+let resetArmed = 0;
+$('#btnResetProgress').addEventListener('click', e => {
+  if (Date.now() < resetArmed) { tb.done = []; saveTb(); renderHome(); resetArmed = 0; e.target.textContent = 'Begin opnieuw bij training 1'; return; }
+  resetArmed = Date.now() + 5000; e.target.textContent = 'Zeker weten? Klik nog een keer';
+  setTimeout(() => { if (resetArmed && Date.now() >= resetArmed) { resetArmed = 0; e.target.textContent = 'Begin opnieuw bij training 1'; } }, 5200);
+});
+
+/* ---- the trainer's script ---- */
+function renderBook() {
+  const body = $('#bookBody'), head = $('#bookHead'), notes = $('#bookNotes'), hr = el('tr');
+  body.textContent = ''; head.textContent = ''; notes.textContent = '';
+  for (const name of prefs.doe ? ['Training', 'Kijk samen · 2 min', 'Doe · 6 min', 'Check · 2 min'] : ['Training', 'De vraag bij de pop', 'Het antwoord']) { const th = el('th', '', name); th.scope = 'col'; hr.append(th); }
+  head.append(hr);
+  TR.forEach((t, k) => {
+    const tr = el('tr'), th = el('th'); th.scope = 'row';
+    const a = el('a', '', (k + 1) + ' · ' + t.name); a.href = hrefOf(k); a.dataset.tip = t.wrap ? 'Open de afronding' : 'Open training ' + (k + 1); th.append(a);
+    if (prefs.doe) {
+      const doe = el('td'); doe.append(el('strong', '', t.doe + '. '), document.createTextNode(t.pairs + ' ' + t.steps.join(' ')));
+      tr.append(th, el('td', '', t.q), doe, el('td', '', t.check));
+    } else tr.append(th, el('td', '', t.q), el('td', '', t.hint));
+    body.append(tr);
+  });
+  $('#bookSub').textContent = prefs.doe ? 'Per training één vraag bij de pop, één opdracht en één check. Samen ongeveer tien minuten.'
+    : 'Per training één vraag bij de pop, met het antwoord erbij. De doe-opdrachten staan uit.';
+  const list = prefs.doe ? [
+    ['Twee vaste regels', 'Ontspan. En zoek de maat: eerst te veel, dan te weinig, dan precies goed.'],
+    ['Nodig', 'Een laptop of tablet met de pop, dertig meter ruimte en één telefoon per tweetal om te filmen.'],
+    ['Voor thuis', 'Na elke training één kleine opdracht voor de week. Die staat onderaan de check.']
+  ] : [
+    ['Zo werkt het', 'Stel de vraag, laat de groep raden en zoek het antwoord samen met de pop.'],
+    ['Nodig', 'Een laptop of tablet met de pop, het liefst op een groot scherm.'],
+    ['Doe-opdrachten', 'Die staan nu uit. Zet ze aan bij de instellingen. Dan krijgt elke training er een opdracht met een klok en een check bij.']
+  ];
+  for (const [h, p] of list) { const d = el('div'); d.append(el('h2', '', h), el('p', '', p)); notes.append(d); }
+}
+
+/* ---- look together: presets for the puppet ---- */
+function applyLook(i) {
+  const t = TR[tb.n], L = t.looks[i]; tb.look = i;
+  let cap = L.cap || '';
+  if (L.hop) {
+    if (mode !== 'hop') setMode('hop');
+    if (L.hop === 'jump') hopAuto();
+    else { hop.posture = L.hop; $(L.hop === 'zak' ? '#postureZak' : '#postureHoog').checked = true; hopReset(); }
+  } else if (L.toy) {
+    if (mode !== 'toy') setMode('toy');
+    if (L.toy === 'stop') setToyAuto(false);
+    else { toy.driver = L.toy; $(L.toy === 'sh' ? '#driveSh' : '#driveHip').checked = true; toy.key = ''; setToyAuto(true); }
+  } else if (L.run) {
+    const r = L.run;
+    if (run.d3) set3D(false);
+    if (mode !== 'run') setMode('run');
+    run.sit = 0; $('#hip').value = 100; $('#hipOut').textContent = 'hoog';
+    run.slow = !!r.slow; $('#btnSlow').setAttribute('aria-pressed', String(run.slow));
+    if (r.snap) { applySnap(r.snap); cap = cap || SNAPS[r.snap].text; }
+    else { run.snap = null; run.playing = !reduceMotion; syncPlay(); setView(r.view || 'three'); }
+  }
+  $('#kijkCaption').textContent = cap;
+  for (const b of document.querySelectorAll('#looks [data-look]')) b.setAttribute('aria-pressed', String(+b.dataset.look === i));
+  syncTrainPlay();
+}
+function syncTrainPlay() {
+  const b = $('#btnTrainPlay'); if (!b) return;
+  b.hidden = mode !== 'run'; b.textContent = run.playing ? 'Pauze' : 'Speel af';
+}
+function setTempo(s) { run.s = s; $('#tempo').value = Math.round(s * 100); $('#trainTempo').value = Math.round(s * 100); tempoText(); }
+$('#trainTempo').addEventListener('input', e => setTempo(e.target.value / 100));
+
+/* ---- the clock ---- */
+const clock = { total: 360, left: 360, rounds: 2, running: false, last: 0, sound: true, ctx: null, halfDone: false, endDone: false, wake: null };
+function beep(n) {
+  if (!clock.sound || !clock.ctx) return;
+  try {
+    for (let k = 0; k < n; k++) {
+      const o = clock.ctx.createOscillator(), g = clock.ctx.createGain(), t0 = clock.ctx.currentTime + k * 0.32;
+      o.frequency.value = 880; g.gain.setValueAtTime(0.0001, t0); g.gain.exponentialRampToValueAtTime(0.35, t0 + 0.02); g.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.24);
+      o.connect(g); g.connect(clock.ctx.destination); o.start(t0); o.stop(t0 + 0.26);
+    }
+  } catch (err) {}
+}
+function clockSet(sec, rounds) { Object.assign(clock, { total: sec, left: sec, rounds, running: false, halfDone: false, endDone: false }); clockShow(); }
+function clockShow() {
+  const half = clock.total / 2, inSecond = clock.rounds > 1 && clock.left <= half;
+  $('#clockTime').textContent = mmss(clock.left);
+  $('#clockBar').style.width = ((1 - clock.left / clock.total) * 100).toFixed(1) + '%';
+  $('#clockLbl').textContent = clock.left <= 0 ? 'Tijd! Kom bij het bord' : clock.running ? 'Nog te gaan' : clock.left < clock.total ? 'Gepauzeerd' : 'Klaar om te starten';
+  $('#clockRound').textContent = clock.rounds > 1 ? 'Ronde ' + (inSecond ? 2 : 1) + ' van 2' : 'Eén ronde';
+  $('#clockSwitch').textContent = clock.rounds > 1 ? (inSecond ? (clock.left <= 0 ? 'Klaar' : 'Gewisseld') : 'Wissel over ' + mmss(clock.left - half)) : '';
+  $('#btnClock').textContent = clock.running ? 'Pauze' : clock.left <= 0 ? 'Naar de check' : clock.left < clock.total ? 'Ga door' : 'Start';
+  $('#planClock').textContent = mmss(clock.left);
+  $('#btnToDoe').textContent = clock.left <= 0 ? 'Naar de check' : clock.left < clock.total ? 'Ga door' : 'Start';
+}
+function clockRun(on) {
+  clock.running = on; clock.last = performance.now();
+  if (on) {
+    try { if (!clock.ctx) { const AC = window.AudioContext || window.webkitAudioContext; if (AC) clock.ctx = new AC(); } if (clock.ctx && clock.ctx.state === 'suspended') clock.ctx.resume(); } catch (err) {}
+    try { if (navigator.wakeLock && navigator.wakeLock.request) navigator.wakeLock.request('screen').then(w => { clock.wake = w; }).catch(() => {}); } catch (err) {}
+  } else if (clock.wake) { try { clock.wake.release(); } catch (err) {} clock.wake = null; }
+  clockShow();
+}
+setInterval(() => {
+  if (!clock.running) return;
+  const now = performance.now(); clock.left = Math.max(0, clock.left - (now - clock.last) / 1000); clock.last = now;
+  if (clock.rounds > 1 && !clock.halfDone && clock.left <= clock.total / 2) { clock.halfDone = true; beep(1); }
+  if (clock.left <= 0 && !clock.endDone) { clock.endDone = true; beep(3); clockRun(false); }
+  clockShow();
+}, 200);
+$('#btnClock').addEventListener('click', () => { if (clock.left <= 0) setPhase('check'); else clockRun(!clock.running); });
+$('#btnClockPlus').addEventListener('click', () => { clock.left += 60; clock.total += 60; clock.endDone = false; clockShow(); });
+$('#btnClockReset').addEventListener('click', () => clockSet(clock.total, clock.rounds));
+$('#btnSound').addEventListener('click', e => { clock.sound = !clock.sound; e.target.setAttribute('aria-pressed', String(clock.sound)); e.target.textContent = clock.sound ? 'Geluid aan' : 'Geluid uit'; });
+
+/* ---- the check ---- */
+function renderTally() {
+  const t = TR[tb.n], box = $('#tally'), c = tb.counts, total = c[0] + c[1] + c[2];
+  // the answer that most hands went up for; with a tie, the one that needs a tip
+  let top = -1; if (total > 0) { top = 0; if (c[1] >= c[0] && c[1] >= c[2] && c[1] > 0) top = 1; else if (c[2] >= c[0] && c[2] > c[1]) top = 2; }
+  box.textContent = '';
+  t.opts.forEach((name, i) => {
+    const card = el('div', 'tally-card' + (i === top ? ' top-one' : '')), row = el('div', 'tally-row');
+    const minus = el('button', 'minus', '−'), plus = el('button', 'plus', '+'), out = el('output', '', String(c[i]));
+    minus.type = plus.type = 'button'; minus.dataset.tip = 'Eén hand eraf'; plus.dataset.tip = 'Eén hand erbij'; minus.setAttribute('aria-label', 'Eén minder bij: ' + name); plus.setAttribute('aria-label', 'Eén meer bij: ' + name);
+    minus.addEventListener('click', () => { tb.counts[i] = Math.max(0, tb.counts[i] - 1); renderTally(); document.querySelectorAll('#tally .minus')[i].focus(); });
+    plus.addEventListener('click', () => { tb.counts[i] = Math.min(99, tb.counts[i] + 1); renderTally(); document.querySelectorAll('#tally .plus')[i].focus(); });
+    row.append(minus, out, plus); card.append(el('h3', '', name), row); box.append(card);
+  });
+  $('#sayLbl').textContent = top < 0 ? 'Tel de handen' : 'De meesten: ' + t.opts[top].toLowerCase();
+  $('#sayText').textContent = top < 0 ? 'Vraag het de groep en tik bij elk antwoord op plus. Daarna staat hier wat je kunt zeggen.' : t.say[top];
+}
+$('#btnAgain').addEventListener('click', () => { setPhase('doe'); clockSet(120, 1); });
+const finishTraining = () => { if (!tb.done.includes(tb.n)) { tb.done.push(tb.n); saveTb(); } location.hash = '#trainingen'; route(); };
+$('#btnFinish').addEventListener('click', finishTraining);
+$('#btnPlanFinish').addEventListener('click', finishTraining);
+
+/* ---- one training ---- */
+function setPhase(p) {
+  if (!prefs.doe) p = 'kijk';
+  tb.phase = p;
+  const order = ['kijk', 'doe', 'check'], at = order.indexOf(p);
+  for (const b of document.querySelectorAll('.phases button')) { const k = order.indexOf(b.dataset.phase); b.setAttribute('aria-pressed', String(k === at)); b.classList.toggle('past', k < at); }
+  for (const k of order) $('#phase-' + k).hidden = k !== p;
+  if (p !== 'doe' && clock.running) clockRun(false);
+  if (p === 'kijk') { placeStage('train'); if (tb.look < 0) applyLook(0); }
+  if (p === 'check') renderTally();
+  $('#wrapExtra').hidden = !(TR[tb.n].wrap && p === 'kijk');
+  guide();
+}
+for (const b of document.querySelectorAll('.phases button')) b.addEventListener('click', () => setPhase(b.dataset.phase));
+/* Start on the plan opens the task on the big screen and sets the clock going; the "Doe" button above opens it without starting */
+$('#btnToDoe').addEventListener('click', () => { if (clock.left <= 0) { setPhase('check'); return; } setPhase('doe'); clockRun(true); $('#btnClock').focus(); });
+$('#btnToCheck').addEventListener('click', () => setPhase('check'));
+function openTraining(n) {
+  const t = TR[n]; tb.n = n; tb.counts = [0, 0, 0]; tb.look = -1;
+  g.asked = false; g.looks = new Set([0]); g.answered = false;
+  $('#trainEyebrow').textContent = 'Stap ' + (n + 1) + ' van ' + TR.length + ' · ongeveer ' + (prefs.doe ? 10 : 2) + ' minuten';
+  $('#trainTitle').textContent = (t.wrap ? 'Stap ' : 'Training ') + (n + 1) + ' · ' + t.name;
+  $('#btnFinish').textContent = $('#btnPlanFinish').textContent = t.wrap ? 'Klaar, terug naar het overzicht' : 'Training afronden';
+  $('#kijkHead').textContent = t.head;
+  const rail = $('#rail'); rail.textContent = '';
+  TR.forEach((x, k) => {
+    const li = el('li'), a = el('a', tb.done.includes(k) ? 'done' : ''); a.href = hrefOf(k);
+    if (k === n) a.setAttribute('aria-current', 'step');
+    a.dataset.tip = k === n ? 'Deze stap staat nu open' : (x.wrap ? 'Open stap ' : 'Open training ') + (k + 1) + ': ' + x.name + (tb.done.includes(k) ? ' (gedaan)' : '');
+    a.append(el('span', 'rnum', String(k + 1)), el('span', 'rname', x.name)); li.append(a); rail.append(li);
+  });
+  const nx = $('#nextTraining');
+  if (n + 1 < TR.length) { nx.href = hrefOf(n + 1); nx.textContent = (TR[n + 1].wrap ? 'Volgende stap: ' : 'Volgende training: ') + TR[n + 1].name; }
+  else { nx.href = '#trainingen'; nx.textContent = 'Terug naar het overzicht'; }
+  $('#kijkQ').textContent = t.q; $('#kijkHint').textContent = t.hint; $('#kijkAnswer').open = false;
+  const looks = $('#looks'); looks.textContent = '';
+  t.looks.forEach((L, i) => { const b = el('button', 'btn', L.label); b.type = 'button'; b.dataset.look = i; b.setAttribute('aria-pressed', 'false'); b.addEventListener('click', () => { applyLook(i); g.asked = true; g.looks.add(i); guide(); });
+    b.dataset.tip = L.hop === 'jump' ? 'De pop springt een paar keer achter elkaar' : L.hop ? 'Zet de heup van de pop in deze stand' : L.toy === 'stop' ? 'Zet de pop stil' : L.toy ? 'De pop beweegt dit deel zelf, in het goede ritme'
+      : L.run.snap ? 'Zet de pop stil op dit moment, met uitleg eronder' : L.run.slow ? 'Draai de pop naar deze kant en laat hem vertraagd lopen' : 'Draai de pop naar deze kant';
+    looks.append(b); });
+  const pp = el('button', 'btn', 'Pauze'); pp.type = 'button'; pp.id = 'btnTrainPlay'; pp.dataset.tip = 'Zet de pop stil of laat hem weer lopen';
+  pp.addEventListener('click', () => { run.playing = !run.playing; run.snap = null; resumeView(); syncPlay(); syncTrainPlay(); for (const b of document.querySelectorAll('#looks [data-look]')) if (TR[tb.n].looks[+b.dataset.look].run && TR[tb.n].looks[+b.dataset.look].run.snap) b.setAttribute('aria-pressed', 'false'); });
+  looks.append(pp);
+  $('#trainTempoRow').hidden = !t.tempo; if (t.tempo) setTempo(run.s);
+  $('#planDoe').textContent = t.doe + '. ' + t.pairs + (t.rounds > 1 ? ' Wissel halverwege.' : '');
+  $('#planCheck').textContent = t.check + ' Steek je hand op.';
+  $('#doeTitle').textContent = t.doe; $('#doePairs').textContent = t.pairs;
+  const st = $('#doeSteps'); st.textContent = ''; t.steps.forEach(s => st.append(el('li', '', s)));
+  $('#doeWatchLbl').textContent = t.watchLbl; $('#doeWatch').textContent = t.watch;
+  $('#checkQ').textContent = t.check; $('#homeTask').textContent = t.home;
+  clockSet(360, t.rounds);
+  showView('train'); setPhase('kijk');
+}
+
+/* ---- views and the address ---- */
+function showView(v) {
+  tb.view = v;
+  for (const k of ['home', 'train', 'book', 'free']) $('#view-' + k).hidden = k !== v;
+  for (const a of document.querySelectorAll('.nav [data-nav]')) { if (a.dataset.nav === v || (v === 'train' && a.dataset.nav === 'home')) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); }
+  if (v !== 'train' && clock.running) clockRun(false);
+  if (v === 'free') { placeStage('free'); run.slow = false; $('#btnSlow').setAttribute('aria-pressed', 'false'); if (!(mode === 'run' && run.snap)) setView('three', true); }
+  if (v === 'home') renderHome();
+  if (v === 'book') renderBook();
+  window.scrollTo(0, 0);
+  guide();
+}
+function route() {
+  const h = (location.hash || '').replace(/^#/, ''), m = /^training-([1-8])$/.exec(h);
+  if (m) openTraining(+m[1] - 1); else if (h === 'afronding') openTraining(TR.length - 1); else if (h === 'draaiboek') showView('book'); else if (h === 'vrij') showView('free'); else showView('home');
+}
+window.addEventListener('hashchange', route);
+
+
+/* ---- settings: doe-opdrachten, hulp, donker ---- */
+const appEl = document.querySelector('.app'), rootEl = document.documentElement;
+function setSwitch(id, on) { const b = $(id); b.setAttribute('aria-checked', String(on)); b.querySelector('.sw-state').textContent = on ? 'aan' : 'uit'; }
+function applyDoe() {
+  appEl.classList.toggle('no-doe', !prefs.doe); setSwitch('#swDoe', prefs.doe);
+  $('#homeH').textContent = prefs.doe ? 'Acht stappen, elke keer tien minuten' : 'Acht stappen, elke keer samen kijken';
+  $('#homeSub').textContent = prefs.doe ? 'Zeven trainingen en een afronding. Elke stap heeft dezelfde opbouw: samen naar de pop kijken, het zelf doen en een check met de groep.'
+    : 'Zeven trainingen en een afronding. In elke stap kijk je samen naar de pop en bespreek je één vraag. De doe-opdrachten staan uit.';
+  if (tb.view === 'train') {
+    $('#trainEyebrow').textContent = 'Stap ' + (tb.n + 1) + ' van ' + TR.length + ' · ongeveer ' + (prefs.doe ? 10 : 2) + ' minuten';
+    if (!prefs.doe && tb.phase !== 'kijk') setPhase('kijk');
+  }
+  if (tb.view === 'book') renderBook();
+}
+$('#swDoe').addEventListener('click', () => { prefs.doe = !prefs.doe; saveTb(); applyDoe(); guide(); });
+$('#swHelp').addEventListener('click', () => { prefs.help = !prefs.help; saveTb(); setSwitch('#swHelp', prefs.help); guide(); });
+const mqDark = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+const themeNow = () => rootEl.getAttribute('data-theme') || (mqDark && mqDark.matches ? 'dark' : 'light');
+const syncDark = () => setSwitch('#swDark', themeNow() === 'dark');
+$('#swDark').addEventListener('click', () => { prefs.theme = themeNow() === 'dark' ? 'light' : 'dark'; rootEl.setAttribute('data-theme', prefs.theme); saveTb(); syncDark(); });
+if (prefs.theme && rootEl.getAttribute('data-theme') !== prefs.theme) rootEl.setAttribute('data-theme', prefs.theme);
+if (mqDark) mqDark.addEventListener('change', syncDark);
+new MutationObserver(syncDark).observe(rootEl, { attributes: true, attributeFilter: ['data-theme'] });
+$('#btnTools').addEventListener('click', e => { const on = !$('#tools').classList.contains('open'); $('#tools').classList.toggle('open', on); e.currentTarget.setAttribute('aria-expanded', String(on)); guide(); });
+for (const b of document.querySelectorAll('#snaps [data-snap]')) b.dataset.tip = 'Zet de pop stil op dit moment, met uitleg erboven';
+for (const b of document.querySelectorAll('#runMeters .meter')) b.dataset.tip = 'Op slot. Deze meter volgt vanzelf uit tempo en heup';
+
+/* ---- help: one bubble that points at the next thing to do, in the order of a training ---- */
+function guideStep() {
+  if (!prefs.help) return null;
+  const t = TR[tb.n], of = prefs.doe ? 7 : 4;
+  if (tb.view === 'home') {
+    if ($('.tcard.today')) return { el: '.tcard.today .go', key: 'home', place: 'right', drop: true, text: tb.done.length ? 'Ga hier verder. Deze stap is nu aan de beurt.' : 'Begin hier. Klik op de training die aan de beurt is.' };
+    return { el: '#btnResetProgress', key: 'home-all', text: 'Alles is gedaan. Kies een stap om te herhalen, of begin opnieuw.', ring: false };
+  }
+  if (tb.view === 'book') return null;
+  if (tb.view === 'free') {
+    if (!g.freeTab) return { el: '.tabs', key: 'free-tab', place: 'right', text: 'Kies een proef. Stuiteren is de eerste.', ok: () => { g.freeTab = true; } };
+    if (g.free[mode]) return null;
+    const done = () => { g.free[mode] = true; };
+    if (mode === 'hop') return { el: '#grab', key: 'free-hop', place: 'right', shift: 60, ring: false, text: 'Sleep de pop omlaag en laat los.', ok: done };
+    if (mode === 'toy') return { el: '#toyPad', key: 'free-toy', slotOf: '.ctl', text: 'Schuif rustig heen en weer tot de benen meezwaaien. Of klik op Doe het voor.', ok: done };
+    return run.d3 ? null : { el: '#tempo', key: 'free-run', slotOf: '.ctl', text: 'Schuif het tempo omhoog en kijk wat er groter wordt.', ok: done };
+  }
+  if (tb.view !== 'train') return null;
+  if (tb.phase === 'kijk') {
+    if (!g.answered) {
+      if (!g.asked) return { n: 1, of, el: '#kijkQ', key: 'k1', slot: '#planKijkCard', ring: false, text: 'Lees eerst de vraag voor aan de groep.', ok: () => { g.asked = true; } };
+      const next = t.looks.findIndex((L, i) => !g.looks.has(i));
+      if (next >= 0) return { n: 2, of, el: '#looks [data-look="' + next + '"]', key: 'k2-' + next, slot: '#planKijkCard', arrow: false, text: 'Zoek het antwoord samen met de pop. Klik nu op ' + t.looks[next].label + '.' };
+      return { n: 3, of, el: '#kijkAnswer summary', key: 'k3', slot: '#planKijkCard', text: 'Heeft de groep geraden? Laat dan het antwoord zien.' };
+    }
+    if (!prefs.doe) return { n: 4, of, el: '#btnPlanFinish', key: 'k4n', slot: '#btnPlanFinish', text: t.wrap ? 'Klaar met kijken? Zet de afronding op Gedaan.' : 'Klaar met kijken? Rond de training af. Daarna is de volgende aan de beurt.' };
+    return { n: 4, of, el: '#btnToDoe', key: 'k4', slot: '#planDoeCard', text: clock.left <= 0 ? 'De tijd is om. Ga naar de check.' : clock.left < clock.total ? 'De klok staat stil. Ga door met de opdracht.' : 'Nu zelf doen. Start zet de opdracht groot in beeld en laat de klok lopen.' };
+  }
+  if (tb.phase === 'doe') {
+    if (clock.running) return null;
+    return { n: 5, of, el: '#btnClock', key: 'd5', slot: '.clock-btns', text: clock.left <= 0 ? 'De tijd is om. Roep de groep bij het bord en ga naar de check.' : clock.left < clock.total ? 'De klok staat stil. Klik op Ga door.' : 'Lees de drie stappen voor en start dan de klok.' };
+  }
+  if (tb.counts[0] + tb.counts[1] + tb.counts[2] === 0) return { n: 6, of, el: '#tally .plus', key: 'c6', slot: '#tally', text: 'Stel de vraag en tel de handen. Tik voor elke hand op plus.' };
+  return { n: 7, of, el: '#btnFinish', key: 'c7', slot: '#btnFinish', text: t.wrap ? 'Lees de tip hiernaast voor. Zet daarna de afronding op Gedaan.' : 'Lees de tip hiernaast voor. Rond daarna de training af.' };
+}
+const coach = $('#coach'), coachJump = $('#coachJump');
+let coachStep = null, coachTarget = null, coachKey = '';
+function guide() {
+  if (mode === 'hop' && hop.state === 'drag') { g.free.hop = true; if (tb.view === 'train') g.asked = true; }
+  if (mode === 'toy' && toy.swinging && tb.view === 'free') g.free.toy = true;
+  const s = guideStep(), target = s ? $(s.el) : null, ok = !!(target && target.getClientRects().length);
+  if (coachTarget && (coachTarget !== target || !ok || s.ring === false)) coachTarget.classList.remove('coach-target');
+  coachStep = ok ? s : null; coachTarget = ok ? target : null;
+  if (!ok) { coach.hidden = true; coachJump.hidden = true; coachKey = ''; return; }
+  if (s.ring !== false) target.classList.add('coach-target');
+  const key = s.key + '|' + (s.n || 0) + '/' + (s.of || 0) + '|' + s.text;
+  if (key !== coachKey) {
+    coachKey = key;
+    $('#coachN').textContent = s.n ? 'Hulp · ' + s.n + ' van ' + s.of : 'Hulp'; $('#coachText').textContent = s.text; $('#coachOk').hidden = !s.ok;
+  }
+  coach.hidden = false;
+  const host = s.slot ? $(s.slot) : s.slotOf ? target.closest(s.slotOf) : null;
+  coach.classList.toggle('inflow', !!host); coach.classList.toggle('no-arrow', s.arrow === false);
+  if (host) { if (host.nextElementSibling !== coach) host.after(coach); } else if (coach.parentNode !== document.body) document.body.insertBefore(coach, coachJump);
+  if (host) {
+    // between cards and controls the bubble takes its own place in the column, so it never covers a button
+    const c = coach.getBoundingClientRect(), r = target.getBoundingClientRect(), vh = window.innerHeight;
+    coach.dataset.side = 'below'; coach.style.setProperty('--ax', clamp(r.left + r.width / 2 - c.left, 18, c.width - 18).toFixed(0) + 'px');
+    const top = Math.min(c.top, r.top), bottom = Math.max(c.bottom, r.bottom);
+    coachJump.hidden = !(bottom < 40 || top > vh - 40);
+    if (!coachJump.hidden) coachJump.textContent = top > vh - 40 ? 'Volgende stap ↓' : 'Volgende stap ↑';
+    return;
+  }
+  // the bubble is placed beside the anchor (by default the target itself) and its arrow points at the target
+  const r = target.getBoundingClientRect(), anchor = s.anchor ? $(s.anchor) : null, q = anchor ? anchor.getBoundingClientRect() : r;
+  const vw = rootEl.clientWidth, W = coach.offsetWidth, H = coach.offsetHeight, gap = 14, m = 10;
+  const right = s.shift ? q.left + q.width / 2 + s.shift : q.right + gap;
+  let side = s.place || 'below';
+  if (side === 'left' && q.left - W - gap < m) side = 'below';
+  if (side === 'right' && right + W > vw - m) side = 'below';
+  if (side === 'above' && q.top + window.scrollY - H - gap < m) side = 'below';
+  let x, y;
+  if (side === 'left') { x = q.left - W - gap; y = r.top + r.height / 2 - H / 2; }
+  else if (side === 'right') { x = right; y = r.top + r.height / 2 - (s.drop ? 20 : H / 2); }
+  else { x = r.left + r.width / 2 - W / 2; y = side === 'above' ? q.top - H - gap : q.bottom + gap; }
+  x = clamp(x, m, Math.max(m, vw - W - m));
+  coach.dataset.side = side;
+  coach.style.left = Math.round(x + window.scrollX) + 'px'; coach.style.top = Math.round(y + window.scrollY) + 'px';
+  coach.style.setProperty('--ax', clamp(r.left + r.width / 2 - x, 18, W - 18).toFixed(0) + 'px');
+  coach.style.setProperty('--ay', clamp(r.top + r.height / 2 - y, 18, H - 18).toFixed(0) + 'px');
+  const vh = window.innerHeight, top = Math.min(y, r.top), bottom = Math.max(y + H, r.bottom);
+  coachJump.hidden = !(bottom < 40 || top > vh - 40);
+  if (!coachJump.hidden) coachJump.textContent = top > vh - 40 ? 'Volgende stap ↓' : 'Volgende stap ↑';
+}
+$('#coachOk').addEventListener('click', () => { if (coachStep && coachStep.ok) coachStep.ok(); guide(); });
+$('#coachOff').addEventListener('click', () => { prefs.help = false; saveTb(); setSwitch('#swHelp', false); guide(); });
+coachJump.addEventListener('click', () => { if (coachTarget) coachTarget.scrollIntoView({ block: 'center', behavior: reduceMotion ? 'auto' : 'smooth' }); });
+$('#kijkAnswer').addEventListener('toggle', e => { if (e.target.open) { g.answered = true; g.asked = true; } guide(); });
+document.querySelector('.tabs').addEventListener('click', () => { g.freeTab = true; guide(); });
+$('#tempo').addEventListener('input', () => { g.free.run = true; });
+document.addEventListener('click', () => setTimeout(guide, 0));
+window.addEventListener('resize', guide);
+window.addEventListener('scroll', guide, { passive: true });
+setInterval(guide, 400);
+
+/* ---- small tooltips: on hover with a mouse, and on keyboard focus ---- */
+const tipEl = $('#tip');
+let tipFor = null, tipTimer = 0, tipMute = null;
+function hideTip() { clearTimeout(tipTimer); if (tipFor && tipFor.getAttribute('aria-describedby') === 'tip') tipFor.removeAttribute('aria-describedby'); tipFor = null; tipEl.hidden = true; }
+function showTip(t) {
+  if (!t.isConnected || !t.dataset.tip) return;
+  tipEl.textContent = t.dataset.tip; tipEl.hidden = false;
+  if (!t.hasAttribute('aria-describedby')) t.setAttribute('aria-describedby', 'tip');
+  const r = t.getBoundingClientRect(), W = tipEl.offsetWidth, H = tipEl.offsetHeight, vw = rootEl.clientWidth;
+  let y = r.top - H - 8; if (y < 6) y = r.bottom + 8;
+  tipEl.style.left = Math.round(clamp(r.left + r.width / 2 - W / 2, 8, Math.max(8, vw - W - 8))) + 'px'; tipEl.style.top = Math.round(y) + 'px';
+}
+const tipHover = e => {
+  if (e.pointerType === 'touch') return;
+  const t = e.target.closest ? e.target.closest('[data-tip]') : null;
+  if (t === tipMute) return;                       // just clicked: stay quiet until the pointer has left this control
+  tipMute = null;
+  if (t === tipFor) return;
+  hideTip(); if (t) { tipFor = t; tipTimer = setTimeout(() => showTip(t), 350); }
+};
+document.addEventListener('pointerover', tipHover);
+document.addEventListener('pointermove', tipHover);
+rootEl.addEventListener('pointerleave', hideTip);
+document.addEventListener('focusin', e => { const t = e.target.closest ? e.target.closest('[data-tip]') : null; let kb = false; try { kb = e.target.matches(':focus-visible'); } catch (err) {} if (t && kb) { hideTip(); tipFor = t; showTip(t); } });
+document.addEventListener('focusout', hideTip);
+document.addEventListener('pointerdown', e => { tipMute = e.target.closest ? e.target.closest('[data-tip]') : null; hideTip(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') hideTip(); });
+window.addEventListener('scroll', hideTip, { passive: true, capture: true });
+
+/* full screen for the big screen, where the browser allows it */
+if (document.fullscreenEnabled && document.documentElement.requestFullscreen) {
+  const fb = $('#btnFull'); fb.hidden = false;
+  fb.addEventListener('click', () => { try { (document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen()).catch(() => {}); } catch (err) {} });
+  document.addEventListener('fullscreenchange', () => { const on = !!document.fullscreenElement; fb.setAttribute('aria-pressed', String(on)); fb.textContent = on ? 'Sluit volledig scherm' : 'Volledig scherm'; });
+}
+
+/* ---------- start ---------- */
+syncPlay();
+tempoText(); hopReset(); setMode('hop'); setSwitch('#swHelp', prefs.help); syncDark(); applyDoe(); route();
+if (!reduceMotion) setTimeout(() => { if (mode === 'hop' && hop.state === 'rest' && !hop.hinted) { hopAuto(); hop.hinted = false; } }, 700);
+window.__veer = { hop, run, toy, cam, setView, buildGait, legAt, legFK, hipH, runPose, toyStep, tb, clock };
+requestAnimationFrame(frame);
+})();
+</script>
+
+</body></html>
