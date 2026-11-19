@@ -1,0 +1,25 @@
+---
+titel: "Uitslagen en foto's veldrit Lieshout 2009"
+type: nieuws
+pad: /2009/11/15/uitslagen-en-fotos-veldrit-lieshout-2009/
+oude_url: http://lieshoutsewielrenners.nl/2009/11/15/uitslagen-en-fotos-veldrit-lieshout-2009/
+datum: 2009-11-15
+categorieen: ["evenementen", "Nieuws", "veldrit"]
+tags: ["2009", "foto's", "lieshout", "uitslagen", "veldrit"]
+---
+
+# Uitslagen en foto's veldrit Lieshout 2009
+
+De veldrit van Lieshout 2009 zit er weer op. De volledige uitslagen en foto's zijn traditiegetrouw weer terug te vinden op deze site:
+
+[Nieuwelingen](bestanden/2009/11/Uitslag_LIESHOUT_2009-11-15_Nieuwelingen.html)(Erik kramer)
+
+[Junioren](bestanden/2009/11/Uitslag_LIESHOUT_2009-11-15_Junioren.html) (Robin Wennekes)
+
+[Amateurs](bestanden/2009/11/Uitslag_LIESHOUT_2009-11-15_Amateurs.html) (Edwin Raats)
+
+[Masters](bestanden/2009/11/Uitslag_LIESHOUT_2009-11-15_Masters.html) (Emiel Borsboom)
+
+[Elite en Beloften](bestanden/2009/11/Uitslag_LIESHOUT_2009-11-15_EliteBeloften.html) (Rik van IJzendoorn)
+
+De meer dan 200 gemaakte foto's zijn te zien in het fotoarchief van de organisatie: <http://fotos.lieshoutsewielrenners.nl/main.php?g2_itemId=49313>
