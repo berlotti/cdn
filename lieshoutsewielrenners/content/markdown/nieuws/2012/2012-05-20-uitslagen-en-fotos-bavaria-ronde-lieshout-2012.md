@@ -9,4 +9,4 @@ categorieen: ["Algemeen - laatste nieuws", "evenementen", "ronde van lieshout"]
 
 # Uitslagen en foto's Bavaria ronde Lieshout 2012
 
-De Bavaria ronde van Lieshout is wederom verreden. Bekijk de foto's op [fotos.lieshoutsewielrenners.nl](http://www.dropbox.com/gallery/27448175/1/fotoarchief/2012/bavariaronde%2020%20mei?h=bb0cb4) en de uitslagen op [wielerpunt.com](http://wielerpunt.com).
+De Bavaria ronde van Lieshout is wederom verreden. Bekijk de foto's op [ons fotoarchief](https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&dl=0) en de uitslagen op [wielerpunt.com](http://wielerpunt.com).

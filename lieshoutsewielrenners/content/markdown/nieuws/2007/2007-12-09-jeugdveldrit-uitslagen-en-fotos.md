@@ -10,6 +10,6 @@ tags: ["foto's", "jeugdveldrit", "lieshout", "uitslag"]
 
 # Jeugdveldrit: uitslagen en foto's.
 
-De foto's van de jeugdveldrit van vandaag staan online op [deze site](http://lwf.opendatamovement.org/main.php?g2_itemId=1022).
+De foto's van de jeugdveldrit van vandaag staan online op [deze site](https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&dl=0).
 
 De uitslagen zijn te vinden op [wielerpunt.com](http://www.wielerpunt.com/).

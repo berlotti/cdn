@@ -13,6 +13,6 @@ tags: ["jeugd", "jeugveldrit", "lieshout", "veldrijden"]
 De jeugdveldrit van Lieshout 2012 is weer verreden. Hieronder vindt u de links naar
 
 - [de uitslagen](http://wielerpunt.com/uitslagen/20121202lieshout.html) (wielerpunt.com)
-- [de foto's](https://www.dropbox.com/gallery/27448175/1/fotoarchief/2012/jeugdveldrit%202%20dec/?h=bb0cb4)
+- [de foto's](https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&dl=0)
 
 Tot volgend jaar!

@@ -22,4 +22,4 @@ De veldrit van Lieshout 2009 zit er weer op. De volledige uitslagen en foto's zi
 
 [Elite en Beloften](bestanden/2009/11/Uitslag_LIESHOUT_2009-11-15_EliteBeloften.html) (Rik van IJzendoorn)
 
-De meer dan 200 gemaakte foto's zijn te zien in het fotoarchief van de organisatie: <http://fotos.lieshoutsewielrenners.nl/main.php?g2_itemId=49313>
+De meer dan 200 gemaakte foto's zijn te zien in het fotoarchief van de organisatie: [ons fotoarchief](https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&dl=0)

@@ -19,3 +19,7 @@ opmerking: "De laatste versie van deze pagina is leeg (op 17-11-2022 leeggemaakt
 ![Joop Hendriks](afbeeldingen/bestuur/joop.png)
 
 *Joop Hendriks*
+
+![Teun van Kaathoven](afbeeldingen/2021/01/Teun-van-Kaathoven.png)
+
+*Teun van Kaathoven*

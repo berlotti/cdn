@@ -12,7 +12,7 @@ tags: ["2011", "jeugdronde", "lieshout"]
 
 De foto's en uitslagen van de Jeugdronde van Lieshout zijn online te vinden.
 
-- [Klik hier voor de foto's (fotoarchief LieshoutseWielrenners.nl - opent in nieuw venster)](http://fotos.lieshoutsewielrenners.nl/main.php?g2_itemId=77315)
-- [Klik hier voor de uitslagen (link naar wielerpunt.com)](http://wielerpunt.com/uitslagen/20110417Lieshout.html)
+- [Klik hier voor de foto's (fotoarchief LieshoutseWielrenners.nl - opent in nieuw venster)](https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&dl=0)
+- Klik hier voor de uitslagen (link naar wielerpunt.com)
 
 Graag tot volgend jaar!

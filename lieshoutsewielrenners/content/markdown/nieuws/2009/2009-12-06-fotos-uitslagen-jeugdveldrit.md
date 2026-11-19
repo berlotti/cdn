@@ -26,4 +26,4 @@ De generale repetitie voor het NK is verreden en de uitslagen zijn bekend:
 
 [Uitslag Categorie 7](bestanden/2009/12/Uitslag_LIESHOUT_2009-12-06_Jeugd_Cat._7.html)
 
-Zoals altijd staan ook de foto's online. Ze zijn te bekijken via <http://fotos.lieshoutsewielrenners.nl/main.php?g2_itemId=51464>
+Zoals altijd staan ook de foto's online. Ze zijn te bekijken via [ons fotoarchief](https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&dl=0)

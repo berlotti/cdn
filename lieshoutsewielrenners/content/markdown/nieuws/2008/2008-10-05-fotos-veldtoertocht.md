@@ -9,4 +9,4 @@ categorieen: ["Nieuws"]
 
 # Foto's veldtoertocht
 
-De helden die het slechte weer vandaag geen excuus vonden zijn wederom door Martin gefotografeerd. De foto's van de veldtoertocht zijn te vinden via deze link: [http://fotos.lieshoutsewielrenners.nl/](http://fotos.lieshoutsewielrenners.nl/main.php?g2_itemId=22121)
+De helden die het slechte weer vandaag geen excuus vonden zijn wederom door Martin gefotografeerd. De foto's van de veldtoertocht zijn te vinden via deze link: [ons fotoarchief](https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&dl=0)

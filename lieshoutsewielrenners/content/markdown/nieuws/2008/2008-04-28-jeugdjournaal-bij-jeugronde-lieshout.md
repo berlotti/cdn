@@ -12,7 +12,7 @@ tags: ["2008", "jeugdronde", "jeugdselectiewedstrijd", "jsw", "lieshout"]
 
 Het jeugdjournaal was gisteren aanwezig bij de jeugdronde. De reportage begint na 6.18 minuten in de uitzending hieronder.
 
-[VIDEO – Google Video bestaat niet meer: <http://video.google.com/videoplay?docid=-7001856652073196225>]
+[VIDEO – deze Google Video bestaat niet meer]
 
 Ook Andreas Boerman heeft zijn videocamera bij de hand gehad. Zijn filmpjes zie je hieronder.
 

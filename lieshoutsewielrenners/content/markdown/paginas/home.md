@@ -45,7 +45,7 @@ Lees meer over onze rijke historie en hoogtepunten uit onze geschiedenis.
 
 De supportersclub was een van de eerste organisatie die actief foto's is gaan publiceren van haar evenementen. Ondertussen hebben we een rijk fotoarchief met duizenden hoge kwaliteit foto's, goed voor honderden Gigabites. Ze zijn allemaal gratis beschikbaar in ons online archief.
 
-[Naar het fotoarchief](http://fotos.lieshoutsewielrenners.nl)
+[Naar het fotoarchief](https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&dl=0)
 
 ![](afbeeldingen/2015/01/2014-sfeerimpressie-lieshout.jpg)
 ![](afbeeldingen/2015/01/2003-veldrit-impressie.jpg)

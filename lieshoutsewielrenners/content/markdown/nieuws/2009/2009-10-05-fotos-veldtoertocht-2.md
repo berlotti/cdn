@@ -12,6 +12,6 @@ tags: ["lieshout", "veldtoertocht"]
 
 De gisteren verreden veldtoertocht heeft weer vele mooie foto's opgeleverd.
 
-Bekijk het complete overzicht op <http://fotos.lieshoutsewielrenners.nl/main.php?g2_itemId=46011>
+Bekijk het complete overzicht op [ons fotoarchief](https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&dl=0)
 
-[![veldtoertocht lieshout](afbeeldingen/2009/10/benders.jpg)](http://fotos.lieshoutsewielrenners.nl/main.php?g2_itemId=46011)
+[![veldtoertocht lieshout](afbeeldingen/2009/10/benders.jpg)](https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&dl=0)

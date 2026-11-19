@@ -14,4 +14,4 @@ De 33e Bavaria Veldrit van Lieshout is vanmiddag weer verreden. Van harte gefeli
 
 De volledige uitslagen zijn (gratis) te vinden op [http://wielerpunt.com](http://wielerpunt.com/uitslagen/20121118lieshout.html)
 
-De meer dan 400 foto's zijn zoals altijd te vinden op het [fotoarchief](https://www.dropbox.com/gallery/27448175/1/fotoarchief/2012/bavaria%20veldrit/?h=bb0cb4) van de organisatie.
+De meer dan 400 foto's zijn zoals altijd te vinden op het [fotoarchief](https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&dl=0) van de organisatie.

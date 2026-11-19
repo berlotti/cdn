@@ -13,7 +13,7 @@ De Bavaria ronde van Lieshout is vandaag voor de 56e keer verreden.
 
 Foto's in uitslagen zijn wederom via deze site te vinden.
 
-- - Foto's op [fotos.lieshoutsewielrenners.nl](http://www.dropbox.com/gallery/27448175/1/fotoarchief/2011/rondevanlieshout%20%2815%20mei%29?h=bb0cb4)
-- - Uitslagen op [wielerpunt.com](http://wielerpunt.com/uitslagen/20110515lieshout.html)
+- - Foto's op [ons fotoarchief](https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&dl=0)
+- - Uitslagen op wielerpunt.com
 
 Graag tot volgend jaar!

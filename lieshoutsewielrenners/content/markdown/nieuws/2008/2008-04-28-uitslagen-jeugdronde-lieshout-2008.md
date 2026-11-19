@@ -39,4 +39,4 @@ De Jeugdronde van Lieshout is verreden. Zie hier de uitslagen en de foto's.
 
 [Cat. 7 - serie 2](bestanden/2008/04/lieshout-uitslag_lieshout_2008-04-27_jeugd_cat_7-2.html)
 
-De vele foto's zijn te zien op [http://fotos.lieshoutsewielrenners.nl/](http://lwf.opendatamovement.org/main.php?g2_itemId=14625)
+De vele foto's zijn te zien op [ons fotoarchief](https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&dl=0)

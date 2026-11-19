@@ -13,12 +13,12 @@ De Italiaan Marco Bianco is winnaar geworden van de Bavaria veldrit van Lieshout
 
 |  |  |
 | --- | --- |
-| [Amateurs:](http://www.wielerpunt.com/wielerpunt/infusions/wielrenuitslagen/wielrenuitslagen.php?ID_editie=3262&ID_wedstrijddag=4636&ID_wedstrijd=13023&weergave=1) | Edwin Raats |
-| [Nieuwelingen:](http://www.wielerpunt.com/wielerpunt/infusions/wielrenuitslagen/wielrenuitslagen.php?ID_editie=3262&ID_wedstrijddag=4636&ID_wedstrijd=13022&weergave=1) | Danny van Poppel |
-| [Junioren:](http://www.wielerpunt.com/wielerpunt/infusions/wielrenuitslagen/wielrenuitslagen.php?ID_editie=3262&ID_wedstrijddag=4636&ID_wedstrijd=13025&weergave=1) | Gert-Jan Bosman |
-| [Elite/Beloften:](http://www.wielerpunt.com/wielerpunt/infusions/wielrenuitslagen/wielrenuitslagen.php?ID_editie=3262&ID_wedstrijddag=4636&ID_wedstrijd=13024&weergave=1) | Marco Bianco |
-| [Masters:](http://www.wielerpunt.com/wielerpunt/infusions/wielrenuitslagen/wielrenuitslagen.php?ID_editie=3262&ID_wedstrijddag=4636&ID_wedstrijd=13026&weergave=1) | Frank Groenendaal |
+| Amateurs: | Edwin Raats |
+| Nieuwelingen: | Danny van Poppel |
+| Junioren: | Gert-Jan Bosman |
+| Elite/Beloften: | Marco Bianco |
+| Masters: | Frank Groenendaal |
 
 Klik op de categorie voor de volledige uitslag (link: wielerpunt.com).
 
-De foto's zijn te vinden op [http://fotos.lieshoutsewielrenners.nl](http://fotos.lieshoutsewielrenners.nl/main.php?g2_itemId=23140)
+De foto's zijn te vinden op [ons fotoarchief](https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&dl=0)

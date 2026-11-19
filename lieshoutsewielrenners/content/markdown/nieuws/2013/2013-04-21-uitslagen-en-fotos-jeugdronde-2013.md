@@ -10,4 +10,4 @@ tags: ["jeugd", "jeugdronde"]
 
 # Uitslagen en Foto's jeugdronde 2013
 
-De 40e jeugronde van Lieshout is vandaag verreden in ideale weersomstandigheden. De uitslagen zijn te vinden op [wielerpunt.com](http://wielerpunt.com/uitslagen/20130421Lieshout.html). De organisatie heeft [foto's gemaakt die te zien zijn in ons fotoarchief](https://www.dropbox.com/gallery/27448175/1/fotoarchief/2013/jeugdronde%2021%20april/?h=bb0cb4).
+De 40e jeugronde van Lieshout is vandaag verreden in ideale weersomstandigheden. De uitslagen zijn te vinden op [wielerpunt.com](http://wielerpunt.com/uitslagen/20130421Lieshout.html). De organisatie heeft [foto's gemaakt die te zien zijn in ons fotoarchief](https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&dl=0).

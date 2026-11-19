@@ -11,9 +11,9 @@ categorieen: ["evenementen", "veldrit"]
 
 De Veldrit van Lieshout 2007 zit er weer op.
 
-Alle uitslagen zullen zoals altijd te vinden zijn op [**wielerpunt.com**](http://www.wielerpunt.com/home/20071118lieshout.htm).
+Alle uitslagen zullen zoals altijd te vinden zijn op **wielerpunt.com**.
 
-De foto's zijn te vinden in  [**het fotoarchief van de organisatie**](http://lwf.opendatamovement.org/main.php?g2_itemId=473).
+De foto's zijn te vinden in  [**het fotoarchief van de organisatie**](https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&dl=0).
 
 De podia zagen er als volgt uit:
 
@@ -59,6 +59,6 @@ Elite:
 
 3. Nico Clarrijs.
 
-[Klik hier voor de foto's](http://lwf.opendatamovement.org/main.php?g2_itemId=473).
+[Klik hier voor de foto's](https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&dl=0).
 
 dit alles onder voorbehoud en excuses voor spelfouten in de namen

@@ -13,8 +13,8 @@ De Bavaria veldrit en de jeugdveldrit van Lieshout zijn weer verreden.
 
 De foto's staan in ons fotoarchief:
 
-- [Veldrit](https://www.dropbox.com/gallery/27448175/1/fotoarchief/2011/bavariaveldrit%2020%20november/?h=bb0cb4)
+- [Veldrit](https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&dl=0)
 
-- [Jeugdveldrit](https://www.dropbox.com/gallery/27448175/1/fotoarchief/2011/jeugdveldrit%204%20december/?h=bb0cb4)
+- [Jeugdveldrit](https://www.dropbox.com/scl/fo/gx5fy4ejcek9a4ffvrzqq/AHS5OptuxQ9vNv32kOC4uNE/fotoarchief?rlkey=6x3tdhbi1gs0t5hggygwfqc3k&dl=0)
 
-De [uitslagen van de veldrit](http://wielerpunt.com/uitslagen/20111120lieshout.html) en [jeugdveldrit](http://wielerpunt.com/uitslagen/20101205lieshout.htm) zijn te vinden op [wielerpunt.com](http://wielerpunt.com/).
+De uitslagen van de veldrit en jeugdveldrit zijn te vinden op [wielerpunt.com](http://wielerpunt.com/).
