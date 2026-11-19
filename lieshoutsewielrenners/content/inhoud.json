@@ -296,7 +296,7 @@
      "local": "afbeeldingen/2021/01/Monique-Jansen.jpg",
      "alt": "Monique Jansen",
      "rol": null,
-     "ok": false,
+     "ok": true,
      "bestand": "Monique-Jansen.jpg"
     },
     {
@@ -4064,7 +4064,7 @@
      "local": "afbeeldingen/2007/12/Bavariaronde.jpg",
      "alt": "",
      "rol": null,
-     "ok": false,
+     "ok": true,
      "bestand": "Bavariaronde.jpg"
     }
    ],
@@ -4100,7 +4100,7 @@
      "local": "afbeeldingen/2007/12/jeugdronde.jpg",
      "alt": "",
      "rol": null,
-     "ok": false,
+     "ok": true,
      "bestand": "jeugdronde.jpg"
     }
    ],
@@ -4935,70 +4935,70 @@
      "local": "afbeeldingen/2015/01/2014-sfeerimpressie-lieshout.jpg",
      "alt": "",
      "rol": "achtergrond",
-     "ok": false,
+     "ok": true,
      "bestand": "2014-sfeerimpressie-lieshout.jpg"
     },
     {
      "local": "afbeeldingen/2015/01/2003-veldrit-impressie.jpg",
      "alt": "",
      "rol": "achtergrond",
-     "ok": false,
+     "ok": true,
      "bestand": "2003-veldrit-impressie.jpg"
     },
     {
      "local": "afbeeldingen/2015/01/2014-sfeerimpressie-lieshout.jpg",
      "alt": "",
      "rol": "slideshow",
-     "ok": false,
+     "ok": true,
      "bestand": "2014-sfeerimpressie-lieshout.jpg"
     },
     {
      "local": "afbeeldingen/2015/01/2003-veldrit-impressie.jpg",
      "alt": "",
      "rol": "slideshow",
-     "ok": false,
+     "ok": true,
      "bestand": "2003-veldrit-impressie.jpg"
     },
     {
      "local": "afbeeldingen/2015/01/IMG_0595.jpg",
      "alt": "",
      "rol": "slideshow",
-     "ok": false,
+     "ok": true,
      "bestand": "IMG_0595.jpg"
     },
     {
      "local": "afbeeldingen/2015/01/IMG_0728.jpg",
      "alt": "",
      "rol": "slideshow",
-     "ok": false,
+     "ok": true,
      "bestand": "IMG_0728.jpg"
     },
     {
      "local": "afbeeldingen/2015/01/P1010036.jpg",
      "alt": "",
      "rol": "slideshow",
-     "ok": false,
+     "ok": true,
      "bestand": "P1010036.jpg"
     },
     {
      "local": "afbeeldingen/2015/01/P1010109.jpg",
      "alt": "",
      "rol": "slideshow",
-     "ok": false,
+     "ok": true,
      "bestand": "P1010109.jpg"
     },
     {
      "local": "afbeeldingen/2015/01/P1010128.jpg",
      "alt": "",
      "rol": "slideshow",
-     "ok": false,
+     "ok": true,
      "bestand": "P1010128.jpg"
     },
     {
      "local": "afbeeldingen/2015/01/P1010156.jpg",
      "alt": "",
      "rol": "slideshow",
-     "ok": false,
+     "ok": true,
      "bestand": "P1010156.jpg"
     }
    ],
@@ -5092,42 +5092,42 @@
      "local": "afbeeldingen/2021/01/Leo-van-Berlo-1.jpg",
      "alt": "",
      "rol": "slideshow",
-     "ok": false,
+     "ok": true,
      "bestand": "Leo-van-Berlo-1.jpg"
     },
     {
      "local": "afbeeldingen/2021/01/Beeld.jpg",
      "alt": "",
      "rol": "galerij",
-     "ok": false,
+     "ok": true,
      "bestand": "Beeld.jpg"
     },
     {
      "local": "afbeeldingen/2021/01/Leo.jpg",
      "alt": "",
      "rol": "galerij",
-     "ok": false,
+     "ok": true,
      "bestand": "Leo.jpg"
     },
     {
      "local": "afbeeldingen/2021/01/Leo-van-Berlo-2.jpg",
      "alt": "",
      "rol": "galerij",
-     "ok": false,
+     "ok": true,
      "bestand": "Leo-van-Berlo-2.jpg"
     },
     {
      "local": "afbeeldingen/2016/02/IMG_8337.jpg",
      "alt": "",
      "rol": "galerij",
-     "ok": false,
+     "ok": true,
      "bestand": "IMG_8337.jpg"
     },
     {
      "local": "afbeeldingen/2021/01/Leo-op-terras-Koekoek-Ronde-van-Lieshout-werkploeg.jpg",
      "alt": "",
      "rol": "galerij",
-     "ok": false,
+     "ok": true,
      "bestand": "Leo-op-terras-Koekoek-Ronde-van-Lieshout-werkploeg.jpg"
     }
    ],
@@ -10528,7 +10528,7 @@
      "local": "afbeeldingen/2016/02/IMG_8303-1.jpg",
      "alt": "IMG_8303",
      "rol": null,
-     "ok": false,
+     "ok": true,
      "bestand": "IMG_8303-1.jpg"
     }
    ],
@@ -10563,7 +10563,7 @@
      "local": "afbeeldingen/2016/02/IMG_8337.jpg",
      "alt": "IMG_8337",
      "rol": null,
-     "ok": false,
+     "ok": true,
      "bestand": "IMG_8337.jpg"
     }
    ],
@@ -10733,28 +10733,28 @@
      "local": "afbeeldingen/2017/02/IMG_5139.jpg",
      "alt": "",
      "rol": null,
-     "ok": false,
+     "ok": true,
      "bestand": "IMG_5139.jpg"
     },
     {
      "local": "afbeeldingen/2017/02/IMG_5109.jpg",
      "alt": "",
      "rol": null,
-     "ok": false,
+     "ok": true,
      "bestand": "IMG_5109.jpg"
     },
     {
      "local": "afbeeldingen/2017/02/IMG_5105.jpg",
      "alt": "",
      "rol": null,
-     "ok": false,
+     "ok": true,
      "bestand": "IMG_5105.jpg"
     },
     {
      "local": "afbeeldingen/2017/02/IMG_5104.jpg",
      "alt": "",
      "rol": null,
-     "ok": false,
+     "ok": true,
      "bestand": "IMG_5104.jpg"
     }
    ],
@@ -10843,7 +10843,7 @@
      "local": "afbeeldingen/2018/02/IMG_9647.jpg",
      "alt": "",
      "rol": null,
-     "ok": false,
+     "ok": true,
      "bestand": "IMG_9647.jpg"
     }
    ],
@@ -11060,7 +11060,7 @@
   },
   {
    "local": "afbeeldingen/2007/12/Bavariaronde.jpg",
-   "cdn": null,
+   "cdn": "SERVER:2007/12/Bavariaronde.jpg",
    "urls": [
     "http://lieshoutsewielrenners.nl/files/2007/12/Bavariaronde-300x224.jpg",
     "http://lieshoutsewielrenners.nl/files/2007/12/Bavariaronde.jpg"
@@ -11073,7 +11073,7 @@
   },
   {
    "local": "afbeeldingen/2007/12/IMG_08221.jpg",
-   "cdn": null,
+   "cdn": "SERVER:2007/12/IMG_08221.jpg",
    "urls": [
     "http://lieshoutsewielrenners.nl/files/2007/12/IMG_08221.jpg"
    ],
@@ -11306,7 +11306,7 @@
   },
   {
    "local": "afbeeldingen/2007/12/jeugdronde.jpg",
-   "cdn": null,
+   "cdn": "SERVER:2007/12/jeugdronde.jpg",
    "urls": [
     "http://lieshoutsewielrenners.nl/files/2007/12/jeugdronde-300x197.jpg",
     "http://lieshoutsewielrenners.nl/files/2007/12/jeugdronde.jpg"
@@ -12192,7 +12192,7 @@
   },
   {
    "local": "afbeeldingen/2015/01/2003-veldrit-impressie.jpg",
-   "cdn": null,
+   "cdn": "SERVER:2015/01/2003-veldrit-impressie.jpg",
    "urls": [
     "http://lieshoutsewielrenners.nl/files/2015/01/2003-veldrit-impressie.jpg"
    ],
@@ -12204,7 +12204,7 @@
   },
   {
    "local": "afbeeldingen/2015/01/2014-sfeerimpressie-lieshout.jpg",
-   "cdn": null,
+   "cdn": "SERVER:2015/01/2014-sfeerimpressie-lieshout.jpg",
    "urls": [
     "http://lieshoutsewielrenners.nl/files/2015/01/2014-sfeerimpressie-lieshout-1030x687.jpg",
     "http://lieshoutsewielrenners.nl/files/2015/01/2014-sfeerimpressie-lieshout.jpg"
@@ -12217,7 +12217,7 @@
   },
   {
    "local": "afbeeldingen/2015/01/IMG_0595.jpg",
-   "cdn": null,
+   "cdn": "SERVER:2015/01/IMG_0595.jpg",
    "urls": [
     "http://lieshoutsewielrenners.nl/files/2015/01/IMG_0595.jpg"
    ],
@@ -12229,7 +12229,7 @@
   },
   {
    "local": "afbeeldingen/2015/01/IMG_0728.jpg",
-   "cdn": null,
+   "cdn": "SERVER:2015/01/IMG_0728.jpg",
    "urls": [
     "http://lieshoutsewielrenners.nl/files/2015/01/IMG_0728.jpg"
    ],
@@ -12241,7 +12241,7 @@
   },
   {
    "local": "afbeeldingen/2015/01/P1010036.jpg",
-   "cdn": null,
+   "cdn": "SERVER:2015/01/P1010036.jpg",
    "urls": [
     "http://lieshoutsewielrenners.nl/files/2015/01/P1010036.jpg"
    ],
@@ -12253,7 +12253,7 @@
   },
   {
    "local": "afbeeldingen/2015/01/P1010109.jpg",
-   "cdn": null,
+   "cdn": "SERVER:2015/01/P1010109.jpg",
    "urls": [
     "http://lieshoutsewielrenners.nl/files/2015/01/P1010109.jpg"
    ],
@@ -12265,7 +12265,7 @@
   },
   {
    "local": "afbeeldingen/2015/01/P1010128.jpg",
-   "cdn": null,
+   "cdn": "SERVER:2015/01/P1010128.jpg",
    "urls": [
     "http://lieshoutsewielrenners.nl/files/2015/01/P1010128.jpg"
    ],
@@ -12277,7 +12277,7 @@
   },
   {
    "local": "afbeeldingen/2015/01/P1010156.jpg",
-   "cdn": null,
+   "cdn": "SERVER:2015/01/P1010156.jpg",
    "urls": [
     "http://lieshoutsewielrenners.nl/files/2015/01/P1010156.jpg"
    ],
@@ -12289,7 +12289,7 @@
   },
   {
    "local": "afbeeldingen/2015/01/bestuur-en-renners-1980-stretch.jpg",
-   "cdn": null,
+   "cdn": "SERVER:2015/01/bestuur-en-renners-1980-stretch.jpg",
    "urls": [
     "http://lieshoutsewielrenners.nl/files/2015/01/bestuur-en-renners-1980-stretch.jpg"
    ],
@@ -12300,7 +12300,7 @@
   },
   {
    "local": "afbeeldingen/2015/04/wielercafe-5.jpg",
-   "cdn": null,
+   "cdn": "SERVER:2015/04/wielercafe-5.jpg",
    "urls": [
     "http://lieshoutsewielrenners.nl/files/2015/04/wielercafe-5.jpg"
    ],
@@ -12311,7 +12311,7 @@
   },
   {
    "local": "afbeeldingen/2016/02/IMG_8303-1.jpg",
-   "cdn": null,
+   "cdn": "SERVER:2016/02/IMG_8303-1.jpg",
    "urls": [
     "http://lieshoutsewielrenners.nl/files/2016/02/IMG_8303-1-300x200.jpg",
     "http://lieshoutsewielrenners.nl/files/2016/02/IMG_8303-1.jpg"
@@ -12324,7 +12324,7 @@
   },
   {
    "local": "afbeeldingen/2016/02/IMG_8303.jpg",
-   "cdn": null,
+   "cdn": "SERVER:2016/02/IMG_8303.jpg",
    "urls": [
     "http://lieshoutsewielrenners.nl/files/2016/02/IMG_8303.jpg"
    ],
@@ -12335,7 +12335,7 @@
   },
   {
    "local": "afbeeldingen/2016/02/IMG_8337.jpg",
-   "cdn": null,
+   "cdn": "SERVER:2016/02/IMG_8337.jpg",
    "urls": [
     "http://lieshoutsewielrenners.nl/files/2016/02/IMG_8337-200x300.jpg",
     "http://lieshoutsewielrenners.nl/files/2016/02/IMG_8337.jpg"
@@ -12349,7 +12349,7 @@
   },
   {
    "local": "afbeeldingen/2017/02/IMG_5104.jpg",
-   "cdn": null,
+   "cdn": "SERVER:2017/02/IMG_5104.jpg",
    "urls": [
     "http://lieshoutsewielrenners.nl/files/2017/02/IMG_5104-300x200.jpg",
     "http://lieshoutsewielrenners.nl/files/2017/02/IMG_5104.jpg"
@@ -12362,7 +12362,7 @@
   },
   {
    "local": "afbeeldingen/2017/02/IMG_5105.jpg",
-   "cdn": null,
+   "cdn": "SERVER:2017/02/IMG_5105.jpg",
    "urls": [
     "http://lieshoutsewielrenners.nl/files/2017/02/IMG_5105-300x200.jpg",
     "http://lieshoutsewielrenners.nl/files/2017/02/IMG_5105.jpg"
@@ -12375,7 +12375,7 @@
   },
   {
    "local": "afbeeldingen/2017/02/IMG_5109.jpg",
-   "cdn": null,
+   "cdn": "SERVER:2017/02/IMG_5109.jpg",
    "urls": [
     "http://lieshoutsewielrenners.nl/files/2017/02/IMG_5109-300x200.jpg",
     "http://lieshoutsewielrenners.nl/files/2017/02/IMG_5109.jpg"
@@ -12388,7 +12388,7 @@
   },
   {
    "local": "afbeeldingen/2017/02/IMG_5134.jpg",
-   "cdn": null,
+   "cdn": "SERVER:2017/02/IMG_5134.jpg",
    "urls": [
     "http://lieshoutsewielrenners.nl/files/2017/02/IMG_5134.jpg"
    ],
@@ -12399,7 +12399,7 @@
   },
   {
    "local": "afbeeldingen/2017/02/IMG_5139.jpg",
-   "cdn": null,
+   "cdn": "SERVER:2017/02/IMG_5139.jpg",
    "urls": [
     "http://lieshoutsewielrenners.nl/files/2017/02/IMG_5139-300x200.jpg",
     "http://lieshoutsewielrenners.nl/files/2017/02/IMG_5139.jpg"
@@ -12412,7 +12412,7 @@
   },
   {
    "local": "afbeeldingen/2018/02/IMG_9647.jpg",
-   "cdn": null,
+   "cdn": "SERVER:2018/02/IMG_9647.jpg",
    "urls": [
     "http://lieshoutsewielrenners.nl/files/2018/02/IMG_9647-200x300.jpg",
     "http://lieshoutsewielrenners.nl/files/2018/02/IMG_9647.jpg"
@@ -12425,7 +12425,7 @@
   },
   {
    "local": "afbeeldingen/2021/01/Beeld.jpg",
-   "cdn": null,
+   "cdn": "SERVER:2021/01/Beeld.jpg",
    "urls": [
     "http://lieshoutsewielrenners.nl/files/2021/01/Beeld.jpg"
    ],
@@ -12437,7 +12437,7 @@
   },
   {
    "local": "afbeeldingen/2021/01/Leo-op-terras-Koekoek-Ronde-van-Lieshout-werkploeg.jpg",
-   "cdn": null,
+   "cdn": "SERVER:2021/01/Leo-op-terras-Koekoek-Ronde-van-Lieshout-werkploeg.jpg",
    "urls": [
     "http://lieshoutsewielrenners.nl/files/2021/01/Leo-op-terras-Koekoek-Ronde-van-Lieshout-werkploeg.jpg"
    ],
@@ -12449,7 +12449,7 @@
   },
   {
    "local": "afbeeldingen/2021/01/Leo-van-Berlo-1.jpg",
-   "cdn": null,
+   "cdn": "SERVER:2021/01/Leo-van-Berlo-1.jpg",
    "urls": [
     "http://lieshoutsewielrenners.nl/files/2021/01/Leo-van-Berlo-1.jpg"
    ],
@@ -12461,7 +12461,7 @@
   },
   {
    "local": "afbeeldingen/2021/01/Leo-van-Berlo-2.jpg",
-   "cdn": null,
+   "cdn": "SERVER:2021/01/Leo-van-Berlo-2.jpg",
    "urls": [
     "http://lieshoutsewielrenners.nl/files/2021/01/Leo-van-Berlo-2.jpg"
    ],
@@ -12473,7 +12473,7 @@
   },
   {
    "local": "afbeeldingen/2021/01/Leo-van-Berlo-3.jpg",
-   "cdn": null,
+   "cdn": "SERVER:2021/01/Leo-van-Berlo-3.jpg",
    "urls": [
     "http://lieshoutsewielrenners.nl/files/2021/01/Leo-van-Berlo-3.jpg"
    ],
@@ -12484,7 +12484,7 @@
   },
   {
    "local": "afbeeldingen/2021/01/Leo-van-Berlo.jpg",
-   "cdn": null,
+   "cdn": "SERVER:2021/01/Leo-van-Berlo.jpg",
    "urls": [
     "http://lieshoutsewielrenners.nl/files/2021/01/Leo-van-Berlo.jpg"
    ],
@@ -12495,7 +12495,7 @@
   },
   {
    "local": "afbeeldingen/2021/01/Leo.jpg",
-   "cdn": null,
+   "cdn": "SERVER:2021/01/Leo.jpg",
    "urls": [
     "http://lieshoutsewielrenners.nl/files/2021/01/Leo.jpg"
    ],
@@ -12507,7 +12507,7 @@
   },
   {
    "local": "afbeeldingen/2021/01/Monique-Jansen.jpg",
-   "cdn": null,
+   "cdn": "SERVER:2021/01/Monique-Jansen.jpg",
    "urls": [
     "http://lieshoutsewielrenners.nl/files/2021/01/Monique-Jansen-300x300.jpg",
     "http://lieshoutsewielrenners.nl/files/2021/01/Monique-Jansen.jpg"
@@ -12520,7 +12520,7 @@
   },
   {
    "local": "afbeeldingen/2021/01/Teun-van-Kaathoven.png",
-   "cdn": null,
+   "cdn": "SERVER:2021/01/Teun-van-Kaathoven.png",
    "urls": [
     "http://lieshoutsewielrenners.nl/files/2021/01/Teun-van-Kaathoven.png"
    ],
@@ -12531,7 +12531,7 @@
   },
   {
    "local": "afbeeldingen/2021/04/d83622ac-1bb0-40d1-a2ea-8ba23d672ca2.jpg",
-   "cdn": null,
+   "cdn": "SERVER:2021/04/d83622ac-1bb0-40d1-a2ea-8ba23d672ca2.jpg",
    "urls": [
     "http://lieshoutsewielrenners.nl/files/2021/04/d83622ac-1bb0-40d1-a2ea-8ba23d672ca2.jpg"
    ],
@@ -12731,7 +12731,7 @@
   },
   {
    "local": "bestanden/2007/12/Parcours-jeugdronde.pdf",
-   "cdn": null,
+   "cdn": "SERVER:2007/12/Parcours-jeugdronde.pdf",
    "urls": [
     "http://lieshoutsewielrenners.nl/files/2007/12/Parcours-jeugdronde.pdf"
    ],
